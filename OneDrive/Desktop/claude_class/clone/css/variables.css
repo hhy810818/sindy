@@ -1,0 +1,26 @@
+/* =============================================
+   디자인 토큰 — 여기 한 곳만 수정하면 전체 반영
+   ============================================= */
+:root {
+  /* ── 색상 ── */
+  --color-primary:    #c8a96e;   /* 포인트 (버튼, 강조선, 호버) */
+  --color-primary-dk: #a8874e;   /* 포인트 어두운 버전 */
+
+  --color-bg-dark:    #1a1612;   /* 히어로·푸터 배경 */
+  --color-bg-warm:    #f5efe6;   /* About 섹션 배경 */
+  --color-bg-card:    #ffffff;   /* 카드 배경 */
+  --color-bg-trust:   #2a2420;   /* 신뢰 섹션 배경 */
+
+  --color-text:       #2d2d2d;   /* 기본 본문 */
+  --color-text-muted: #888888;   /* 보조 텍스트 */
+  --color-text-light: #f0ece6;   /* 어두운 배경 위 텍스트 */
+
+  /* ── 폰트 ── */
+  --font-heading: 'Noto Serif KR', 'Georgia', serif;
+  --font-body:    'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+
+  /* ── 크기 ── */
+  --radius: 4px;
+  --max-w:  1100px;
+  --gap:    1.5rem;
+}

@@ -3,224 +3,280 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>품뜰채 — 마당을 품은 집 (On the Garden) · 서울 광진구 (교육용 클론)</title>
-  <meta name="description" content="서울 광진구, 마당을 품은 한국의 집 전체 · 최대 5명 · 침실 2개 · 어린이대공원역 도보 12분 (교육용 클론)" />
+  <title>맘앤그로우 — 아이와 함께 성장하는 쇼핑 (교육용 클론)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- ══════════ HEADER ══════════ -->
-  <header id="header">
-    <div class="inner">
-      <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">
-        <span></span><span></span><span></span>
-        <em>MENU</em>
-      </button>
-      <a href="#top" class="logo">품뜰채<strong>On the Garden</strong></a>
-      <a href="https://www.airbnb.co.kr/rooms/1436700570135400776" target="_blank" rel="noopener" class="reserve-btn">RESERVATION <small>예약하기</small></a>
-    </div>
-  </header>
-
-  <!-- ══════════ 전체메뉴 오버레이 패널 ══════════ -->
-  <div class="menu-panel" id="menuPanel">
-    <button class="menu-close" id="menuClose" aria-label="메뉴 닫기">×</button>
-    <nav>
-      <ul>
-        <li><span>ABOUT</span><a href="#welcome">숙소 소개</a><a href="#garden">마당 이야기</a></li>
-        <li><span>SPACE</span><a href="#rooms">공간 둘러보기</a><a href="#amenities">편의시설</a></li>
-        <li><span>REVIEWS</span><a href="#reviews">게스트 후기</a></li>
-        <li><span>LOCATION</span><a href="#location">위치 · 교통</a></li>
-        <li><span>HOST</span><a href="#footer">호스트 소개</a></li>
-        <li><span>BOOKING</span><a href="https://www.airbnb.co.kr/rooms/1436700570135400776" target="_blank" rel="noopener">실시간 예약</a></li>
+  <!-- ① TOP NOTICE BAR -->
+  <div class="notice-bar">
+    <button class="notice-arrow" id="noticePrev">&#8249;</button>
+    <div class="notice-wrap">
+      <ul class="notice-list" id="noticeList">
+        <li class="notice-item active">🎀 산리오 신상 입고! <a href="#">시나모롤 · 쿠로미 · 마이멜로디 →</a></li>
+        <li class="notice-item">🚚 20,000원 이상 구매 시 <strong>무료배송</strong></li>
+        <li class="notice-item">⭐ 여름 한정 <strong>넥쿨러 · 래쉬가드 · 선캡</strong> 최대 20% 할인!</li>
       </ul>
-    </nav>
+    </div>
+    <button class="notice-arrow" id="noticeNext">&#8250;</button>
   </div>
 
-  <span id="top"></span>
-
-  <!-- ══════════ 2. HERO 슬라이더 ══════════ -->
-  <section id="hero">
-    <div class="slider" id="heroSlider">
-      <div class="slide" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQzNjcwMDU3MDEzNTQwMDc3Ng==/original/75420401-a524-4548-b12a-46e27639f4ab.png?im_w=1200')"></div>
-      <div class="slide" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQzNjcwMDU3MDEzNTQwMDc3Ng==/original/e95e7cfa-0798-4e51-81d4-b4998e3ad804.jpeg?im_w=1200')"></div>
-      <div class="slide" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQzNjcwMDU3MDEzNTQwMDc3Ng==/original/893fa69d-a1b9-4634-ac7c-0afdf320f3b9.jpeg?im_w=1200')"></div>
-      <div class="slide" style="background-image:url('https://a0.muscache.com/im/pictures/miso/Hosting-1436700570135400776/original/9e900f12-08e4-4157-b42a-3bf856688911.jpeg?im_w=1200')"></div>
-      <div class="slide" style="background-image:url('https://a0.muscache.com/im/pictures/miso/Hosting-1436700570135400776/original/fe8427cb-b18d-4189-954d-2e78be0bfe14.jpeg?im_w=1200')"></div>
-    </div>
-    <button class="slider-arrow prev" id="heroPrev" aria-label="이전">‹</button>
-    <button class="slider-arrow next" id="heroNext" aria-label="다음">›</button>
-    <div class="slider-dots" id="heroDots"></div>
-    <div class="hero-caption">
-      <p class="eyebrow">SEOUL · ON THE GARDEN</p>
-      <h1>품뜰채 — 마당을 품은 집</h1>
-    </div>
-  </section>
-
-  <!-- ══════════ 1. STAT BAR (숙소 핵심정보) ══════════ -->
-  <section id="stats">
-    <div class="container stat-wrap">
-      <div class="badges fade-in">
-        <span class="badge primary">★ 5.0 · 후기 8</span>
-        <span class="badge">게스트 선호</span>
-        <span class="badge">슈퍼호스트</span>
-      </div>
-      <ul class="stat-list fade-in">
-        <li><strong>한국의 집 전체</strong><span>독채 사용</span></li>
-        <li><strong>최대 5명</strong><span>게스트 정원</span></li>
-        <li><strong>침실 2 · 침대 2</strong><span>퀸 침대</span></li>
-        <li><strong>욕실 1</strong><span>단독 사용</span></li>
+  <!-- ② HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-util">
+      <ul class="util-left">
+        <li><a href="#">공지사항</a></li>
+        <li><a href="#">Q&amp;A</a></li>
+        <li><a href="#">리뷰</a></li>
+      </ul>
+      <ul class="util-right">
+        <li><a href="#">로그인</a></li>
+        <li><a href="#">회원가입</a></li>
+        <li><a href="#">주문조회</a></li>
       </ul>
     </div>
-  </section>
-
-  <!-- ══════════ 4. WELCOME (숙소 소개) ══════════ -->
-  <section id="welcome">
-    <div class="container welcome-grid">
-      <div class="welcome-img fade-in">
-        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQzNjcwMDU3MDEzNTQwMDc3Ng==/original/e95e7cfa-0798-4e51-81d4-b4998e3ad804.jpeg?im_w=720" alt="품뜰채 내부" />
-      </div>
-      <div class="welcome-text fade-in">
-        <p class="quote">"</p>
-        <h2>마당을 품은 집<br>On the Garden</h2>
-        <p>
-          서울의 바쁜 일상 속에서 잠시 숨을 고르고 싶을 때,<br>
-          전통의 숨결이 머무는 '마당을 품은 집'이 따뜻하게 맞이합니다.<br><br>
-          현대식 편의시설이 완비되어 쾌적하게 머무를 수 있으며,
-          가족 · 친구 · 커플 모두에게 잘 어울리는 한국적인 독채 숙소입니다.
-        </p>
-        <p class="muted">체크인 16:00 · 체크아웃 11:00 · 셀프 체크인</p>
+    <div class="header-logo-row">
+      <a href="#" class="site-logo">
+        <span class="logo-mom">Mom</span><span class="logo-amp">&amp;</span><span class="logo-grow">Grow</span>
+        <em class="logo-sub">맘앤그로우</em>
+      </a>
+      <div class="header-icons">
+        <button class="icon-btn" id="searchBtn" aria-label="검색">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="icon-btn cart-btn" id="cartBtn" aria-label="장바구니">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="icon-btn" aria-label="마이페이지">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
       </div>
     </div>
-  </section>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#">브랜드 소개</a></li>
+        <li><a href="#">산리오 컬렉션</a></li>
+        <li><a href="#">포켓몬 컬렉션</a></li>
+        <li><a href="#">이벤트</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- ══════════ 3. GARDEN (다크 포인트) ══════════ -->
-  <section id="garden">
-    <div class="spa-bg" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQzNjcwMDU3MDEzNTQwMDc3Ng==/original/75420401-a524-4548-b12a-46e27639f4ab.png?im_w=1200')"></div>
-    <div class="spa-text fade-in">
-      <p class="quote">"</p>
-      <h2>THE GARDEN</h2>
-      <p>아침엔 브런치를, 저녁엔 시원한 맥주 한잔.<br>
-         이쁜 꽃들과 함께하는 도심 속 초록 마당에서<br>
-         도시의 여유를 천천히 누려보세요.</p>
+  <!-- ③ SEARCH BAR -->
+  <div class="search-bar" id="searchBar">
+    <div class="search-inner">
+      <input type="text" placeholder="찾는 상품을 검색하세요" class="search-input" id="searchInput" />
+      <button class="search-submit" id="searchSubmit">검색</button>
+      <button class="search-close" id="searchClose">✕</button>
     </div>
-  </section>
+  </div>
 
-  <!-- ══════════ 5. INTERIOR 와이드 밴드 ══════════ -->
-  <section id="interior">
-    <div class="interior-img fade-in"
-         style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQzNjcwMDU3MDEzNTQwMDc3Ng==/original/893fa69d-a1b9-4634-ac7c-0afdf320f3b9.jpeg?im_w=1200')"></div>
-  </section>
-
-  <!-- ══════════ 6. SPACE BAND ══════════ -->
-  <section id="rooms-band">
-    <div class="band-bg" style="background-image:url('https://a0.muscache.com/im/pictures/miso/Hosting-1436700570135400776/original/9e900f12-08e4-4157-b42a-3bf856688911.jpeg?im_w=1200')"></div>
-    <div class="band-inner">
-      <p class="eyebrow">PUMTLCHAE</p>
-      <h2 class="script">The Space</h2>
-    </div>
-  </section>
-
-  <!-- ══════════ 7. SPACE PREVIEW ══════════ -->
-  <section id="rooms">
+  <!-- ④ CATEGORY NAV -->
+  <nav class="category-nav" id="categoryNav">
     <div class="container">
-      <header class="section-head fade-in">
-        <p class="eyebrow">ON THE GARDEN</p>
-        <h2 class="quoted">SPACE PREVIEW</h2>
-        <p class="sub">공간 둘러보기</p>
-      </header>
-      <div class="room-grid" id="roomGrid"></div>
-    </div>
-  </section>
-
-  <!-- ══════════ AMENITIES ══════════ -->
-  <section id="amenities">
-    <div class="container">
-      <header class="section-head fade-in">
-        <p class="eyebrow">FACILITY</p>
-        <h2 class="quoted">AMENITIES</h2>
-        <p class="sub">숙소 편의시설</p>
-      </header>
-      <ul class="amenity-list fade-in">
-        <li>주방 (인덕션·전자레인지·냉장고)</li>
-        <li>무료 와이파이</li>
-        <li>에어컨 · 난방</li>
-        <li>스마트 TV</li>
-        <li>세탁기 · 건조기</li>
-        <li>헤어드라이어</li>
-        <li>업무 전용 공간</li>
-        <li>LP 플레이어</li>
-        <li>셀프 체크인</li>
-        <li>주차 (인근 공영주차장)</li>
-        <li>욕실 어메니티 일체</li>
-        <li>실외 보안 카메라</li>
+      <ul class="cat-list" id="catList">
+        <li class="cat-item active" data-cat="all"><a href="#">✨ 신상품</a></li>
+        <li class="cat-item" data-cat="best"><a href="#">🏆 베스트</a></li>
+        <li class="cat-item" data-cat="sanrio"><a href="#">🎀 산리오</a></li>
+        <li class="cat-item" data-cat="pokemon"><a href="#">⚡ 포켓몬</a></li>
+        <li class="cat-item" data-cat="anime"><a href="#">🗡️ 애니메이션</a></li>
+        <li class="cat-item" data-cat="stationery"><a href="#">✏️ 문구</a></li>
+        <li class="cat-item" data-cat="fashion"><a href="#">👜 패션잡화</a></li>
+        <li class="cat-item" data-cat="food"><a href="#">🍪 식품</a></li>
+        <li class="cat-item" data-cat="life"><a href="#">🛁 생활용품</a></li>
+        <li class="cat-item" data-cat="interior"><a href="#">🏠 인테리어</a></li>
+        <li class="cat-item" data-cat="kids"><a href="#">👶 육아용품</a></li>
       </ul>
     </div>
-  </section>
+  </nav>
 
-  <!-- ══════════ REVIEWS ══════════ -->
-  <section id="reviews">
-    <div class="container">
-      <header class="section-head fade-in">
-        <p class="eyebrow">GUEST REVIEWS</p>
-        <h2 class="quoted">★ 5.0 · 후기 8개</h2>
-        <p class="sub">청결도 5.0 · 정확도 5.0 · 위치 4.9 · 가격 대비 5.0</p>
-      </header>
-      <div class="review-grid">
-        <blockquote class="review-card fade-in">
-          <p>"깔끔한 외관과 푸릇한 마당 덕분에 첫인상부터 기분 좋은 숙소였어요. 침구도 청결하고, 한국적인 소품이 따뜻했습니다. 재방문 의사 100%!"</p>
-          <cite>은정 · 2025.07</cite>
-        </blockquote>
-        <blockquote class="review-card fade-in">
-          <p>"혼자 묵기 너무 아까운 숙소입니다. 아기자기한 아이템 구경하는 재미가 있고, 식기와 침구류까지 모두 깨끗했어요."</p>
-          <cite>보섭 · 2025.07</cite>
-        </blockquote>
-        <blockquote class="review-card fade-in">
-          <p>"편안한 숙박에 필요한 모든 것을 갖춘 곳. 지하철역이 10분 거리, 위치와 편의시설이 좋았고 호스트 응답이 정말 빨랐습니다."</p>
-          <cite>Hernan · 2025.08</cite>
-        </blockquote>
-        <blockquote class="review-card fade-in">
-          <p>"짧은 일정이 아쉬울 정도로 편히 묵고 갑니다."</p>
-          <cite>정하 · 2025.06</cite>
-        </blockquote>
+  <main>
+
+    <!-- ⑤ HERO BANNER -->
+    <section class="hero">
+      <div class="hero-slider" id="heroSlider">
+
+        <!-- Slide 1: 산리오 여름 -->
+        <div class="hero-slide active" style="background: linear-gradient(135deg, #ffe0f0 0%, #ffd6e8 40%, #ffc3d9 100%);">
+          <div class="hero-slide-inner">
+            <div class="hero-text">
+              <p class="hero-eyebrow">🎀 SUMMER NEW ARRIVALS</p>
+              <h1 class="hero-title">산리오 여름<br>신상품 입고!</h1>
+              <p class="hero-desc">시나모롤 · 쿠로미 · 마이멜로디<br>두근두근 여름 한정 아이템을 만나보세요</p>
+              <a href="#" class="hero-cta">지금 보러가기</a>
+            </div>
+            <div class="hero-art hero-art--sanrio">
+              <div class="char-bubble bubble-1">🎀</div>
+              <div class="char-bubble bubble-2">✨</div>
+              <div class="char-bubble bubble-3">🌸</div>
+              <div class="char-card">
+                <span>NEW</span>
+                <p>산리오</p>
+                <p>컬렉션</p>
+              </div>
+              <div class="char-deco">시나모롤</div>
+              <div class="char-star">⭐</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: 여름 필수템 -->
+        <div class="hero-slide" style="background: linear-gradient(135deg, #d4f0ff 0%, #b7e4ff 50%, #a0d8ff 100%);">
+          <div class="hero-slide-inner">
+            <div class="hero-text">
+              <p class="hero-eyebrow">☀️ SUMMER MUST-HAVE</p>
+              <h1 class="hero-title">더운 여름<br>필수 아이템!</h1>
+              <p class="hero-desc">넥쿨러 · 래쉬가드 · 모기퇴치용품<br>여름 맞이 최대 <strong>20% 할인</strong></p>
+              <a href="#" class="hero-cta">할인 상품 보기</a>
+            </div>
+            <div class="hero-art hero-art--summer">
+              <div class="char-bubble bubble-1" style="background:#fff3b7">🌊</div>
+              <div class="char-bubble bubble-2" style="background:#ffecb7">☀️</div>
+              <div class="char-bubble bubble-3" style="background:#b7f5ff">🏊</div>
+              <div class="char-card" style="background:#fff;color:#2a90d4">
+                <span>SALE</span>
+                <p>최대</p>
+                <p>20% OFF</p>
+              </div>
+              <div class="char-deco" style="color:#2a90d4">여름특가</div>
+              <div class="char-star">🌟</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: 무료배송 -->
+        <div class="hero-slide" style="background: linear-gradient(135deg, #e0ffe8 0%, #c8ffd4 50%, #b7ffcc 100%);">
+          <div class="hero-slide-inner">
+            <div class="hero-text">
+              <p class="hero-eyebrow">🚚 FREE SHIPPING</p>
+              <h1 class="hero-title">20,000원 이상<br>무료배송!</h1>
+              <p class="hero-desc">맘앤그로우의 모든 상품<br>기준 충족 시 무료배송 혜택</p>
+              <a href="#" class="hero-cta">쇼핑 시작하기</a>
+            </div>
+          </div>
+        </div>
+
       </div>
-    </div>
-  </section>
 
-  <!-- ══════════ LOCATION ══════════ -->
-  <section id="location">
-    <div class="container">
-      <header class="section-head fade-in">
-        <p class="eyebrow">LOCATION</p>
-        <h2 class="quoted">위치 · 교통</h2>
-        <p class="sub">서울특별시 광진구</p>
-      </header>
-      <ul class="loc-list fade-in">
-        <li><b>6호선 어린이대공원역</b> 도보 12분 · 장한평역 인근</li>
-        <li><b>편의점</b> GS25 도보 1분 · E-MART24 도보 3분</li>
-        <li><b>성수</b>(서울숲 · 연무장길 카페거리) 택시 10분</li>
-        <li><b>잠실</b> 지하철 15분 · <b>강남역</b> 28분</li>
-        <li><b>공항버스(6013)</b> 정류장 도보 12분</li>
-        <li><b>주차</b> 길 건너 성동구 송정동 공영주차장 (5분당 100원)</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ══════════ 8. FOOTER (호스트) ══════════ -->
-  <footer id="footer">
-    <div class="container">
-      <img class="host-img" src="https://a0.muscache.com/im/pictures/user/User/original/aec87ae8-980f-4a64-ad1e-ee25f851c745.jpeg?im_w=240" alt="호스트 On The Garden" />
-      <p class="tel">호스트 : On The Garden · 슈퍼호스트</p>
-      <div class="biz">
-        <p>한국의 집 전체 · 서울특별시 광진구 | 게스트 정원 5명 | 침실 2 · 욕실 1</p>
-        <p>체크인 오후 4:00 · 체크아웃 오전 11:00 · 셀프 체크인 · 반려동물 불가 · 금연</p>
-        <p>등록 허가번호 : HA250602-003 (실증특례) | 구사 언어 : 한국어 · 영어</p>
+      <div class="hero-dots" id="heroDots">
+        <button class="hdot active" data-i="0"></button>
+        <button class="hdot" data-i="1"></button>
+        <button class="hdot" data-i="2"></button>
       </div>
-      <p class="copy">copyright (c) 품뜰채 On the Garden — 교육용 클론 페이지 (원본: Airbnb 리스팅)</p>
+      <button class="hero-arr hero-arr--prev" id="heroPrev">&#8249;</button>
+      <button class="hero-arr hero-arr--next" id="heroNext">&#8250;</button>
+    </section>
+
+    <!-- ⑥ CHARACTER QUICK LINK -->
+    <section class="char-quick">
+      <div class="container">
+        <ul class="char-quick-list">
+          <li><a href="#"><div class="cq-icon" style="background:#ffe0f0">🎀</div><span>마이멜로디</span></a></li>
+          <li><a href="#"><div class="cq-icon" style="background:#e8e0ff">🖤</div><span>쿠로미</span></a></li>
+          <li><a href="#"><div class="cq-icon" style="background:#d4f0ff">🍞</div><span>시나모롤</span></a></li>
+          <li><a href="#"><div class="cq-icon" style="background:#fff3d4">⚡</div><span>포켓몬</span></a></li>
+          <li><a href="#"><div class="cq-icon" style="background:#ffe8d4">🗡️</div><span>귀멸의칼날</span></a></li>
+          <li><a href="#"><div class="cq-icon" style="background:#d4ffe8">🦷</div><span>캐치티니핑</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ⑦ PRODUCT SECTION -->
+    <section class="products" id="products">
+      <div class="container">
+        <div class="products-head">
+          <h2 class="products-title" id="productsTitle">✨ 신상품</h2>
+          <a href="#" class="products-more">더보기 +</a>
+        </div>
+        <div class="product-grid" id="productGrid">
+          <!-- JS rendered -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑧ MID BANNER -->
+    <section class="mid-banner">
+      <div class="container">
+        <div class="mid-banner-grid">
+          <div class="mb-card" style="background:linear-gradient(135deg,#ffe0f0,#ffc8df)">
+            <p class="mb-tag">🎀 SANRIO</p>
+            <h3>산리오 컬렉션</h3>
+            <p>마이멜로디, 시나모롤, 쿠로미</p>
+            <a href="#" class="mb-btn">바로가기</a>
+          </div>
+          <div class="mb-card" style="background:linear-gradient(135deg,#fff3d4,#ffe8a0)">
+            <p class="mb-tag">⚡ POKEMON</p>
+            <h3>포켓몬 굿즈</h3>
+            <p>피카츄, 이브이 시리즈</p>
+            <a href="#" class="mb-btn">바로가기</a>
+          </div>
+          <div class="mb-card" style="background:linear-gradient(135deg,#d4f0ff,#b0e0ff)">
+            <p class="mb-tag">☀️ SUMMER</p>
+            <h3>여름 필수템</h3>
+            <p>넥쿨러, 래쉬가드, 모기밴드</p>
+            <a href="#" class="mb-btn">바로가기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ⑨ FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <p class="footer-logo">Mom<span>&amp;</span>Grow</p>
+          <p class="footer-tagline">아이와 함께 성장하는 쇼핑</p>
+        </div>
+        <div class="footer-nav">
+          <ul>
+            <li><a href="#">이용약관</a></li>
+            <li><a href="#">개인정보처리방침</a></li>
+            <li><a href="#">공지사항</a></li>
+            <li><a href="#">고객센터</a></li>
+          </ul>
+        </div>
+        <div class="footer-sns">
+          <a href="https://smartstore.naver.com/momngrow" target="_blank" rel="noopener" aria-label="네이버 스마트스토어">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-info">
+        <p>운영시간: 평일 10:00 ~ 17:00 (주말 및 공휴일 휴무)</p>
+        <p>맘앤그로우 &nbsp;|&nbsp; 네이버 스마트스토어: smartstore.naver.com/momngrow</p>
+        <p class="footer-copy">&copy; 2024 맘앤그로우. All rights reserved. &nbsp;·&nbsp; 교육용 클론 페이지 — 상업적 이용 금지</p>
+      </div>
     </div>
   </footer>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cs-head">
+      <span>🛍️ 장바구니 (<span id="csCount">0</span>)</span>
+      <button id="cartClose" aria-label="닫기">✕</button>
+    </div>
+    <div class="cs-body" id="csBody">
+      <p class="cs-empty">장바구니가 비어있습니다 🧺</p>
+    </div>
+    <div class="cs-foot" id="csFoot" style="display:none">
+      <div class="cs-total">합계: <strong id="csTotal">₩0</strong></div>
+      <a href="#" class="cs-checkout">결제하기</a>
+    </div>
+  </div>
+  <div class="dim" id="dim"></div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
 
   <script src="js/main.js"></script>
 </body>
