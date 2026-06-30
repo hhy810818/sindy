@@ -685,6 +685,320 @@ img { display: block; max-width: 100%; }
 }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+/* ── MODAL ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  z-index: 700;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: flex; }
+
+.modal-box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 36px 32px 28px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(224,86,154,.2);
+  animation: modalIn .25s cubic-bezier(.4,0,.2,1);
+}
+@keyframes modalIn {
+  from { opacity:0; transform: translateY(16px) scale(.97); }
+  to   { opacity:1; transform: translateY(0) scale(1); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px; right: 18px;
+  font-size: 20px;
+  color: #ccc;
+  line-height: 1;
+  transition: color .2s;
+}
+.modal-close:hover { color: #e0569a; }
+
+.modal-logo {
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #e0569a;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.modal-logo span { color: #4caf7d; }
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+.modal-form { display: flex; flex-direction: column; gap: 14px; }
+
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group label { font-size: 12px; font-weight: 600; color: #555; }
+.form-group input {
+  border: 1.5px solid #f0d0e0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color .2s;
+  color: #333;
+}
+.form-group input:focus { border-color: #e0569a; }
+.form-group input.error { border-color: #ff4d4d; }
+
+.form-submit {
+  margin-top: 4px;
+  background: #e0569a;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+  font-family: inherit;
+}
+.form-submit:hover { background: #c8407e; transform: translateY(-1px); }
+.form-submit:active { transform: translateY(0); }
+
+.modal-switch {
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 16px;
+}
+.modal-switch a { color: #e0569a; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+.order-result-inner {
+  text-align: center;
+  padding: 20px;
+  background: #fff0f5;
+  border-radius: 12px;
+  margin-top: 12px;
+}
+.order-result-inner p { font-size: 18px; font-weight: 700; color: #e0569a; margin-bottom: 8px; }
+.order-result-inner small { font-size: 11.5px; color: #aaa; }
+
+/* ── CHECKOUT MODAL ── */
+.checkout-box {
+  max-width: 480px;
+  padding: 28px 28px 24px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* 단계 표시 */
+.checkout-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 24px;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 10.5px;
+  color: #ccc;
+  font-weight: 600;
+  transition: color .3s;
+}
+.step span {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: #eee;
+  color: #bbb;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  transition: background .3s, color .3s;
+}
+.step.active { color: #e0569a; }
+.step.active span { background: #e0569a; color: #fff; }
+.step.done span { background: #4caf7d; color: #fff; }
+.step.done { color: #4caf7d; }
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: #eee;
+  margin: 0 6px;
+  margin-bottom: 14px;
+  min-width: 20px;
+  transition: background .3s;
+}
+.step-line.done { background: #4caf7d; }
+
+/* 패널 전환 */
+.checkout-panel { display: none; }
+.checkout-panel.active { display: block; }
+
+.checkout-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+/* 주문 상품 목록 */
+.checkout-items {
+  max-height: 180px;
+  overflow-y: auto;
+  border: 1px solid #fff0f5;
+  border-radius: 10px;
+  padding: 4px 0;
+  margin-bottom: 14px;
+}
+.co-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 12px;
+  border-bottom: 1px solid #fff5f8;
+}
+.co-item:last-child { border-bottom: none; }
+.co-item img {
+  width: 48px; height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #fafafa;
+  flex-shrink: 0;
+}
+.co-item-name { font-size: 11.5px; color: #444; flex: 1; line-height: 1.4; }
+.co-item-price { font-size: 12.5px; font-weight: 700; color: #e0569a; white-space: nowrap; }
+
+/* 요약 */
+.checkout-summary {
+  background: #fff8fb;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: #666;
+  padding: 4px 0;
+}
+.summary-row.total {
+  border-top: 1px solid #ffd6e8;
+  margin-top: 6px;
+  padding-top: 10px;
+  font-size: 14px;
+  color: #333;
+  font-weight: 600;
+}
+.summary-row.total strong { color: #e0569a; font-size: 17px; }
+
+/* 배송지 폼 */
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.modal-form select {
+  border: 1.5px solid #f0d0e0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  color: #555;
+  background: #fff;
+  width: 100%;
+  cursor: pointer;
+  transition: border-color .2s;
+}
+.modal-form select:focus { border-color: #e0569a; }
+
+/* 결제수단 */
+.pay-methods { display: flex; flex-direction: column; gap: 8px; }
+.pay-method { cursor: pointer; }
+.pay-method input { display: none; }
+.pay-method-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1.5px solid #f0d0e0;
+  border-radius: 12px;
+  transition: border-color .2s, background .2s;
+}
+.pay-method input:checked + .pay-method-inner {
+  border-color: #e0569a;
+  background: #fff0f5;
+}
+.pay-icon { font-size: 22px; width: 32px; text-align: center; }
+.pay-method-inner p { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 2px; }
+.pay-method-inner small { font-size: 11px; color: #aaa; }
+
+/* 동의 체크박스 */
+.agree-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 10px;
+  font-size: 12px;
+  color: #777;
+}
+.agree-row input[type="checkbox"] { accent-color: #e0569a; width: 15px; height: 15px; cursor: pointer; }
+.agree-row label { cursor: pointer; }
+
+/* 이전 버튼 */
+.btn-back {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: #bbb;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: color .2s;
+}
+.btn-back:hover { color: #e0569a; }
+
+/* 완료 화면 */
+.order-done {
+  text-align: center;
+  padding: 16px 0 8px;
+}
+.done-icon { font-size: 52px; margin-bottom: 12px; animation: pop .4s cubic-bezier(.4,0,.2,1); }
+@keyframes pop {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.order-done h3 { font-size: 18px; font-weight: 700; color: #333; margin-bottom: 8px; }
+.done-no { font-size: 12px; color: #aaa; margin-bottom: 16px; }
+.done-no strong { color: #e0569a; font-family: 'Nunito', monospace; }
+.done-info {
+  background: #fff8fb;
+  border-radius: 12px;
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 12.5px;
+  color: #555;
+  line-height: 1.9;
+  margin-bottom: 14px;
+}
+.done-sub {
+  font-size: 11.5px;
+  color: #bbb;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .product-grid { grid-template-columns: repeat(3, 1fr); }

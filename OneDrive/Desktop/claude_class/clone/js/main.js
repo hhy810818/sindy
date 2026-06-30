@@ -448,6 +448,172 @@ function initHeaderScroll() {
   }, { passive: true });
 }
 
+/* ── 결제 UI (4단계) ── */
+function initCheckout() {
+  function goStep(n) {
+    // 패널 전환
+    document.querySelectorAll('.checkout-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('checkoutStep' + n).classList.add('active');
+    // 단계 표시 업데이트
+    document.querySelectorAll('.step').forEach(s => {
+      const i = +s.dataset.step;
+      s.classList.toggle('active', i === n);
+      s.classList.toggle('done', i < n);
+    });
+    document.querySelectorAll('.step-line').forEach((l, i) => {
+      l.classList.toggle('done', i < n - 1);
+    });
+  }
+
+  function fillCheckoutItems() {
+    const wrap = document.getElementById('checkoutItems');
+    if (!cart.length) { wrap.innerHTML = '<p style="padding:16px;text-align:center;color:#ccc;font-size:12px">장바구니가 비어있습니다</p>'; return; }
+    wrap.innerHTML = cart.map(item => `
+      <div class="co-item">
+        <img src="${item.image}" alt="${item.name}" onerror="this.style.background='#fafafa'" />
+        <span class="co-item-name">${item.name.slice(0, 28)}${item.name.length > 28 ? '…' : ''}</span>
+        <span class="co-item-price">₩${item.price.toLocaleString()}</span>
+      </div>`).join('');
+
+    const goods = cartTotal();
+    const ship  = goods >= 20000 ? 0 : 3000;
+    const total = goods + ship;
+    document.getElementById('summaryGoods').textContent = '₩' + goods.toLocaleString();
+    document.getElementById('summaryShip').textContent  = ship === 0 ? '무료' : '₩' + ship.toLocaleString();
+    document.getElementById('summaryTotal').textContent = '₩' + total.toLocaleString();
+    document.getElementById('finalTotal').textContent   = '₩' + total.toLocaleString();
+  }
+
+  // 장바구니 "결제하기" 버튼 클릭 → 결제 모달 열기
+  document.querySelector('.cs-checkout').addEventListener('click', e => {
+    e.preventDefault();
+    if (!cart.length) { showToast('장바구니가 비어있습니다 🧺'); return; }
+    closeCart();
+    fillCheckoutItems();
+    goStep(1);
+    openModal('checkoutModal');
+  });
+
+  // STEP 1 → 2
+  document.getElementById('toStep2').addEventListener('click', () => goStep(2));
+
+  // STEP 2 배송지 폼 제출 → 3
+  document.getElementById('shippingForm').addEventListener('submit', e => {
+    e.preventDefault();
+    goStep(3);
+  });
+
+  // STEP 3 결제하기
+  document.getElementById('doPay').addEventListener('click', () => {
+    if (!document.getElementById('agreeCheck').checked) {
+      showToast('결제 동의에 체크해주세요 ☑️'); return;
+    }
+    const method = document.querySelector('input[name="payMethod"]:checked');
+    const methodNames = { card:'신용/체크카드', kakao:'카카오페이', naver:'네이버페이', bank:'무통장 입금' };
+    const name   = document.getElementById('shipName').value;
+    const phone  = document.getElementById('shipPhone').value;
+    const addr   = document.getElementById('shipAddr').value;
+    const detail = document.getElementById('shipAddrDetail').value;
+    const goods  = cartTotal();
+    const ship   = goods >= 20000 ? 0 : 3000;
+
+    // 주문번호 생성
+    const orderNo = 'MNG-' + Date.now().toString().slice(-8);
+    document.getElementById('orderNo').textContent = orderNo;
+    document.getElementById('doneInfo').innerHTML = `
+      <div>받는 분: <strong>${name}</strong></div>
+      <div>연락처: ${phone}</div>
+      <div>배송지: ${addr} ${detail}</div>
+      <div>결제수단: ${methodNames[method.value]}</div>
+      <div>결제금액: <strong style="color:#e0569a">₩${(goods + ship).toLocaleString()}</strong></div>`;
+
+    // 장바구니 비우기
+    cart = [];
+    saveCart();
+    updateCartCount();
+    renderCartSidebar();
+    goStep(4);
+  });
+
+  // 이전 버튼들
+  document.getElementById('backStep1').addEventListener('click', () => goStep(1));
+  document.getElementById('backStep2').addEventListener('click', () => goStep(2));
+
+  // 완료 → 모달 닫기
+  document.getElementById('doneClose').addEventListener('click', () => closeModal('checkoutModal'));
+}
+
+/* ── 모달 ── */
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function initModals() {
+  // 열기 버튼
+  document.getElementById('loginBtn').addEventListener('click', e => { e.preventDefault(); openModal('loginModal'); });
+  document.getElementById('registerBtn').addEventListener('click', e => { e.preventDefault(); openModal('registerModal'); });
+  document.getElementById('orderBtn').addEventListener('click', e => { e.preventDefault(); openModal('orderModal'); });
+
+  // 닫기 버튼 (✕)
+  document.querySelectorAll('.modal-close').forEach(btn => {
+    btn.addEventListener('click', () => closeModal(btn.dataset.modal));
+  });
+
+  // 오버레이 바깥 클릭 시 닫기
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) closeModal(overlay.id);
+    });
+  });
+
+  // ESC 키로 닫기
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
+    }
+  });
+
+  // 모달 간 전환
+  document.getElementById('goRegister').addEventListener('click', e => {
+    e.preventDefault(); closeModal('loginModal'); openModal('registerModal');
+  });
+  document.getElementById('goLogin').addEventListener('click', e => {
+    e.preventDefault(); closeModal('registerModal'); openModal('loginModal');
+  });
+
+  // 로그인 폼 제출
+  document.getElementById('loginForm').addEventListener('submit', e => {
+    e.preventDefault();
+    closeModal('loginModal');
+    showToast('🎀 로그인되었습니다! (데모)');
+  });
+
+  // 회원가입 폼 제출
+  document.getElementById('registerForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const inputs = e.target.querySelectorAll('input[type="password"]');
+    if (inputs[0].value !== inputs[1].value) {
+      inputs[1].classList.add('error');
+      inputs[1].placeholder = '비밀번호가 일치하지 않습니다';
+      return;
+    }
+    inputs[1].classList.remove('error');
+    closeModal('registerModal');
+    showToast('✅ 회원가입이 완료되었습니다! (데모)');
+  });
+
+  // 주문조회 폼 제출
+  document.getElementById('orderForm').addEventListener('submit', e => {
+    e.preventDefault();
+    document.getElementById('orderResult').style.display = 'block';
+  });
+}
+
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts(PRODUCTS);
@@ -462,4 +628,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('cartBtn').addEventListener('click', openCart);
   document.getElementById('cartClose').addEventListener('click', closeCart);
   document.getElementById('dim').addEventListener('click', closeCart);
+
+  initModals();
+  initCheckout();
 });

@@ -33,9 +33,9 @@
         <li><a href="#">리뷰</a></li>
       </ul>
       <ul class="util-right">
-        <li><a href="#">로그인</a></li>
-        <li><a href="#">회원가입</a></li>
-        <li><a href="#">주문조회</a></li>
+        <li><a href="#" id="loginBtn">로그인</a></li>
+        <li><a href="#" id="registerBtn">회원가입</a></li>
+        <li><a href="#" id="orderBtn">주문조회</a></li>
       </ul>
     </div>
     <div class="header-logo-row">
@@ -275,8 +275,220 @@
   </div>
   <div class="dim" id="dim"></div>
 
+  <!-- 결제 모달 (4단계) -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-box checkout-box">
+      <button class="modal-close" data-modal="checkoutModal">✕</button>
+
+      <!-- 단계 표시 -->
+      <div class="checkout-steps">
+        <div class="step active" data-step="1"><span>1</span>주문확인</div>
+        <div class="step-line"></div>
+        <div class="step" data-step="2"><span>2</span>배송지</div>
+        <div class="step-line"></div>
+        <div class="step" data-step="3"><span>3</span>결제수단</div>
+        <div class="step-line"></div>
+        <div class="step" data-step="4"><span>4</span>완료</div>
+      </div>
+
+      <!-- STEP 1: 주문 확인 -->
+      <div class="checkout-panel active" id="checkoutStep1">
+        <h3 class="checkout-title">주문 상품 확인</h3>
+        <div class="checkout-items" id="checkoutItems"></div>
+        <div class="checkout-summary">
+          <div class="summary-row"><span>상품금액</span><span id="summaryGoods">₩0</span></div>
+          <div class="summary-row"><span>배송비</span><span id="summaryShip">₩0</span></div>
+          <div class="summary-row total"><span>결제예정금액</span><strong id="summaryTotal">₩0</strong></div>
+        </div>
+        <button class="form-submit" id="toStep2">다음 — 배송지 입력</button>
+      </div>
+
+      <!-- STEP 2: 배송지 -->
+      <div class="checkout-panel" id="checkoutStep2">
+        <h3 class="checkout-title">배송지 입력</h3>
+        <form class="modal-form" id="shippingForm">
+          <div class="form-row-2">
+            <div class="form-group">
+              <label>받는 분</label>
+              <input type="text" id="shipName" placeholder="이름" required />
+            </div>
+            <div class="form-group">
+              <label>연락처</label>
+              <input type="tel" id="shipPhone" placeholder="010-0000-0000" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>주소</label>
+            <input type="text" id="shipAddr" placeholder="도로명 주소" required />
+          </div>
+          <div class="form-group">
+            <input type="text" id="shipAddrDetail" placeholder="상세 주소 (동, 호수)" />
+          </div>
+          <div class="form-group">
+            <label>배송 메모</label>
+            <select id="shipMemo">
+              <option value="">-- 선택 --</option>
+              <option>문 앞에 놓아주세요</option>
+              <option>경비실에 맡겨주세요</option>
+              <option>부재 시 연락 부탁드립니다</option>
+              <option>택배함에 넣어주세요</option>
+            </select>
+          </div>
+          <button type="submit" class="form-submit">다음 — 결제수단 선택</button>
+        </form>
+        <button class="btn-back" id="backStep1">← 이전</button>
+      </div>
+
+      <!-- STEP 3: 결제수단 -->
+      <div class="checkout-panel" id="checkoutStep3">
+        <h3 class="checkout-title">결제수단 선택</h3>
+        <div class="pay-methods">
+          <label class="pay-method">
+            <input type="radio" name="payMethod" value="card" checked />
+            <div class="pay-method-inner">
+              <span class="pay-icon">💳</span>
+              <div>
+                <p>신용/체크카드</p>
+                <small>국내외 모든 카드</small>
+              </div>
+            </div>
+          </label>
+          <label class="pay-method">
+            <input type="radio" name="payMethod" value="kakao" />
+            <div class="pay-method-inner">
+              <span class="pay-icon">💛</span>
+              <div>
+                <p>카카오페이</p>
+                <small>간편결제</small>
+              </div>
+            </div>
+          </label>
+          <label class="pay-method">
+            <input type="radio" name="payMethod" value="naver" />
+            <div class="pay-method-inner">
+              <span class="pay-icon">🟢</span>
+              <div>
+                <p>네이버페이</p>
+                <small>간편결제</small>
+              </div>
+            </div>
+          </label>
+          <label class="pay-method">
+            <input type="radio" name="payMethod" value="bank" />
+            <div class="pay-method-inner">
+              <span class="pay-icon">🏦</span>
+              <div>
+                <p>무통장 입금</p>
+                <small>입금 확인 후 발송</small>
+              </div>
+            </div>
+          </label>
+        </div>
+        <div class="checkout-summary" style="margin-top:16px">
+          <div class="summary-row total"><span>최종 결제금액</span><strong id="finalTotal">₩0</strong></div>
+        </div>
+        <div class="agree-row">
+          <input type="checkbox" id="agreeCheck" />
+          <label for="agreeCheck">주문 내용을 확인하였으며, 결제에 동의합니다.</label>
+        </div>
+        <button class="form-submit" id="doPay">결제하기</button>
+        <button class="btn-back" id="backStep2">← 이전</button>
+      </div>
+
+      <!-- STEP 4: 완료 -->
+      <div class="checkout-panel" id="checkoutStep4">
+        <div class="order-done">
+          <div class="done-icon">🎉</div>
+          <h3>주문이 완료되었습니다!</h3>
+          <p class="done-no">주문번호 <strong id="orderNo"></strong></p>
+          <div class="done-info" id="doneInfo"></div>
+          <p class="done-sub">배송 현황은 마이페이지 또는<br>네이버 스마트스토어에서 확인하실 수 있습니다.</p>
+          <button class="form-submit" id="doneClose">쇼핑 계속하기</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- TOAST -->
   <div class="toast" id="toast"></div>
+
+  <!-- 로그인 모달 -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal-box">
+      <button class="modal-close" data-modal="loginModal">✕</button>
+      <div class="modal-logo">Mom<span>&amp;</span>Grow</div>
+      <h2 class="modal-title">로그인</h2>
+      <form class="modal-form" id="loginForm">
+        <div class="form-group">
+          <label>이메일</label>
+          <input type="email" placeholder="이메일을 입력하세요" required />
+        </div>
+        <div class="form-group">
+          <label>비밀번호</label>
+          <input type="password" placeholder="비밀번호를 입력하세요" required />
+        </div>
+        <button type="submit" class="form-submit">로그인</button>
+      </form>
+      <p class="modal-switch">계정이 없으신가요? <a href="#" id="goRegister">회원가입</a></p>
+    </div>
+  </div>
+
+  <!-- 회원가입 모달 -->
+  <div class="modal-overlay" id="registerModal">
+    <div class="modal-box">
+      <button class="modal-close" data-modal="registerModal">✕</button>
+      <div class="modal-logo">Mom<span>&amp;</span>Grow</div>
+      <h2 class="modal-title">회원가입</h2>
+      <form class="modal-form" id="registerForm">
+        <div class="form-group">
+          <label>이름</label>
+          <input type="text" placeholder="이름을 입력하세요" required />
+        </div>
+        <div class="form-group">
+          <label>이메일</label>
+          <input type="email" placeholder="이메일을 입력하세요" required />
+        </div>
+        <div class="form-group">
+          <label>비밀번호</label>
+          <input type="password" placeholder="8자 이상 입력하세요" required minlength="8" />
+        </div>
+        <div class="form-group">
+          <label>비밀번호 확인</label>
+          <input type="password" id="pwConfirm" placeholder="비밀번호를 다시 입력하세요" required />
+        </div>
+        <button type="submit" class="form-submit">회원가입</button>
+      </form>
+      <p class="modal-switch">이미 계정이 있으신가요? <a href="#" id="goLogin">로그인</a></p>
+    </div>
+  </div>
+
+  <!-- 주문조회 모달 -->
+  <div class="modal-overlay" id="orderModal">
+    <div class="modal-box">
+      <button class="modal-close" data-modal="orderModal">✕</button>
+      <div class="modal-logo">Mom<span>&amp;</span>Grow</div>
+      <h2 class="modal-title">주문조회</h2>
+      <form class="modal-form" id="orderForm">
+        <div class="form-group">
+          <label>주문번호</label>
+          <input type="text" placeholder="주문번호를 입력하세요 (예: MNG-20240101)" required />
+        </div>
+        <div class="form-group">
+          <label>주문자 이름</label>
+          <input type="text" placeholder="주문자 이름을 입력하세요" required />
+        </div>
+        <button type="submit" class="form-submit">조회하기</button>
+      </form>
+      <div class="order-result" id="orderResult" style="display:none">
+        <div class="order-result-inner">
+          <p>📦 배송 준비중</p>
+          <small>정확한 배송 정보는 네이버 스마트스토어에서 확인해주세요.</small>
+          <a href="https://smartstore.naver.com/momngrow" target="_blank" rel="noopener" class="form-submit" style="display:block;text-align:center;margin-top:12px">스마트스토어 바로가기</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
