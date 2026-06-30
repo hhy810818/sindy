@@ -1,0 +1,13 @@
+# 시스템 파일
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 에디터
+.vscode/
+.idea/
+*.swp
+
+# 로컬 서버 설정
+.claude/
+node_modules/

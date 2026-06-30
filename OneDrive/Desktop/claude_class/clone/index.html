@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>품뜰채 — 마당을 품은 집 (On the Garden) · 서울 광진구 (교육용 클론)</title>
+  <meta name="description" content="서울 광진구, 마당을 품은 한국의 집 전체 · 최대 5명 · 침실 2개 · 어린이대공원역 도보 12분 (교육용 클론)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ══════════ HEADER ══════════ -->
+  <header id="header">
+    <div class="inner">
+      <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+        <em>MENU</em>
+      </button>
+      <a href="#top" class="logo">품뜰채<strong>On the Garden</strong></a>
+      <a href="https://www.airbnb.co.kr/rooms/1436700570135400776" target="_blank" rel="noopener" class="reserve-btn">RESERVATION <small>예약하기</small></a>
+    </div>
+  </header>
+
+  <!-- ══════════ 전체메뉴 오버레이 패널 ══════════ -->
+  <div class="menu-panel" id="menuPanel">
+    <button class="menu-close" id="menuClose" aria-label="메뉴 닫기">×</button>
+    <nav>
+      <ul>
+        <li><span>ABOUT</span><a href="#welcome">숙소 소개</a><a href="#garden">마당 이야기</a></li>
+        <li><span>SPACE</span><a href="#rooms">공간 둘러보기</a><a href="#amenities">편의시설</a></li>
+        <li><span>REVIEWS</span><a href="#reviews">게스트 후기</a></li>
+        <li><span>LOCATION</span><a href="#location">위치 · 교통</a></li>
+        <li><span>HOST</span><a href="#footer">호스트 소개</a></li>
+        <li><span>BOOKING</span><a href="https://www.airbnb.co.kr/rooms/1436700570135400776" target="_blank" rel="noopener">실시간 예약</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <span id="top"></span>
+
+  <!-- ══════════ 2. HERO 슬라이더 ══════════ -->
+  <section id="hero">
+    <div class="slider" id="heroSlider">
+      <div class="slide" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQzNjcwMDU3MDEzNTQwMDc3Ng==/original/75420401-a524-4548-b12a-46e27639f4ab.png?im_w=1200')"></div>
+      <div class="slide" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQzNjcwMDU3MDEzNTQwMDc3Ng==/original/e95e7cfa-0798-4e51-81d4-b4998e3ad804.jpeg?im_w=1200')"></div>
+      <div class="slide" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQzNjcwMDU3MDEzNTQwMDc3Ng==/original/893fa69d-a1b9-4634-ac7c-0afdf320f3b9.jpeg?im_w=1200')"></div>
+      <div class="slide" style="background-image:url('https://a0.muscache.com/im/pictures/miso/Hosting-1436700570135400776/original/9e900f12-08e4-4157-b42a-3bf856688911.jpeg?im_w=1200')"></div>
+      <div class="slide" style="background-image:url('https://a0.muscache.com/im/pictures/miso/Hosting-1436700570135400776/original/fe8427cb-b18d-4189-954d-2e78be0bfe14.jpeg?im_w=1200')"></div>
+    </div>
+    <button class="slider-arrow prev" id="heroPrev" aria-label="이전">‹</button>
+    <button class="slider-arrow next" id="heroNext" aria-label="다음">›</button>
+    <div class="slider-dots" id="heroDots"></div>
+    <div class="hero-caption">
+      <p class="eyebrow">SEOUL · ON THE GARDEN</p>
+      <h1>품뜰채 — 마당을 품은 집</h1>
+    </div>
+  </section>
+
+  <!-- ══════════ 1. STAT BAR (숙소 핵심정보) ══════════ -->
+  <section id="stats">
+    <div class="container stat-wrap">
+      <div class="badges fade-in">
+        <span class="badge primary">★ 5.0 · 후기 8</span>
+        <span class="badge">게스트 선호</span>
+        <span class="badge">슈퍼호스트</span>
+      </div>
+      <ul class="stat-list fade-in">
+        <li><strong>한국의 집 전체</strong><span>독채 사용</span></li>
+        <li><strong>최대 5명</strong><span>게스트 정원</span></li>
+        <li><strong>침실 2 · 침대 2</strong><span>퀸 침대</span></li>
+        <li><strong>욕실 1</strong><span>단독 사용</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ══════════ 4. WELCOME (숙소 소개) ══════════ -->
+  <section id="welcome">
+    <div class="container welcome-grid">
+      <div class="welcome-img fade-in">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQzNjcwMDU3MDEzNTQwMDc3Ng==/original/e95e7cfa-0798-4e51-81d4-b4998e3ad804.jpeg?im_w=720" alt="품뜰채 내부" />
+      </div>
+      <div class="welcome-text fade-in">
+        <p class="quote">"</p>
+        <h2>마당을 품은 집<br>On the Garden</h2>
+        <p>
+          서울의 바쁜 일상 속에서 잠시 숨을 고르고 싶을 때,<br>
+          전통의 숨결이 머무는 '마당을 품은 집'이 따뜻하게 맞이합니다.<br><br>
+          현대식 편의시설이 완비되어 쾌적하게 머무를 수 있으며,
+          가족 · 친구 · 커플 모두에게 잘 어울리는 한국적인 독채 숙소입니다.
+        </p>
+        <p class="muted">체크인 16:00 · 체크아웃 11:00 · 셀프 체크인</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 3. GARDEN (다크 포인트) ══════════ -->
+  <section id="garden">
+    <div class="spa-bg" style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQzNjcwMDU3MDEzNTQwMDc3Ng==/original/75420401-a524-4548-b12a-46e27639f4ab.png?im_w=1200')"></div>
+    <div class="spa-text fade-in">
+      <p class="quote">"</p>
+      <h2>THE GARDEN</h2>
+      <p>아침엔 브런치를, 저녁엔 시원한 맥주 한잔.<br>
+         이쁜 꽃들과 함께하는 도심 속 초록 마당에서<br>
+         도시의 여유를 천천히 누려보세요.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ 5. INTERIOR 와이드 밴드 ══════════ -->
+  <section id="interior">
+    <div class="interior-img fade-in"
+         style="background-image:url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQzNjcwMDU3MDEzNTQwMDc3Ng==/original/893fa69d-a1b9-4634-ac7c-0afdf320f3b9.jpeg?im_w=1200')"></div>
+  </section>
+
+  <!-- ══════════ 6. SPACE BAND ══════════ -->
+  <section id="rooms-band">
+    <div class="band-bg" style="background-image:url('https://a0.muscache.com/im/pictures/miso/Hosting-1436700570135400776/original/9e900f12-08e4-4157-b42a-3bf856688911.jpeg?im_w=1200')"></div>
+    <div class="band-inner">
+      <p class="eyebrow">PUMTLCHAE</p>
+      <h2 class="script">The Space</h2>
+    </div>
+  </section>
+
+  <!-- ══════════ 7. SPACE PREVIEW ══════════ -->
+  <section id="rooms">
+    <div class="container">
+      <header class="section-head fade-in">
+        <p class="eyebrow">ON THE GARDEN</p>
+        <h2 class="quoted">SPACE PREVIEW</h2>
+        <p class="sub">공간 둘러보기</p>
+      </header>
+      <div class="room-grid" id="roomGrid"></div>
+    </div>
+  </section>
+
+  <!-- ══════════ AMENITIES ══════════ -->
+  <section id="amenities">
+    <div class="container">
+      <header class="section-head fade-in">
+        <p class="eyebrow">FACILITY</p>
+        <h2 class="quoted">AMENITIES</h2>
+        <p class="sub">숙소 편의시설</p>
+      </header>
+      <ul class="amenity-list fade-in">
+        <li>주방 (인덕션·전자레인지·냉장고)</li>
+        <li>무료 와이파이</li>
+        <li>에어컨 · 난방</li>
+        <li>스마트 TV</li>
+        <li>세탁기 · 건조기</li>
+        <li>헤어드라이어</li>
+        <li>업무 전용 공간</li>
+        <li>LP 플레이어</li>
+        <li>셀프 체크인</li>
+        <li>주차 (인근 공영주차장)</li>
+        <li>욕실 어메니티 일체</li>
+        <li>실외 보안 카메라</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ══════════ REVIEWS ══════════ -->
+  <section id="reviews">
+    <div class="container">
+      <header class="section-head fade-in">
+        <p class="eyebrow">GUEST REVIEWS</p>
+        <h2 class="quoted">★ 5.0 · 후기 8개</h2>
+        <p class="sub">청결도 5.0 · 정확도 5.0 · 위치 4.9 · 가격 대비 5.0</p>
+      </header>
+      <div class="review-grid">
+        <blockquote class="review-card fade-in">
+          <p>"깔끔한 외관과 푸릇한 마당 덕분에 첫인상부터 기분 좋은 숙소였어요. 침구도 청결하고, 한국적인 소품이 따뜻했습니다. 재방문 의사 100%!"</p>
+          <cite>은정 · 2025.07</cite>
+        </blockquote>
+        <blockquote class="review-card fade-in">
+          <p>"혼자 묵기 너무 아까운 숙소입니다. 아기자기한 아이템 구경하는 재미가 있고, 식기와 침구류까지 모두 깨끗했어요."</p>
+          <cite>보섭 · 2025.07</cite>
+        </blockquote>
+        <blockquote class="review-card fade-in">
+          <p>"편안한 숙박에 필요한 모든 것을 갖춘 곳. 지하철역이 10분 거리, 위치와 편의시설이 좋았고 호스트 응답이 정말 빨랐습니다."</p>
+          <cite>Hernan · 2025.08</cite>
+        </blockquote>
+        <blockquote class="review-card fade-in">
+          <p>"짧은 일정이 아쉬울 정도로 편히 묵고 갑니다."</p>
+          <cite>정하 · 2025.06</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ LOCATION ══════════ -->
+  <section id="location">
+    <div class="container">
+      <header class="section-head fade-in">
+        <p class="eyebrow">LOCATION</p>
+        <h2 class="quoted">위치 · 교통</h2>
+        <p class="sub">서울특별시 광진구</p>
+      </header>
+      <ul class="loc-list fade-in">
+        <li><b>6호선 어린이대공원역</b> 도보 12분 · 장한평역 인근</li>
+        <li><b>편의점</b> GS25 도보 1분 · E-MART24 도보 3분</li>
+        <li><b>성수</b>(서울숲 · 연무장길 카페거리) 택시 10분</li>
+        <li><b>잠실</b> 지하철 15분 · <b>강남역</b> 28분</li>
+        <li><b>공항버스(6013)</b> 정류장 도보 12분</li>
+        <li><b>주차</b> 길 건너 성동구 송정동 공영주차장 (5분당 100원)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ══════════ 8. FOOTER (호스트) ══════════ -->
+  <footer id="footer">
+    <div class="container">
+      <img class="host-img" src="https://a0.muscache.com/im/pictures/user/User/original/aec87ae8-980f-4a64-ad1e-ee25f851c745.jpeg?im_w=240" alt="호스트 On The Garden" />
+      <p class="tel">호스트 : On The Garden · 슈퍼호스트</p>
+      <div class="biz">
+        <p>한국의 집 전체 · 서울특별시 광진구 | 게스트 정원 5명 | 침실 2 · 욕실 1</p>
+        <p>체크인 오후 4:00 · 체크아웃 오전 11:00 · 셀프 체크인 · 반려동물 불가 · 금연</p>
+        <p>등록 허가번호 : HA250602-003 (실증특례) | 구사 언어 : 한국어 · 영어</p>
+      </div>
+      <p class="copy">copyright (c) 품뜰채 On the Garden — 교육용 클론 페이지 (원본: Airbnb 리스팅)</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
