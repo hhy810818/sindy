@@ -1,0 +1,706 @@
+<title>품뜰채 9월 주중 채우기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --ground:#F6F8F4;
+    --surface:#FFFFFF;
+    --surface-2:#EEF2EC;
+    --line:#DCE3D8;
+    --line-soft:#E8EDE5;
+    --ink:#1A211C;
+    --ink-soft:#5C665E;
+    --ink-faint:#8B958D;
+    --accent:#2F6B4F;
+    --accent-ink:#245641;
+    --accent-wash:#E2EDE5;
+    --warn:#96631A;
+    --warn-wash:#F5EBD9;
+    --crit:#9E3A31;
+    --crit-wash:#F6E4E1;
+    --shadow:0 1px 2px rgba(26,33,28,.05), 0 8px 24px -12px rgba(26,33,28,.14);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#121611;
+      --surface:#1A201B;
+      --surface-2:#212822;
+      --line:#2E372F;
+      --line-soft:#262E27;
+      --ink:#E7EDE6;
+      --ink-soft:#9DA99E;
+      --ink-faint:#727E74;
+      --accent:#79C79A;
+      --accent-ink:#9BD9B4;
+      --accent-wash:#1D2E24;
+      --warn:#D6A75E;
+      --warn-wash:#2E2718;
+      --crit:#E28E83;
+      --crit-wash:#31201D;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#121611;
+    --surface:#1A201B;
+    --surface-2:#212822;
+    --line:#2E372F;
+    --line-soft:#262E27;
+    --ink:#E7EDE6;
+    --ink-soft:#9DA99E;
+    --ink-faint:#727E74;
+    --accent:#79C79A;
+    --accent-ink:#9BD9B4;
+    --accent-wash:#1D2E24;
+    --warn:#D6A75E;
+    --warn-wash:#2E2718;
+    --crit:#E28E83;
+    --crit-wash:#31201D;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"IBM Plex Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    font-weight:400;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+    font-size:15px;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px 96px}
+  .col{max-width:660px}
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    border-bottom:1px solid var(--line);
+    padding:56px 0 34px;
+    margin-bottom:44px;
+  }
+  .eyebrow{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);font-weight:500;
+  }
+  h1{
+    font-family:"Gowun Batang","Nanum Myeongjo",serif;
+    font-weight:700;
+    font-size:clamp(34px,5.2vw,50px);
+    line-height:1.24;
+    letter-spacing:-.015em;
+    margin:14px 0 0;
+    text-wrap:balance;
+  }
+  .standfirst{
+    font-size:17px;color:var(--ink-soft);margin:18px 0 0;max-width:60ch;
+    line-height:1.68;
+  }
+  .metabar{
+    display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:26px;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11.5px;color:var(--ink-faint);letter-spacing:.02em;
+  }
+  .metabar b{color:var(--ink-soft);font-weight:500}
+
+  /* ---------- sections ---------- */
+  section{margin:0 0 68px}
+  h2{
+    font-family:"Gowun Batang","Nanum Myeongjo",serif;
+    font-weight:700;font-size:27px;line-height:1.35;
+    margin:0 0 6px;letter-spacing:-.01em;text-wrap:balance;
+  }
+  .sec-head{
+    display:flex;align-items:baseline;gap:14px;
+    padding-bottom:14px;margin-bottom:26px;
+    border-bottom:1px solid var(--line);
+  }
+  .sec-head .eyebrow{flex:0 0 auto;padding-top:2px}
+  h3{
+    font-size:16px;font-weight:600;margin:0 0 8px;letter-spacing:-.005em;
+  }
+  p{margin:0 0 16px;max-width:66ch}
+  .lede{font-size:16.5px;color:var(--ink-soft)}
+  strong{font-weight:600;color:var(--ink)}
+  .num{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums;font-weight:500}
+  a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+  a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  /* ---------- verdict ---------- */
+  .verdict{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-left:3px solid var(--accent);
+    padding:26px 28px;
+    box-shadow:var(--shadow);
+    margin-bottom:34px;
+  }
+  .verdict p{margin:0;font-size:16.5px;line-height:1.7;max-width:64ch}
+  .verdict p + p{margin-top:14px}
+
+  /* ---------- evidence grid ---------- */
+  .ev{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:1px;background:var(--line);border:1px solid var(--line);
+    margin:0 0 30px;
+  }
+  .ev > div{background:var(--surface);padding:20px 20px 22px}
+  .ev .k{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:10px;
+  }
+  .ev .v{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-variant-numeric:tabular-nums;
+    font-size:26px;font-weight:600;line-height:1.15;color:var(--ink);
+    letter-spacing:-.02em;
+  }
+  .ev .v.bad{color:var(--crit)}
+  .ev .n{font-size:13.5px;color:var(--ink-soft);margin-top:9px;line-height:1.55}
+
+  /* ---------- tables ---------- */
+  .scroll{overflow-x:auto;margin:0 0 14px;border:1px solid var(--line);background:var(--surface)}
+  table{border-collapse:collapse;width:100%;min-width:640px;font-size:13.5px}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  thead th{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-faint);font-weight:500;
+    background:var(--surface-2);border-bottom:1px solid var(--line);
+    white-space:nowrap;
+  }
+  tbody tr:last-child td{border-bottom:none}
+  td.n,th.n{text-align:right;font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+  tr.you td{background:var(--crit-wash);font-weight:600}
+  tr.med td{background:var(--accent-wash);font-weight:600}
+  .strike{color:var(--ink-faint);text-decoration:line-through;font-size:12px;display:block;font-weight:400}
+  caption{
+    caption-side:bottom;text-align:left;padding:12px 14px;
+    font-size:12.5px;color:var(--ink-faint);line-height:1.6;
+    border-top:1px solid var(--line-soft);
+  }
+
+  /* ---------- change list ---------- */
+  .change{
+    background:var(--surface);border:1px solid var(--line);
+    padding:22px 24px;margin-bottom:14px;box-shadow:var(--shadow);
+  }
+  .change > .top{display:flex;gap:12px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap}
+  .tag{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;
+    padding:3px 8px;border:1px solid currentColor;white-space:nowrap;
+  }
+  .tag.hi{color:var(--crit)}
+  .tag.mid{color:var(--warn)}
+  .tag.lo{color:var(--accent)}
+  .change h3{margin:0;flex:1 1 240px;min-width:0}
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin:0 0 14px}
+  .ba > div{background:var(--surface-2);padding:14px 16px}
+  .ba .lbl{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:8px;
+  }
+  .ba .now{color:var(--ink-soft);font-size:13.5px;line-height:1.6}
+  .ba .next{color:var(--ink);font-size:13.5px;line-height:1.6;font-weight:500}
+  .ba .to{background:var(--accent-wash)}
+  .ba .to .lbl{color:var(--accent-ink)}
+  .change p{font-size:14px;color:var(--ink-soft);margin:0;max-width:70ch}
+  .change p + p{margin-top:10px}
+  @media (max-width:620px){ .ba{grid-template-columns:1fr} }
+
+  .titlebox{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:13px;line-height:1.65;
+    background:var(--surface-2);border:1px solid var(--line);
+    padding:12px 14px;margin:10px 0;word-break:break-all;
+  }
+  .titlebox .cnt{color:var(--ink-faint);font-size:11px;display:block;margin-top:6px}
+
+  /* ---------- calendar ---------- */
+  .cal{
+    display:grid;grid-template-columns:repeat(7,minmax(0,1fr));
+    gap:1px;background:var(--line);border:1px solid var(--line);
+    min-width:660px;
+  }
+  .cal .dow{
+    background:var(--surface-2);padding:9px 8px;text-align:center;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:10.5px;letter-spacing:.1em;color:var(--ink-faint);
+  }
+  .cal .cell{background:var(--surface);padding:10px 10px 12px;min-height:88px;position:relative}
+  .cal .cell.empty{background:var(--surface-2);opacity:.45}
+  .cal .d{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:12.5px;font-weight:600;color:var(--ink-soft);
+    font-variant-numeric:tabular-nums;
+  }
+  .cal .price{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-variant-numeric:tabular-nums;
+    font-size:15px;font-weight:600;margin-top:14px;letter-spacing:-.02em;
+  }
+  .cal .band{
+    font-size:10.5px;margin-top:3px;line-height:1.35;color:var(--ink-faint);
+  }
+  .cal .cell::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent}
+  .cell.b-week::before{background:var(--ink-faint)}
+  .cell.b-wend::before{background:var(--accent)}
+  .cell.b-hol::before{background:var(--warn)}
+  .cell.b-push::before{background:var(--crit)}
+  .cell.b-wend .price{color:var(--accent-ink)}
+  .cell.b-hol .price{color:var(--warn)}
+  .cell.b-push .price{color:var(--crit)}
+
+  .legend{display:flex;flex-wrap:wrap;gap:8px 22px;margin:16px 0 0;font-size:12.5px;color:var(--ink-soft)}
+  .legend span{display:inline-flex;align-items:center;gap:8px}
+  .legend i{width:12px;height:3px;display:inline-block;flex:0 0 auto}
+
+  /* ---------- checklist ---------- */
+  ol.steps{margin:0;padding:0;list-style:none;counter-reset:s}
+  ol.steps li{
+    counter-increment:s;position:relative;padding:0 0 18px 46px;
+    border-left:1px solid var(--line);margin-left:13px;
+  }
+  ol.steps li:last-child{border-left-color:transparent;padding-bottom:0}
+  ol.steps li::before{
+    content:counter(s,decimal-leading-zero);
+    position:absolute;left:-13px;top:0;
+    width:26px;height:26px;border-radius:50%;
+    background:var(--accent);color:var(--ground);
+    display:flex;align-items:center;justify-content:center;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:10.5px;font-weight:600;
+  }
+  ol.steps h3{margin-bottom:4px}
+  ol.steps p{font-size:14px;color:var(--ink-soft);margin:0;max-width:64ch}
+  ol.steps .where{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11px;color:var(--ink-faint);display:block;margin-top:6px;
+  }
+
+  ul.plain{margin:0 0 16px;padding-left:20px;max-width:66ch}
+  ul.plain li{margin-bottom:8px;color:var(--ink-soft)}
+  ul.plain li strong{color:var(--ink)}
+
+  .caveat{
+    border:1px solid var(--line);border-top:2px solid var(--warn);
+    background:var(--surface);padding:22px 24px;
+  }
+  .caveat h3{color:var(--warn);margin-bottom:12px}
+  .caveat ul{margin:0;padding-left:20px}
+  .caveat li{margin-bottom:9px;font-size:14px;color:var(--ink-soft);max-width:70ch}
+  .caveat li:last-child{margin-bottom:0}
+
+  footer{
+    border-top:1px solid var(--line);margin-top:20px;padding-top:22px;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11.5px;color:var(--ink-faint);line-height:1.8;
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">2026년 9월 운영 진단</div>
+    <h1>주말은 다 차는데<br>월요일부터 목요일이 빈다</h1>
+    <p class="standfirst">품뜰채의 문제는 수요가 아니라 <strong>가격표와 예약 규칙</strong>입니다. 같은 동네 경쟁 숙소 18곳의 9월 평일 실제 판매가를 뽑아 비교한 결과, 후기가 쌓인 숙소들은 이미 평일가를 내려 팔고 있었습니다.</p>
+    <div class="metabar">
+      <span><b>숙소</b> 품뜰채 · 광진구 · 침실 2 / 5인</span>
+      <span><b>평점</b> 5.0 (후기 11)</span>
+      <span><b>조사</b> 2026-09-01</span>
+      <span><b>비교</b> 광진구 독채·아파트 18곳 / 9월 8~10일 2박 4인</span>
+    </div>
+  </header>
+
+  <!-- ===================== 진단 ===================== -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">진단</div>
+      <h2>왜 평일이 비는가</h2>
+    </div>
+
+    <div class="verdict">
+      <p>7월 <span class="num">240만</span> → 8월 <span class="num">145만</span>. 주말만 찼다는 말에서 역산하면 8월은 <strong>9~10박</strong>을 팔았고, 1박 실수령가는 <strong>약 15만원</strong>입니다.</p>
+      <p>그런데 같은 동네에서 후기 <span class="num">35~50</span>개를 쌓은 검증된 숙소들이 9월 화·수요일을 <strong>11만원대</strong>에 팔고 있습니다. 품뜰채는 후기 11개짜리 신규 숙소이면서, 가격은 신규 숙소군의 상단에 붙어 있습니다. 평일 검색 결과에서 이길 수 없는 위치입니다.</p>
+    </div>
+
+    <div class="ev">
+      <div>
+        <div class="k">직접 경쟁군 평일가 중앙값</div>
+        <div class="v">₩115,000</div>
+        <div class="n">침실 2개 독채·아파트 7곳 기준. 품뜰채 추정가보다 <strong>3.5만원 낮음</strong>.</div>
+      </div>
+      <div>
+        <div class="k">후기 수</div>
+        <div class="v bad">11개</div>
+        <div class="n">상위 노출 경쟁 숙소는 35~85개. 검색 순위에 직접 영향을 주는 격차입니다.</div>
+      </div>
+      <div>
+        <div class="k">위치 항목 평점</div>
+        <div class="v bad">4.8</div>
+        <div class="n">6개 항목 중 최저. 도보 12분 대 경쟁 숙소 도보 2~6분.</div>
+      </div>
+      <div>
+        <div class="k">평일 검색 첫 페이지</div>
+        <div class="v bad">미노출</div>
+        <div class="n">9/8~9/10 · 4인 · 독채 검색 상위 18개에 품뜰채가 없었습니다.</div>
+      </div>
+    </div>
+
+    <h3>경쟁 숙소가 실제로 받고 있는 9월 평일 요금</h3>
+    <p>2026년 9월 8일(화)~10일(목) 2박, 성인 4명으로 검색한 결과입니다. 취소선은 정가, 굵은 숫자가 할인 적용된 실제 판매가입니다.</p>
+
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>숙소</th>
+            <th>구성</th>
+            <th class="n">1박 실판매가</th>
+            <th class="n">후기</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[장박할인] 공항버스 3분 / 강변역 5분</td>
+            <td>아파트 · 침실 2 · 침대 3</td>
+            <td class="n"><span class="strike">₩149,300</span><strong>₩110,353</strong></td>
+            <td class="n">4.92 (49)</td>
+          </tr>
+          <tr>
+            <td>구의역 도보 6분 감성숙소</td>
+            <td>아파트 · 침실 2 · 침대 4</td>
+            <td class="n"><span class="strike">₩135,888</span><strong>₩111,710</strong></td>
+            <td class="n">4.96 (50)</td>
+          </tr>
+          <tr>
+            <td>MAMA HAUS 건대 · 성수</td>
+            <td>집 · 침실 2 · 침대 3 · 5인</td>
+            <td class="n"><span class="strike">₩126,910</span><strong>₩113,466</strong></td>
+            <td class="n">4.97 (35)</td>
+          </tr>
+          <tr class="med">
+            <td>건대입구역 도보 3분 1층 독채</td>
+            <td>집 · 침실 2 · 퀸 2 — <strong>품뜰채와 가장 유사</strong></td>
+            <td class="n"><span class="strike">₩153,697</span><strong>₩115,000</strong></td>
+            <td class="n">4.93 (44)</td>
+          </tr>
+          <tr>
+            <td>[신규할인] 구의역 9분 2룸</td>
+            <td>집 · 침실 2 · 퀸 3</td>
+            <td class="n">₩137,800</td>
+            <td class="n">5.0 (3)</td>
+          </tr>
+          <tr>
+            <td>신규 / 구의역 2호선 2룸</td>
+            <td>집 · 침실 2 · 퀸 3 · 6인</td>
+            <td class="n">₩152,857</td>
+            <td class="n">5.0 (10)</td>
+          </tr>
+          <tr>
+            <td>[신규오픈] 건대입구역 4분 감성숙소</td>
+            <td>집 · 침실 2 · 침대 3</td>
+            <td class="n">₩154,600</td>
+            <td class="n">5.0 (10)</td>
+          </tr>
+          <tr class="you">
+            <td>품뜰채 (추정)</td>
+            <td>집 · 침실 2 · 퀸 2 · 5인</td>
+            <td class="n">약 ₩150,000</td>
+            <td class="n">5.0 (11)</td>
+          </tr>
+        </tbody>
+        <caption>패턴이 뚜렷합니다. <strong>후기 35개 이상 숙소는 11만원대</strong>에서 팔고, <strong>후기 10개 이하 신규 숙소만 13~15만원</strong>을 붙여두고 있습니다. 그리고 그 신규 숙소들도 평일에는 대체로 비어 있습니다. 품뜰채는 지금 '후기 없는 신규 숙소' 그룹의 가격을 받으면서 '검증된 숙소' 그룹과 경쟁하고 있습니다.</caption>
+      </table>
+    </div>
+
+    <h3>그리고 구조적으로, 금·토만 팔면 평일은 영원히 안 찹니다</h3>
+    <p>금요일과 토요일에 2박 예약이 들어오면 그 앞뒤로 <strong>월·화·수·목 4일짜리 구멍</strong>이 남습니다. 이 4일을 평일 단독 예약으로 메우려면 4일을 통으로 쓸 손님을 찾아야 하는데, 그런 손님은 애초에 주말을 끼고 예약합니다. 평일을 채우는 방법은 평일 손님을 새로 찾는 게 아니라, <strong>이미 들어온 주말 예약을 앞뒤로 늘리는 것</strong>입니다.</p>
+  </section>
+
+  <!-- ===================== 변경 사항 ===================== -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">수정 사항</div>
+      <h2>바꿔야 할 7가지</h2>
+    </div>
+    <p class="lede">영향이 큰 순서입니다. 1~4번은 오늘 30분이면 끝나고 효과가 즉시 나타납니다. 5~7번은 이번 주 안에 하시면 됩니다.</p>
+
+    <div class="change">
+      <div class="top"><span class="tag hi">영향 최대</span><h3>방 2개 오픈 조건을 없애세요</h3></div>
+      <div class="ba">
+        <div><div class="lbl">현재</div><div class="now">2박 이하 + 2인 예약이면 큰 방만 오픈. 추가 오픈은 1박당 15,000원.</div></div>
+        <div class="to"><div class="lbl">변경</div><div class="next">인원·숙박일수와 무관하게 침실 2개 전부 오픈. 조건 문구 전면 삭제.</div></div>
+      </div>
+      <p>평일 예약의 주력 고객은 정확히 <strong>2인 · 1~2박</strong>입니다. 지금 이 규칙은 평일에 채우고 싶은 손님만 골라서 막고 있습니다. '침실 2개' 조건으로 검색해 들어온 사람이 설명글에서 "방 하나만 씁니다"를 읽으면 그 자리에서 나갑니다.</p>
+      <p>침구 세탁 부담 때문인 건 이해하지만, 계산이 맞지 않습니다. <strong>15,000원을 지키려다 115,000원짜리 밤을 통째로 잃고 있습니다.</strong> 세탁이 정말 부담이면 두 번째 방은 침대만 정돈해두고 요청 시 침구를 까는 방식으로 운영하시되, 리스팅에는 "침실 2개 전부 사용"으로 적으세요.</p>
+    </div>
+
+    <div class="change">
+      <div class="top"><span class="tag hi">영향 최대</span><h3>요일별 요금을 나누세요</h3></div>
+      <div class="ba">
+        <div><div class="lbl">현재</div><div class="now">사실상 단일 요금 약 150,000원 (추정)</div></div>
+        <div class="to"><div class="lbl">변경</div><div class="next">일~목 <strong>120,000원</strong> · 금·토 <strong>170,000원</strong></div></div>
+      </div>
+      <p>주말은 이미 다 차고 있습니다. 이건 <strong>주말 가격이 싸다는 신호</strong>입니다. 평일을 내리는 만큼 주말은 올려야 전체 매출이 유지됩니다. 지금 구조는 주말에 손해 보고 평일에 못 파는, 양쪽 다 지는 구조입니다.</p>
+      <p>평일 120,000원이면 후기 44개짜리 건대입구 독채(115,000원)보다 조금 높습니다. 마당이라는 확실한 차별점이 있으니 그 정도 프리미엄은 방어됩니다. 다만 후기가 30개를 넘길 때까지는 그 이상 붙이기 어렵습니다.</p>
+    </div>
+
+    <div class="change">
+      <div class="top"><span class="tag hi">영향 최대</span><h3>연박 할인을 거세요 — 평일을 채우는 진짜 열쇠</h3></div>
+      <div class="ba">
+        <div><div class="lbl">현재</div><div class="now">길이 기반 할인 미설정으로 추정</div></div>
+        <div class="to"><div class="lbl">변경</div><div class="next">3박 <strong>10%</strong> · 5박 <strong>15%</strong> · 7박 <strong>22%</strong> · 28박 <strong>45%</strong></div></div>
+      </div>
+      <p>앞서 말한 4일 구멍을 메우는 유일한 현실적 방법입니다. 금·토 2박을 예약하려던 손님이 "목요일부터 오면 10% 싸네"를 보면 목요일을 붙입니다. 일요일까지 늘리면 15%가 되고요. <strong>주말 예약 하나가 평일 2박을 끌고 옵니다.</strong></p>
+      <p>7박 22%는 외국인 개별 여행객을 겨냥한 숫자입니다. 서울 7박은 흔한 일정이고, 이 손님 한 명이 평일을 통째로 덮습니다. 후기도 남깁니다.</p>
+    </div>
+
+    <div class="change">
+      <div class="top"><span class="tag hi">영향 최대</span><h3>평일 최소 숙박일수를 1박으로 여세요</h3></div>
+      <div class="ba">
+        <div><div class="lbl">현재</div><div class="now">전 요일 2박 이상으로 추정</div></div>
+        <div class="to"><div class="lbl">변경</div><div class="next">일~목 체크인 <strong>1박 허용</strong> · 금·토 체크인은 2박 유지 · <strong>빈 날짜 자동 할인 켜기</strong></div></div>
+      </div>
+      <p>평일 2박 제한을 걸어두면 4일 구멍은 절대 안 채워집니다. 화요일 하루만 필요한 출장·병원·경유 손님이 통째로 걸러집니다. 건대병원과 세종대·건국대가 가깝다는 건 1박 수요가 실제로 존재한다는 뜻입니다.</p>
+      <p>에어비앤비의 <strong>빈 날짜 자동 할인(gap night)</strong>도 같이 켜세요. 예약 사이에 1~2일만 남았을 때 자동으로 가격을 낮춰 붙여줍니다. 이 자투리 날짜는 어차피 정가로는 안 팔립니다.</p>
+    </div>
+
+    <div class="change">
+      <div class="top"><span class="tag mid">이번 주</span><h3>막바지 할인을 켜세요</h3></div>
+      <div class="ba">
+        <div><div class="lbl">현재</div><div class="now">미설정으로 추정</div></div>
+        <div class="to"><div class="lbl">변경</div><div class="next">체크인 7일 이내 <strong>15%</strong> · 3일 이내 <strong>25%</strong></div></div>
+      </div>
+      <p>평일 예약은 대부분 임박 예약입니다. 외국인 여행객의 일정 연장, 갑작스러운 출장, 당일 취소분 대체. 오늘이 이미 9월 1일이니 9월 상순은 이 설정 하나로 좌우됩니다.</p>
+    </div>
+
+    <div class="change">
+      <div class="top"><span class="tag mid">이번 주</span><h3>제목을 바꾸세요 — 검색 키워드가 하나도 없습니다</h3></div>
+      <div class="titlebox">
+        현재: [서울] 마당 있는 단독채/ Airport Bus 12min/Garden house
+        <span class="cnt">성수 ✗ · 건대 ✗ · 어린이대공원역 ✗ · 잠실/강남 ✗ · 인원수 ✗</span>
+      </div>
+      <p>비교한 18개 숙소 중 <strong>12개가 제목에 '성수'를 넣었습니다.</strong> 건대, 잠실, 강남, KSPO, 도보 몇 분, 최대 몇 인 — 경쟁자들은 전부 이 키워드들을 제목에 욱여넣고 있습니다. 품뜰채 설명글에는 성수 택시 10분, 건대 10분이 다 적혀 있는데 <strong>정작 제목에는 없습니다.</strong> 손님 후기에도 "근처 성수동 방문 추천"이 나올 정도인데요.</p>
+      <p>"Airport Bus 12min"은 한국인 검색어로는 거의 잡히지 않습니다. 제목은 50자 제한이니 이렇게 쓰세요.</p>
+      <div class="titlebox">
+        안 A: 마당 있는 독채│성수·건대 10분│어린이대공원역│공항버스│5인
+        <span class="cnt">34자 — 한국인 가족·친구 여행객 타깃</span>
+      </div>
+      <div class="titlebox">
+        안 B: [성수 10분] 마당 있는 한국 단독주택│Garden House│어린이대공원역│5인
+        <span class="cnt">44자 — 외국인 비중이 높다면</span>
+      </div>
+    </div>
+
+    <div class="change">
+      <div class="top"><span class="tag mid">이번 주</span><h3>설명글에서 벌금 문구를 걷어내세요</h3></div>
+      <div class="ba">
+        <div><div class="lbl">현재</div><div class="now">설명 스크롤의 절반이 금지·벌금 목록. 금연 20만원, 소음 민원 시 퇴실 환불 불가, 침구 오염 세탁비 5만원, 냄새나는 음식 취사 불가, 시설물 배상, 화장실 수리비…</div></div>
+        <div class="to"><div class="lbl">변경</div><div class="next">규칙은 <strong>'숙소 이용규칙'</strong> 항목과 <strong>예약 후 안내 메시지</strong>로 이동. 설명 본문에는 마당·독채·한국 가정집 경험만.</div></div>
+      </div>
+      <p>규칙 자체는 정당합니다. 문제는 <strong>위치</strong>입니다. 예약을 고민하는 사람이 읽는 자리에 경고문을 쌓아두면 전환율이 떨어집니다. 특히 "민원이 제기되면 퇴실해 주셔야 합니다 (환불 X)" 같은 문장은 아직 예약하지도 않은 사람에게 보여줄 문장이 아닙니다.</p>
+      <p>규칙은 예약 확정 후 안내 메시지에서 전달해도 동일하게 구속력이 있습니다. 실제로 지켜지게 하려면 오히려 그 편이 낫습니다 — 예약 전 설명글은 아무도 끝까지 읽지 않으니까요.</p>
+    </div>
+  </section>
+
+  <!-- ===================== 캘린더 ===================== -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">가격표</div>
+      <h2>9월 날짜별 권장 요금</h2>
+    </div>
+    <p class="lede">체크인 날짜 기준입니다. <strong>2026년 추석은 9월 25일(금)</strong>이고 연휴는 <strong>9월 24일(목)~27일(일) 나흘</strong>입니다. 대체공휴일은 없습니다.</p>
+
+    <div class="scroll">
+      <div class="cal">
+        <div class="dow">일</div><div class="dow">월</div><div class="dow">화</div><div class="dow">수</div><div class="dow">목</div><div class="dow">금</div><div class="dow">토</div>
+
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell b-push"><div class="d">1</div><div class="price">₩99,000</div><div class="band">임박 · 막바지</div></div>
+        <div class="cell b-push"><div class="d">2</div><div class="price">₩99,000</div><div class="band">임박 · 막바지</div></div>
+        <div class="cell b-push"><div class="d">3</div><div class="price">₩99,000</div><div class="band">임박 · 막바지</div></div>
+        <div class="cell b-wend"><div class="d">4</div><div class="price">₩170,000</div><div class="band">주말</div></div>
+        <div class="cell b-wend"><div class="d">5</div><div class="price">₩170,000</div><div class="band">주말</div></div>
+
+        <div class="cell b-week"><div class="d">6</div><div class="price">₩120,000</div><div class="band">평일</div></div>
+        <div class="cell b-week"><div class="d">7</div><div class="price">₩120,000</div><div class="band">평일</div></div>
+        <div class="cell b-week"><div class="d">8</div><div class="price">₩120,000</div><div class="band">평일</div></div>
+        <div class="cell b-week"><div class="d">9</div><div class="price">₩120,000</div><div class="band">평일</div></div>
+        <div class="cell b-week"><div class="d">10</div><div class="price">₩120,000</div><div class="band">평일</div></div>
+        <div class="cell b-wend"><div class="d">11</div><div class="price">₩170,000</div><div class="band">주말</div></div>
+        <div class="cell b-wend"><div class="d">12</div><div class="price">₩170,000</div><div class="band">주말</div></div>
+
+        <div class="cell b-week"><div class="d">13</div><div class="price">₩120,000</div><div class="band">평일</div></div>
+        <div class="cell b-week"><div class="d">14</div><div class="price">₩120,000</div><div class="band">평일</div></div>
+        <div class="cell b-week"><div class="d">15</div><div class="price">₩120,000</div><div class="band">평일</div></div>
+        <div class="cell b-week"><div class="d">16</div><div class="price">₩120,000</div><div class="band">평일</div></div>
+        <div class="cell b-week"><div class="d">17</div><div class="price">₩120,000</div><div class="band">평일</div></div>
+        <div class="cell b-wend"><div class="d">18</div><div class="price">₩170,000</div><div class="band">주말</div></div>
+        <div class="cell b-wend"><div class="d">19</div><div class="price">₩170,000</div><div class="band">주말</div></div>
+
+        <div class="cell b-week"><div class="d">20</div><div class="price">₩120,000</div><div class="band">평일</div></div>
+        <div class="cell b-push"><div class="d">21</div><div class="price">₩99,000</div><div class="band">연휴 직전 · 최약체</div></div>
+        <div class="cell b-push"><div class="d">22</div><div class="price">₩99,000</div><div class="band">연휴 직전 · 최약체</div></div>
+        <div class="cell b-push"><div class="d">23</div><div class="price">₩99,000</div><div class="band">연휴 직전 · 최약체</div></div>
+        <div class="cell b-hol"><div class="d">24</div><div class="price">₩175,000</div><div class="band">추석 연휴</div></div>
+        <div class="cell b-hol"><div class="d">25</div><div class="price">₩175,000</div><div class="band">추석 당일</div></div>
+        <div class="cell b-hol"><div class="d">26</div><div class="price">₩175,000</div><div class="band">추석 연휴</div></div>
+
+        <div class="cell b-hol"><div class="d">27</div><div class="price">₩150,000</div><div class="band">연휴 마지막</div></div>
+        <div class="cell b-week"><div class="d">28</div><div class="price">₩105,000</div><div class="band">연휴 직후</div></div>
+        <div class="cell b-week"><div class="d">29</div><div class="price">₩105,000</div><div class="band">연휴 직후</div></div>
+        <div class="cell b-week"><div class="d">30</div><div class="price">₩105,000</div><div class="band">연휴 직후</div></div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span><i style="background:var(--accent)"></i> 주말 · 이미 팔리는 구간, 올려도 됩니다</span>
+      <span><i style="background:var(--warn)"></i> 추석 연휴 · 최소 3박 조건 권장</span>
+      <span><i style="background:var(--ink-faint)"></i> 평일 · 경쟁 중앙값 + 마당 프리미엄</span>
+      <span><i style="background:var(--crit)"></i> 공격 할인 · 비워두면 0원인 날</span>
+    </div>
+
+    <h3 style="margin-top:34px">추석 연휴를 어떻게 볼 것인가</h3>
+    <p>한국인 손님은 귀성하느라 서울을 비웁니다. 하지만 <strong>외국인 인바운드는 그대로이고, 역귀성 가족과 연휴에 서울에 남는 사람들</strong>이 있습니다. 침실 2개에 마당이 있는 독채는 이 수요와 정확히 맞습니다 — 명절에 시부모님 댁 대신 잡는 숙소, 오랜만에 모이는 가족.</p>
+    <p>다만 나흘을 따로따로 팔려고 하지 마세요. <strong>9/24 체크인 3박 이상</strong>으로 조건을 걸어 한 팀에게 통으로 넘기는 편이 훨씬 안전합니다. 연휴 중간에 하루씩 구멍이 나면 그 하루는 못 팝니다.</p>
+    <p>반대로 <strong>9월 21~23일이 9월에서 가장 위험한 사흘</strong>입니다. 연휴 직전이라 아무도 여행을 시작하지 않습니다. 여기는 99,000원까지 내리고 막바지 할인까지 겹쳐 붙이세요. 비워두면 0원입니다.</p>
+  </section>
+
+  <!-- ===================== 시나리오 ===================== -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">전망</div>
+      <h2>9월 매출 시나리오</h2>
+    </div>
+    <p class="lede">9월은 30박. 주말·추석 밴드 10박, 평일 밴드 20박으로 나눠 계산했습니다.</p>
+
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>시나리오</th>
+            <th class="n">주말 점유</th>
+            <th class="n">평일 점유</th>
+            <th class="n">판매 박수</th>
+            <th class="n">9월 매출</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>지금 그대로</strong><br><span style="color:var(--ink-faint);font-size:12.5px">8월과 동일한 패턴</span></td>
+            <td class="n">100%</td>
+            <td class="n">15%</td>
+            <td class="n">13박</td>
+            <td class="n">약 ₩1,500,000</td>
+          </tr>
+          <tr>
+            <td><strong>가격만 조정</strong><br><span style="color:var(--ink-faint);font-size:12.5px">1~2번만 적용</span></td>
+            <td class="n">100%</td>
+            <td class="n">40%</td>
+            <td class="n">18박</td>
+            <td class="n">약 ₩2,450,000</td>
+          </tr>
+          <tr class="med">
+            <td><strong>7가지 전부 적용</strong><br><span style="color:var(--ink-faint);font-size:12.5px">가격 + 연박 + 규칙 + 제목</span></td>
+            <td class="n">100%</td>
+            <td class="n">55%</td>
+            <td class="n">21박</td>
+            <td class="n">약 ₩2,850,000</td>
+          </tr>
+        </tbody>
+        <caption>연박 할인 적용 후 평일 실수령 1박 단가를 115,000원, 주말·추석 밴드를 165,000원으로 잡았습니다. 현재 요금을 알려주시면 실제 숫자로 다시 계산해 드리겠습니다. <strong>이건 예측이 아니라 계산 모델입니다</strong> — 가정이 바뀌면 결과도 바뀝니다.</caption>
+      </table>
+    </div>
+
+    <p>세 번째 줄이 7월(240만)을 넘습니다. 평일 점유율만 <strong>15% → 55%</strong>로 올리면 되는 일이고, 가격을 내려서 매출이 오르는 이유는 단순합니다. <strong>빈 방은 할인율 100%짜리 방이기 때문입니다.</strong></p>
+  </section>
+
+  <!-- ===================== 실행 ===================== -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">오늘</div>
+      <h2>30분 안에 끝나는 순서</h2>
+    </div>
+
+    <ol class="steps">
+      <li>
+        <h3>침실 오픈 조건 문구 삭제</h3>
+        <p>설명글에서 "2박 이하 · 2인이면 큰 방만 오픈 / 추가 15,000원" 단락을 통째로 지웁니다. 가장 먼저, 가장 확실한 한 방입니다.</p>
+        <span class="where">리스팅 편집 → 숙소 정보 → 게스트 이용 가능 공간</span>
+      </li>
+      <li>
+        <h3>요일별 요금 분리</h3>
+        <p>평일 120,000원, 주말 170,000원으로 설정합니다.</p>
+        <span class="where">요금 → 주중/주말 요금</span>
+      </li>
+      <li>
+        <h3>길이 기반 할인 4단 설정</h3>
+        <p>3박 10% · 5박 15% · 7박 22% · 28박 45%.</p>
+        <span class="where">요금 → 할인 → 숙박 기간별 할인</span>
+      </li>
+      <li>
+        <h3>평일 최소 숙박 1박 + 빈 날짜 자동 할인</h3>
+        <p>일~목 체크인 1박 허용, 금·토 체크인만 2박 유지. 빈 날짜 자동 할인을 함께 켭니다.</p>
+        <span class="where">예약 설정 → 숙박 기간 / 요금 → 빈 날짜 할인</span>
+      </li>
+      <li>
+        <h3>막바지 할인</h3>
+        <p>7일 이내 15%, 3일 이내 25%. 9월 상순은 이 설정으로 결정됩니다.</p>
+        <span class="where">요금 → 할인 → 막바지 할인</span>
+      </li>
+      <li>
+        <h3>9월 21~23일 99,000원 · 추석 3박 조건</h3>
+        <p>연휴 직전 사흘은 캘린더에서 직접 요금을 눌러 내리고, 9월 24일 체크인에 최소 3박 조건을 겁니다.</p>
+        <span class="where">캘린더 → 날짜 선택 → 맞춤 요금</span>
+      </li>
+      <li>
+        <h3>제목 교체 · 즉시 예약 켜기</h3>
+        <p>제목을 안 A 또는 B로 바꾸고, 즉시 예약(Instant Book)을 켭니다. 즉시 예약은 검색 순위에 유리하고, 임박 예약이 대부분인 평일 손님에게는 특히 결정적입니다.</p>
+        <span class="where">리스팅 편집 → 제목 / 예약 설정 → 즉시 예약</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ===================== 그 다음 ===================== -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">이후</div>
+      <h2>10월까지 이어서 할 일</h2>
+    </div>
+    <ul class="plain">
+      <li><strong>후기를 30개까지 올리는 것이 올해 최대 과제입니다.</strong> 경쟁 숙소는 35~85개고 품뜰채는 11개입니다. 이 격차가 검색 순위를 누르고 있습니다. 평일을 싸게라도 채워야 후기가 쌓이고, 후기가 쌓여야 나중에 제값을 받습니다. 지금의 할인은 손실이 아니라 <strong>후기 확보 비용</strong>입니다.</li>
+      <li><strong>커버 사진을 마당 사진으로.</strong> 마당은 이 동네 경쟁 숙소 18곳 중 어디에도 없는 유일한 차별점인데, 검색 결과 썸네일에서 그게 보이지 않으면 존재하지 않는 것과 같습니다.</li>
+      <li><strong>사진 수를 늘리세요.</strong> 경쟁 숙소 대부분이 29장을 채워두고 있습니다. 업무 공간, 세탁기·건조기, 마당에 아침상을 차린 연출 컷을 추가하세요. 특히 업무 공간 사진은 평일 출장 손님에게 직접 말을 겁니다.</li>
+      <li><strong>10월 요금을 지금 세팅하세요.</strong> 10월 3일 개천절, 9일 한글날이 있고 가을 성수기입니다. 9월과 달리 <strong>올려 받아야 하는 달</strong>입니다. 미리 걸어두면 얼리버드 예약을 잡습니다.</li>
+      <li><strong>장기 숙박을 진지하게 검토하세요.</strong> 28박 45% 할인이면 월 약 200만원입니다. 평일이 계속 비는 계절이라면 한 달을 통으로 파는 편이 나은 달도 있습니다. 건대·세종대 방문 연구자, 장기 출장자 수요가 실재합니다.</li>
+    </ul>
+  </section>
+
+  <!-- ===================== 한계 ===================== -->
+  <section>
+    <div class="caveat">
+      <h3>이 문서가 추정으로 채운 부분</h3>
+      <ul>
+        <li><strong>현재 요금을 모릅니다.</strong> 7·8월 매출과 "주말만 찼다"는 말에서 1박 약 150,000원으로 역산했습니다. 실제 설정값이 다르면 권장 요금도 조정해야 합니다.</li>
+        <li><strong>9월 실제 예약 현황을 보지 못했습니다.</strong> 호스팅 페이지는 로그인이 필요해 접근할 수 없습니다. 이미 잡힌 예약이 있다면 캘린더의 해당 날짜는 무시하세요.</li>
+        <li><strong>최소 숙박일수·할인 설정의 현재 상태는 추정입니다.</strong> 이미 켜두셨다면 해당 항목은 건너뛰시면 됩니다.</li>
+        <li><strong>검색 순위 미노출은 첫 페이지 18개 기준입니다.</strong> 결과가 1,000개가 넘으므로 더 뒤쪽에는 있을 수 있습니다. 순위가 낮다는 뜻이지 노출이 0이라는 뜻은 아닙니다.</li>
+        <li><strong>경쟁 숙소 가격은 9월 8~10일 2박 4인 조건 한 번의 조회값입니다.</strong> 에어비앤비 요금은 수시로 바뀌므로 며칠 뒤에는 달라질 수 있습니다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    품뜰채 · 서울 광진구 · 등록번호 HA250602-003<br>
+    경쟁 숙소 데이터 조회: 2026년 9월 1일 · 광진구 독채/아파트 18곳 · 체크인 2026-09-08, 2박, 성인 4명 기준<br>
+    추석 연휴 확인: 2026년 9월 24일(목)~27일(일), 추석 당일 9월 25일(금), 대체공휴일 없음
+  </footer>
+
+</div>
