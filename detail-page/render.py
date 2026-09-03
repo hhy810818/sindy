@@ -3,9 +3,16 @@ from playwright.sync_api import sync_playwright
 
 OUT = pathlib.Path(__file__).parent / "img"; OUT.mkdir(parents=True, exist_ok=True)
 NAMES = {
- "a1":"01_대표이미지_1000x1000","a2":"02_히어로","a3":"03_문제제기","a4":"04_보냉구조",
- "a5":"05_지퍼","a6":"06_사이즈","a7":"07_활용씬","a8":"08_컬러2종",
- "a9":"09_제품정보","a10":"10_주의사항",
+ "a1":"01_main_thumbnail_1000x1000",
+ "a2":"02_hero",
+ "a3":"03_problem",
+ "a4":"04_cooling_structure",
+ "a5":"05_zipper",
+ "a6":"06_size",
+ "a7":"07_use_cases",
+ "a8":"08_colors",
+ "a9":"09_spec",
+ "a10":"10_caution",
 }
 proxy = os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy")
 with sync_playwright() as p:
