@@ -1,0 +1,362 @@
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,600;1,700&display=swap">
+<style>
+:root{
+  --paper:#F4F6F7; --surface:#FFFFFF; --ink:#12161A; --ink-soft:#3A454C; --muted:#5B666E;
+  --rule:#D8DEE2; --rule-soft:#E9EDEF; --cold:#0B7A9B; --cold-wash:#E4F1F5;
+  --alu:#AEB8BE; --alu-2:#DFE5E8; --bagblue:#5D7B9C; --bagblack:#1C1F22;
+  --warn:#8A5A12; --warn-wash:#FBF3E4;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#888;font-family:"IBM Plex Sans KR","IBM Plex Sans",sans-serif;
+  color:var(--ink);line-height:1.72;word-break:keep-all;-webkit-font-smoothing:antialiased}
+.asset{background:var(--paper);overflow:hidden;position:relative;margin:0 0 40px}
+.pad{padding:64px 60px}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.025em;line-height:1.3;text-wrap:balance}
+h1{font-size:50px;font-weight:700;letter-spacing:-.04em;line-height:1.22}
+h2{font-size:37px;letter-spacing:-.03em}
+h3{font-size:19px}
+p{margin:0}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--cold);display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--rule)}
+.lede{font-size:19px;color:var(--ink-soft);font-weight:300}
+.muted{color:var(--muted)}
+.mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.stack{display:flex;flex-direction:column;gap:22px}
+.numtag{font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.14em;color:var(--cold);
+  border:1px solid var(--cold);border-radius:3px;padding:3px 11px;display:inline-block}
+.card{background:var(--surface);border:1px solid var(--rule);padding:34px 30px}
+.figcap{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--muted);
+  margin-top:22px;padding-top:16px;border-top:1px solid var(--rule-soft)}
+.note{background:var(--cold-wash);border-left:3px solid var(--cold);padding:18px 22px;font-size:15px;color:var(--ink-soft)}
+svg{display:block;width:100%;height:auto}
+
+/* --- 대표이미지: 텍스트 없이 --- */
+#a1{width:1000px;height:1000px;background:#fff;display:flex;align-items:center;justify-content:center}
+#a1 .duo{width:820px}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="bag" viewBox="0 0 260 290">
+    <ellipse cx="130" cy="262" rx="104" ry="9" fill="#000" opacity=".07"/>
+    <path d="M64 74 C64 32 76 21 88 21 C100 21 112 32 112 74" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round"/>
+    <path d="M148 74 C148 32 160 21 172 21 C184 21 196 32 196 74" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round"/>
+    <path d="M16 70 H244 L232 238 q-1 13 -14 13 H42 q-13 0 -14 -13 Z" fill="currentColor"/>
+    <path d="M16 70 H244 L232 238 q-1 13 -14 13 H42 q-13 0 -14 -13 Z" fill="url(#sheen)"/>
+    <line x1="27" y1="80" x2="233" y2="80" stroke="var(--zip)" stroke-width="3.4" stroke-dasharray="5 5" opacity=".85"/>
+    <rect x="215" y="74" width="17" height="12" rx="3" fill="var(--zip)" opacity=".9"/>
+    <text x="130" y="176" text-anchor="middle" fill="#FFFFFF" font-family="'IBM Plex Sans',sans-serif"
+      font-style="italic" font-weight="700" font-size="45" letter-spacing="-1.4">Standard</text>
+    <text x="219" y="152" fill="#FFFFFF" font-family="'IBM Plex Sans',sans-serif" font-size="15" opacity=".9">®</text>
+  </symbol>
+  <linearGradient id="sheen" x1="0" y1="0" x2=".55" y2="1">
+    <stop offset="0" stop-color="#fff" stop-opacity=".17"/>
+    <stop offset=".45" stop-color="#fff" stop-opacity=".04"/>
+    <stop offset="1" stop-color="#000" stop-opacity=".13"/>
+  </linearGradient>
+</defs></svg>
+
+<!-- ============ A1 · 대표이미지 (텍스트 없음) ============ -->
+<section class="asset" id="a1">
+  <svg class="duo" viewBox="0 0 820 500">
+    <g transform="translate(420,110)" style="color:var(--bagblue);--zip:#EEF3F6"><use href="#bag" width="260" height="290"/></g>
+    <g transform="translate(130,45) scale(1.32)" style="color:var(--bagblack);--zip:#AEB8BE"><use href="#bag" width="260" height="290"/></g>
+  </svg>
+</section>
+
+<!-- ============ A2 · 히어로 ============ -->
+<section class="asset" id="a2" style="width:860px;background:var(--surface)">
+  <div class="pad" style="padding-bottom:0">
+    <div style="font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)">Standard Products &nbsp;·&nbsp; by DAISO Japan</div>
+    <h1 style="margin-top:20px">장바구니인 줄 알았는데,<br>보냉백이었습니다</h1>
+    <p class="lede" style="margin-top:22px;max-width:50ch">겉은 미니멀한 에코백. 안은 전면 알루미늄 내피.<br>스탠다드 프로덕츠 쇼핑백 &lt;숏로고&gt; 블랙 · 블루</p>
+    <svg viewBox="0 0 780 296" style="margin-top:26px">
+      <g transform="translate(4,18) scale(0.84)" style="color:var(--bagblack);--zip:#AEB8BE"><use href="#bag" width="260" height="290"/></g>
+      <g transform="translate(196,48) scale(0.71)" style="color:var(--bagblue);--zip:#EEF3F6"><use href="#bag" width="260" height="290"/></g>
+      <g transform="translate(408,44)">
+        <line x1="-24" y1="52" x2="4" y2="52" stroke="var(--cold)" stroke-width="1.6"/>
+        <circle cx="-24" cy="52" r="4" fill="var(--cold)"/>
+        <text x="16" y="34" fill="var(--cold)" font-family="'IBM Plex Mono',monospace" font-size="13" letter-spacing="1.8">INNER LINING</text>
+        <text x="16" y="62" fill="var(--ink)" font-family="'IBM Plex Sans KR',sans-serif" font-size="22" font-weight="600">알루미늄 증착 필름</text>
+        <text x="16" y="88" fill="var(--muted)" font-family="'IBM Plex Sans KR',sans-serif" font-size="14.5">안쪽 전면에 덧대어 냉기를 붙잡습니다</text>
+        <g stroke="var(--cold)" stroke-width="2.6" stroke-linecap="round">
+          <path d="M32 132 v42 M12 153 h40 M18 139 l28 28 M46 139 l-28 28"/>
+        </g>
+        <text x="70" y="160" fill="var(--muted)" font-family="'IBM Plex Sans KR',sans-serif" font-size="14.5">지퍼로 닫으면 냉기가 덜 빠집니다</text>
+      </g>
+    </svg>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule)">
+    <div style="padding:28px 24px;border-right:1px solid var(--rule)">
+      <div class="mono" style="font-size:12px;letter-spacing:.14em;color:var(--cold)">01 / COLD</div>
+      <h3 style="margin:9px 0 7px">전면 알루미늄 내피</h3>
+      <p class="muted" style="font-size:14.5px;line-height:1.65">안감 전체가 알루미늄 증착 필름 + 폴리프로필렌</p>
+    </div>
+    <div style="padding:28px 24px;border-right:1px solid var(--rule)">
+      <div class="mono" style="font-size:12px;letter-spacing:.14em;color:var(--cold)">02 / ZIP</div>
+      <h3 style="margin:9px 0 7px">상단 지퍼 개폐</h3>
+      <p class="muted" style="font-size:14.5px;line-height:1.65">냉기는 가두고, 산 물건은 가리고</p>
+    </div>
+    <div style="padding:28px 24px">
+      <div class="mono" style="font-size:12px;letter-spacing:.14em;color:var(--cold)">03 / SIZE</div>
+      <h3 style="margin:9px 0 7px">가로 46cm</h3>
+      <p class="muted" style="font-size:14.5px;line-height:1.65">2L 생수병을 세워서 담는 깊이</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ A3 · 문제 제기 ============ -->
+<section class="asset" id="a3" style="width:860px;background:#12161A;color:#EDF1F3">
+  <div class="pad">
+    <div class="eyebrow" style="color:#48B8D8">The 20-minute problem<span style="flex:1;height:1px;background:#2A3238"></span></div>
+    <h2 style="max-width:20ch;color:#EDF1F3">장 보고 집에 오는 20분,<br>아이스크림은 이미 늦었습니다.</h2>
+    <p class="lede" style="color:#9AA7AE;max-width:50ch;margin-top:24px">
+      마트 비닐봉투도, 예쁜 에코백도 온도는 지켜주지 못합니다. 냉동만두는 눅눅해지고,
+      회는 상할까 마음이 급해지고, 아이스크림은 결국 한 번 녹았다 다시 업니다.
+      그래서 일본에서는 장바구니를 고를 때 <b style="color:#EDF1F3">보냉이 되는지부터</b> 봅니다.
+    </p>
+  </div>
+</section>
+
+<!-- ============ A4 · 보냉 구조 ============ -->
+<section class="asset" id="a4" style="width:860px">
+  <div class="pad stack">
+    <div><span class="numtag">01</span></div>
+    <h2>안감이 전부 알루미늄입니다</h2>
+    <p class="lede" style="max-width:52ch">겉감은 가벼운 폴리에스터, 안감은 알루미늄 증착 필름과 폴리프로필렌 2겹.
+      은박 도시락 포장이 온도를 붙잡는 원리 그대로, 가방 안쪽 전면에 들어가 있습니다.</p>
+    <div class="card">
+      <svg viewBox="0 0 740 300">
+        <rect x="20" y="42" width="330" height="30" rx="2" fill="var(--bagblack)"/>
+        <rect x="20" y="80" width="330" height="30" rx="2" fill="var(--alu)"/>
+        <g stroke="#FFFFFF" stroke-width="1.2" opacity=".55">
+          <line x1="34" y1="110" x2="56" y2="80"/><line x1="66" y1="110" x2="88" y2="80"/>
+          <line x1="98" y1="110" x2="120" y2="80"/><line x1="130" y1="110" x2="152" y2="80"/>
+          <line x1="162" y1="110" x2="184" y2="80"/><line x1="194" y1="110" x2="216" y2="80"/>
+          <line x1="226" y1="110" x2="248" y2="80"/><line x1="258" y1="110" x2="280" y2="80"/>
+          <line x1="290" y1="110" x2="312" y2="80"/><line x1="322" y1="110" x2="344" y2="80"/>
+        </g>
+        <rect x="20" y="118" width="330" height="30" rx="2" fill="var(--alu-2)"/>
+        <g font-family="'IBM Plex Sans KR',sans-serif" font-size="16">
+          <line x1="360" y1="57" x2="392" y2="57" stroke="var(--rule)" stroke-width="1.6"/>
+          <text x="404" y="53" fill="var(--ink)" font-weight="600">겉감 · 폴리에스터</text>
+          <text x="404" y="76" fill="var(--muted)" font-size="14">가볍고 잘 접히는 바깥면</text>
+          <line x1="360" y1="95" x2="392" y2="95" stroke="var(--cold)" stroke-width="1.6"/>
+          <text x="404" y="91" fill="var(--cold)" font-weight="600">알루미늄 증착 필름</text>
+          <text x="404" y="114" fill="var(--muted)" font-size="14">냉기를 반사해 붙잡는 핵심 층</text>
+          <line x1="360" y1="133" x2="392" y2="133" stroke="var(--rule)" stroke-width="1.6"/>
+          <text x="404" y="129" fill="var(--ink)" font-weight="600">폴리프로필렌</text>
+          <text x="404" y="152" fill="var(--muted)" font-size="14">물건이 직접 닿는 안쪽면</text>
+        </g>
+        <g stroke="var(--cold)" stroke-width="2.4" fill="none" stroke-linecap="round">
+          <path d="M70 208 l0 -38"/><path d="M65 180 l5 -10 l5 10"/>
+          <path d="M150 208 l0 -38"/><path d="M145 180 l5 -10 l5 10"/>
+          <path d="M230 208 l0 -38"/><path d="M225 180 l5 -10 l5 10"/>
+          <path d="M310 208 l0 -38"/><path d="M305 180 l5 -10 l5 10"/>
+        </g>
+        <text x="20" y="244" fill="var(--muted)" font-family="'IBM Plex Sans KR',sans-serif" font-size="15">안쪽의 찬 기운이 밖으로 덜 빠져나갑니다</text>
+      </svg>
+      <p class="figcap">FIG. 01 &nbsp;—&nbsp; 원단 구조 / 겉감 폴리에스터 · 안감 알루미늄 증착 필름 + 폴리프로필렌</p>
+    </div>
+    <p class="note">보냉 <b>기능이 있는 장바구니</b>입니다. 아이스박스나 캠핑용 쿨러백처럼 몇 시간의 저온을 보장하지는 않으며,
+      장 보고 귀가하는 이동 구간의 온도를 지켜주는 용도입니다.</p>
+  </div>
+</section>
+
+<!-- ============ A5 · 지퍼 ============ -->
+<section class="asset" id="a5" style="width:860px;background:var(--surface)">
+  <div class="pad stack">
+    <div><span class="numtag">02</span></div>
+    <h2>열려 있으면, 냉기는 그냥 빠져나갑니다</h2>
+    <p class="lede" style="max-width:52ch">아무리 좋은 내피도 입구가 열려 있으면 소용이 없습니다.
+      상단 전체를 지퍼로 닫는 구조라 냉기가 머무릅니다.</p>
+    <div class="card" style="background:var(--paper)">
+      <svg viewBox="0 0 740 250">
+        <g transform="translate(40,26)">
+          <text x="78" y="0" text-anchor="middle" fill="var(--muted)" font-family="'IBM Plex Mono',monospace" font-size="13" letter-spacing="1.6">OPEN</text>
+          <path d="M14 34 h128 q8 0 7 9 l-11 122 q-1 9 -9 9 h-102 q-8 0 -9 -9 l-11 -122 q-1 -9 7 -9 z" fill="none" stroke="var(--rule)" stroke-width="2.4"/>
+          <g stroke="var(--alu)" stroke-width="2.4" fill="none" stroke-linecap="round">
+            <path d="M44 26 l-9 -20"/><path d="M78 24 l0 -22"/><path d="M112 26 l9 -20"/>
+          </g>
+          <text x="78" y="204" text-anchor="middle" fill="var(--muted)" font-family="'IBM Plex Sans KR',sans-serif" font-size="15">냉기가 위로 빠짐</text>
+        </g>
+        <g transform="translate(268,26)">
+          <text x="78" y="0" text-anchor="middle" fill="var(--cold)" font-family="'IBM Plex Mono',monospace" font-size="13" letter-spacing="1.6">ZIPPED</text>
+          <path d="M14 34 h128 q8 0 7 9 l-11 122 q-1 9 -9 9 h-102 q-8 0 -9 -9 l-11 -122 q-1 -9 7 -9 z" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="2.4"/>
+          <line x1="19" y1="43" x2="138" y2="43" stroke="var(--cold)" stroke-width="3.4" stroke-dasharray="6 5"/>
+          <circle cx="138" cy="43" r="5" fill="var(--cold)"/>
+          <g stroke="var(--cold)" stroke-width="2.4" fill="none" stroke-linecap="round">
+            <path d="M48 74 v38"/><path d="M43 108 l5 9 l5 -9"/>
+            <path d="M78 84 v38"/><path d="M73 118 l5 9 l5 -9"/>
+            <path d="M108 74 v38"/><path d="M103 108 l5 9 l5 -9"/>
+          </g>
+          <text x="78" y="204" text-anchor="middle" fill="var(--cold)" font-family="'IBM Plex Sans KR',sans-serif" font-size="15">냉기가 안에 머무름</text>
+        </g>
+        <g font-family="'IBM Plex Sans KR',sans-serif" font-size="16">
+          <text x="530" y="72" fill="var(--ink)" font-weight="600">내용물 가림</text>
+          <text x="530" y="96" fill="var(--muted)" font-size="14">무엇을 샀는지 보이지 않습니다</text>
+          <text x="530" y="140" fill="var(--ink)" font-weight="600">쏟아짐 방지</text>
+          <text x="530" y="164" fill="var(--muted)" font-size="14">기울여도 내용물이 나오지 않습니다</text>
+        </g>
+      </svg>
+      <p class="figcap">FIG. 02 &nbsp;—&nbsp; 상단 지퍼 개폐</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ A6 · 사이즈 ============ -->
+<section class="asset" id="a6" style="width:860px">
+  <div class="pad stack">
+    <div><span class="numtag">03</span></div>
+    <h2>가로 46cm. 장보기 한 번이 들어갑니다</h2>
+    <p class="lede" style="max-width:52ch">2L 생수병을 눕히지 않고 세워서 담을 수 있는 깊이입니다.
+      손잡이는 손목에 걸기 좋은 짧은 길이라 계산대에서 바로 담고 바로 듭니다.</p>
+    <div class="card">
+      <svg viewBox="0 0 740 300">
+        <g transform="translate(40,36)">
+          <path d="M46 34 q0 -26 24 -26 q24 0 24 26" fill="none" stroke="var(--ink)" stroke-width="4.4" stroke-linecap="round"/>
+          <path d="M150 34 q0 -26 24 -26 q24 0 24 26" fill="none" stroke="var(--ink)" stroke-width="4.4" stroke-linecap="round"/>
+          <path d="M12 34 h220 l-10 152 q-1 10 -11 10 H33 q-10 0 -11 -10 z" fill="var(--surface)" stroke="var(--ink)" stroke-width="2.6"/>
+          <line x1="17" y1="45" x2="227" y2="45" stroke="var(--cold)" stroke-width="3" stroke-dasharray="6 5"/>
+          <g transform="translate(86,74)">
+            <rect x="0" y="16" width="40" height="104" rx="7" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="2"/>
+            <rect x="14" y="0" width="12" height="20" rx="2.5" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="2"/>
+            <text x="20" y="76" text-anchor="middle" fill="var(--cold)" font-family="'IBM Plex Mono',monospace" font-size="13">2L</text>
+          </g>
+          <g stroke="var(--muted)" stroke-width="1.2">
+            <line x1="12" y1="216" x2="232" y2="216"/>
+            <line x1="12" y1="209" x2="12" y2="223"/><line x1="232" y1="209" x2="232" y2="223"/>
+          </g>
+          <text x="122" y="240" text-anchor="middle" fill="var(--ink)" font-family="'IBM Plex Mono',monospace" font-size="15">46 cm</text>
+          <g stroke="var(--muted)" stroke-width="1.2">
+            <line x1="256" y1="34" x2="256" y2="196"/>
+            <line x1="249" y1="34" x2="263" y2="34"/><line x1="249" y1="196" x2="263" y2="196"/>
+          </g>
+          <text x="274" y="120" fill="var(--ink)" font-family="'IBM Plex Mono',monospace" font-size="15">34 cm</text>
+        </g>
+        <g font-family="'IBM Plex Sans KR',sans-serif" font-size="16">
+          <text x="450" y="74" fill="var(--muted)" font-family="'IBM Plex Mono',monospace" font-size="13" letter-spacing="1.6">WHAT FITS</text>
+          <text x="450" y="110" fill="var(--ink)">2L 생수병 · 세워서</text>
+          <text x="450" y="142" fill="var(--ink)">10구 계란판 · 눕히지 않고</text>
+          <text x="450" y="174" fill="var(--ink)">라면 5개 묶음 · 통째로</text>
+          <text x="450" y="206" fill="var(--ink)">대파 · 접지 않고</text>
+          <line x1="450" y1="228" x2="700" y2="228" stroke="var(--rule)" stroke-width="1.2"/>
+          <text x="450" y="256" fill="var(--muted)" font-size="14">폭 15cm · 바닥이 서서 담기 편합니다</text>
+        </g>
+      </svg>
+      <p class="figcap">FIG. 03 &nbsp;—&nbsp; 46 × 34 × 15 cm</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ A7 · 활용 씬 ============ -->
+<section class="asset" id="a7" style="width:860px;background:var(--surface)">
+  <div class="pad">
+    <div class="eyebrow">이럴 때 씁니다</div>
+    <h2>장바구니 하나로 끝나지 않습니다</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:30px">
+      <div style="background:var(--surface);padding:30px 28px">
+        <svg viewBox="0 0 40 34" style="width:38px;height:32px;margin-bottom:14px" fill="none" stroke="var(--cold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h5l5 19h19l4-13H10"/><circle cx="15" cy="29" r="2.6"/><circle cx="29" cy="29" r="2.6"/>
+        </svg>
+        <h3>마트 · 새벽배송 정리</h3>
+        <p class="muted" style="font-size:15px;margin-top:8px">냉동칸에서 계산대, 계산대에서 집까지. 아이스팩 하나 같이 넣으면 그 구간이 편해집니다.</p>
+      </div>
+      <div style="background:var(--surface);padding:30px 28px">
+        <svg viewBox="0 0 40 34" style="width:38px;height:32px;margin-bottom:14px" fill="none" stroke="var(--cold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 4 L34 29H6z"/><path d="M20 12v17"/><path d="M2 29h36"/>
+        </svg>
+        <h3>피크닉 · 캠핑</h3>
+        <p class="muted" style="font-size:15px;margin-top:8px">캔음료와 과일을 담아두는 세컨백. 다 비우면 접어서 배낭에 넣고 돌아옵니다.</p>
+      </div>
+      <div style="background:var(--surface);padding:30px 28px">
+        <svg viewBox="0 0 40 34" style="width:38px;height:32px;margin-bottom:14px" fill="none" stroke="var(--cold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="9" width="32" height="21" rx="3"/><path d="M4 17h32"/><path d="M20 9V4"/>
+        </svg>
+        <h3>도시락 · 사무실 간식</h3>
+        <p class="muted" style="font-size:15px;margin-top:8px">지퍼가 있어 내용물이 보이지 않습니다. 샐러드나 음료를 담아 출근길에.</p>
+      </div>
+      <div style="background:var(--surface);padding:30px 28px">
+        <svg viewBox="0 0 40 34" style="width:38px;height:32px;margin-bottom:14px" fill="none" stroke="var(--cold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="6" y="10" width="28" height="21" rx="3"/><path d="M15 10V6h10v4"/><path d="M20 10v21"/>
+        </svg>
+        <h3>여행 보조가방</h3>
+        <p class="muted" style="font-size:15px;margin-top:8px">돌아오는 날 늘어난 짐과 간식용. 갈 때는 캐리어 안에 접어서 들어갑니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ A8 · 컬러 ============ -->
+<section class="asset" id="a8" style="width:860px">
+  <div class="pad">
+    <div class="eyebrow">Two colorways</div>
+    <h2>블랙, 그리고 블루</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:30px">
+      <div class="card" style="padding:28px 26px 24px">
+        <svg viewBox="0 0 260 290" style="max-width:210px;margin:0 auto" class="bagsvg"><g style="color:var(--bagblack);--zip:#AEB8BE"><use href="#bag" width="260" height="290"/></g></svg>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;border-top:1px solid var(--rule-soft);padding-top:16px;margin-top:16px">
+          <b style="font-size:18px">블랙 / BK</b><span class="mono muted" style="font-size:12.5px">4550480729688</span>
+        </div>
+        <p class="muted" style="font-size:15px;margin-top:10px">어디에 들어도 튀지 않는 기본. 오염이 잘 드러나지 않아 마트용으로 가장 무난합니다.</p>
+      </div>
+      <div class="card" style="padding:28px 26px 24px">
+        <svg viewBox="0 0 260 290" style="max-width:210px;margin:0 auto" class="bagsvg"><g style="color:var(--bagblue);--zip:#EEF3F6"><use href="#bag" width="260" height="290"/></g></svg>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;border-top:1px solid var(--rule-soft);padding-top:16px;margin-top:16px">
+          <b style="font-size:18px">블루 / BL</b><span class="mono muted" style="font-size:12.5px">4550480777566</span>
+        </div>
+        <p class="muted" style="font-size:15px;margin-top:10px">채도를 낮춘 슬레이트 블루. 데님이나 밝은 옷차림과 자연스럽게 붙는 색입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ A9 · 스펙 ============ -->
+<section class="asset" id="a9" style="width:860px;background:var(--surface)">
+  <div class="pad">
+    <div class="eyebrow">Specification</div>
+    <h2>제품 정보</h2>
+    <table style="width:100%;border-collapse:collapse;font-size:16px;margin-top:26px">
+      <tr><th>브랜드</th><td>Standard Products (스탠다드 프로덕츠) · DAISO Japan</td></tr>
+      <tr><th>제품명</th><td>쇼핑백 (숏로고) / ショッピングバッグ（ショートロゴ）</td></tr>
+      <tr><th>컬러</th><td>블랙 BK · 블루 BL</td></tr>
+      <tr><th>크기</th><td>46 × 34 × 15 cm</td></tr>
+      <tr><th>겉감</th><td>폴리에스터</td></tr>
+      <tr><th>안감</th><td>알루미늄 증착 필름, 폴리프로필렌</td></tr>
+      <tr><th>개폐</th><td>상단 지퍼</td></tr>
+      <tr><th>구성</th><td>1개입</td></tr>
+      <tr><th>원산지</th><td>중국 (일본 Standard Products 기획)</td></tr>
+      <tr><th>품번 (JAN)</th><td>BK 4550480729688 · BL 4550480777566</td></tr>
+    </table>
+    <p class="muted" style="font-size:14px;margin-top:18px">※ 모니터 환경에 따라 색상은 실물과 다르게 보일 수 있습니다.</p>
+  </div>
+  <style>
+    #a9 th,#a9 td{text-align:left;padding:15px 4px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+    #a9 th{width:150px;font-weight:500;color:var(--muted);font-size:14px;
+      font-family:"IBM Plex Mono",monospace;letter-spacing:.04em;white-space:nowrap}
+    #a9 td{font-variant-numeric:tabular-nums}
+    #a9 tr:last-child th,#a9 tr:last-child td{border-bottom:0}
+  </style>
+</section>
+
+<!-- ============ A10 · 주의사항 ============ -->
+<section class="asset" id="a10" style="width:860px">
+  <div class="pad">
+    <div class="eyebrow" style="color:var(--warn)">구매 전 꼭 확인</div>
+    <h2>이런 점은 미리 알려드립니다</h2>
+    <ul style="list-style:none;margin:26px 0 0;padding:0">
+      <li><span>01</span><span><b>세탁은 하지 마세요.</b> 안감의 알루미늄 층이 손상됩니다. 오염은 젖은 천으로 가볍게 닦고, 사용 후에는 뒤집어 그늘에서 말려주세요.</span></li>
+      <li><span>02</span><span><b>방수 제품이 아닙니다.</b> 물에 젖거나 마찰이 심하면 색이 빠지거나 다른 곳에 묻을 수 있습니다.</span></li>
+      <li><span>03</span><span><b>뜨거운 것과 드라이아이스는 넣지 마세요.</b> 제조사 권장 사항이며, 내피가 변형될 수 있습니다.</span></li>
+      <li><span>04</span><span><b>날카로운 물건, 과도한 무게는 피해주세요.</b> 원단과 내피가 찢어질 수 있습니다.</span></li>
+      <li><span>05</span><span><b>화기 근처에 두지 마세요.</b></span></li>
+    </ul>
+  </div>
+  <style>
+    #a10 li{display:grid;grid-template-columns:30px 1fr;gap:14px;padding:15px 0;
+      border-bottom:1px solid var(--rule-soft);font-size:16px;line-height:1.72}
+    #a10 li:last-child{border-bottom:0}
+    #a10 li>span:first-child{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--warn);padding-top:5px}
+  </style>
+</section>
