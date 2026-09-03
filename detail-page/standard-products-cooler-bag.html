@@ -1,0 +1,688 @@
+<title>보냉 되는 장바구니</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,600&display=swap">
+<style>
+  :root{
+    --paper:#F4F6F7;
+    --surface:#FFFFFF;
+    --ink:#12161A;
+    --ink-soft:#3A454C;
+    --muted:#5B666E;
+    --rule:#D8DEE2;
+    --rule-soft:#E7ECEE;
+    --cold:#0B7A9B;
+    --cold-wash:#E4F1F5;
+    --alu:#AEB8BE;
+    --alu-2:#DFE5E8;
+    --bagblue:#5D7B9C;
+    --bagblack:#1C1F22;
+    --warn:#8A5A12;
+    --warn-wash:#FBF2E2;
+    --band-ink:#12161A;
+    --band-ink-fg:#EDF1F3;
+    --band-ink-muted:#9AA7AE;
+    --shadow:0 1px 2px rgba(18,22,26,.05), 0 12px 28px -18px rgba(18,22,26,.35);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0D1114;
+      --surface:#151A1E;
+      --ink:#E6EBEE;
+      --ink-soft:#C2CCD2;
+      --muted:#93A0A8;
+      --rule:#283137;
+      --rule-soft:#1E262B;
+      --cold:#48B8D8;
+      --cold-wash:#11272F;
+      --alu:#7E8B92;
+      --alu-2:#2A3238;
+      --bagblue:#6B87A6;
+      --bagblack:#2A2E32;
+      --warn:#D8A75A;
+      --warn-wash:#241D10;
+      --band-ink:#080B0D;
+      --band-ink-fg:#E6EBEE;
+      --band-ink-muted:#8B979E;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0D1114;
+    --surface:#151A1E;
+    --ink:#E6EBEE;
+    --ink-soft:#C2CCD2;
+    --muted:#93A0A8;
+    --rule:#283137;
+    --rule-soft:#1E262B;
+    --cold:#48B8D8;
+    --cold-wash:#11272F;
+    --alu:#7E8B92;
+    --alu-2:#2A3238;
+    --bagblue:#6B87A6;
+    --bagblack:#2A2E32;
+    --warn:#D8A75A;
+    --warn-wash:#241D10;
+    --band-ink:#080B0D;
+    --band-ink-fg:#E6EBEE;
+    --band-ink-muted:#8B979E;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 28px -18px rgba(0,0,0,.8);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans KR","IBM Plex Sans",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    font-weight:400;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    word-break:keep-all;
+  }
+  .band{width:100%;padding:76px 0;border-bottom:1px solid var(--rule-soft)}
+  .band.tight{padding:56px 0}
+  .band.dark{background:var(--band-ink);color:var(--band-ink-fg);border-bottom-color:var(--band-ink)}
+  .band.dark .muted{color:var(--band-ink-muted)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+
+  .eyebrow{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--cold);margin:0 0 18px;display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::after{content:"";flex:1;height:1px;background:var(--rule)}
+  .band.dark .eyebrow::after{background:#2A3238}
+
+  h1,h2,h3{text-wrap:balance;margin:0;font-weight:600;letter-spacing:-.02em;line-height:1.32}
+  h1{font-size:clamp(30px,6.2vw,46px);font-weight:700;letter-spacing:-.035em;line-height:1.24}
+  h2{font-size:clamp(23px,4.2vw,32px)}
+  h3{font-size:17px;font-weight:600;letter-spacing:-.01em}
+  p{margin:0}
+  .lede{font-size:clamp(15px,2.4vw,17px);color:var(--ink-soft);font-weight:300}
+  .muted{color:var(--muted)}
+  .small{font-size:13.5px;line-height:1.7}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+  .stack{display:flex;flex-direction:column;gap:18px}
+  .stack-sm{display:flex;flex-direction:column;gap:10px}
+  .stack-lg{display:flex;flex-direction:column;gap:40px}
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--surface);padding-top:64px;padding-bottom:0}
+  .brandline{
+    font-family:"IBM Plex Sans","IBM Plex Sans KR",sans-serif;
+    font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+  }
+  .hero h1{margin:16px 0 0}
+  .hero .lede{margin-top:18px;max-width:36ch}
+  .chips{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+  .chip{
+    display:inline-flex;align-items:center;gap:9px;border:1px solid var(--rule);
+    border-radius:999px;padding:7px 15px 7px 9px;font-size:13px;background:var(--paper);
+  }
+  .sw{width:17px;height:17px;border-radius:50%;border:1px solid rgba(0,0,0,.14);display:inline-block}
+  .hero-art{margin-top:44px;position:relative}
+  .hero-art svg{display:block;width:100%;height:auto}
+
+  /* ---------- key points ---------- */
+  .keys{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule);margin-top:0}
+  .key{padding:26px 22px;border-right:1px solid var(--rule)}
+  .key:last-child{border-right:0}
+  .key .num{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--cold)}
+  .key h3{margin:8px 0 6px}
+  .key p{font-size:13.5px;color:var(--muted);line-height:1.65}
+  @media (max-width:640px){
+    .keys{grid-template-columns:1fr}
+    .key{border-right:0;border-bottom:1px solid var(--rule)}
+    .key:last-child{border-bottom:0}
+  }
+
+  /* ---------- feature ---------- */
+  .feat{display:grid;gap:28px}
+  .feat .num{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;
+    color:var(--cold);border:1px solid var(--cold);border-radius:3px;
+    padding:2px 8px;display:inline-block;
+  }
+  .figure{
+    background:var(--surface);border:1px solid var(--rule);border-radius:2px;
+    padding:26px 22px;box-shadow:var(--shadow);
+  }
+  .figure svg{display:block;width:100%;height:auto}
+  .figcap{
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);
+    margin-top:16px;padding-top:12px;border-top:1px solid var(--rule-soft);letter-spacing:.02em;
+  }
+  .note{
+    background:var(--cold-wash);border-left:2px solid var(--cold);
+    padding:14px 18px;font-size:13.5px;line-height:1.7;color:var(--ink-soft);
+  }
+
+  /* ---------- scenes ---------- */
+  .scenes{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+  .scene{background:var(--surface);padding:24px 22px;display:flex;flex-direction:column;gap:8px}
+  .scene .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;color:var(--cold)}
+  .scene p{font-size:13.5px;color:var(--muted);line-height:1.7}
+  @media (max-width:560px){.scenes{grid-template-columns:1fr}}
+
+  /* ---------- colors ---------- */
+  .colors{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .colorcard{background:var(--surface);border:1px solid var(--rule);padding:24px 22px 22px;display:flex;flex-direction:column;gap:14px}
+  .colorcard svg{display:block;width:100%;height:auto;max-width:230px;margin:0 auto}
+  .colorcard .name{display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-top:1px solid var(--rule-soft);padding-top:14px}
+  .colorcard .name b{font-size:16px;font-weight:600}
+  .colorcard .name span{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted)}
+  .colorcard p{font-size:13.5px;color:var(--muted);line-height:1.7}
+  @media (max-width:560px){.colors{grid-template-columns:1fr}}
+
+  /* ---------- spec ---------- */
+  .specwrap{overflow-x:auto}
+  table.spec{width:100%;border-collapse:collapse;font-size:14px;min-width:420px}
+  table.spec th,table.spec td{text-align:left;padding:13px 4px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+  table.spec th{
+    width:132px;font-weight:500;color:var(--muted);font-size:12.5px;
+    font-family:"IBM Plex Mono",monospace;letter-spacing:.04em;white-space:nowrap;
+  }
+  table.spec td{font-variant-numeric:tabular-nums}
+  table.spec tr:last-child th,table.spec tr:last-child td{border-bottom:0}
+
+  /* ---------- caution ---------- */
+  .cautions{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}
+  .cautions li{
+    display:grid;grid-template-columns:22px 1fr;gap:12px;
+    padding:13px 0;border-bottom:1px solid var(--rule-soft);font-size:14px;line-height:1.7;
+  }
+  .cautions li:last-child{border-bottom:0}
+  .cautions .x{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--warn);
+    padding-top:3px;
+  }
+
+  /* ---------- qa ---------- */
+  .qa{display:flex;flex-direction:column;gap:0}
+  .qa .item{border-bottom:1px solid var(--rule-soft);padding:20px 0}
+  .qa .item:last-child{border-bottom:0}
+  .qa .q{display:grid;grid-template-columns:20px 1fr;gap:12px;font-weight:600;font-size:15px;line-height:1.6}
+  .qa .a{display:grid;grid-template-columns:20px 1fr;gap:12px;font-size:14px;color:var(--muted);line-height:1.75;margin-top:10px}
+  .qa .mk{font-family:"IBM Plex Sans",monospace;font-weight:600;color:var(--cold)}
+  .qa .a .mk{color:var(--alu)}
+
+  /* ---------- photo slot ---------- */
+  .photo{
+    border:1px dashed var(--rule);background:var(--surface);
+    aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:8px;text-align:center;padding:24px;
+  }
+  .photo .lbl{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--cold)}
+  .photo .desc{font-size:13px;color:var(--muted);max-width:32ch;line-height:1.65}
+  .photorow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:560px){.photorow{grid-template-columns:1fr}}
+
+  /* ---------- ship ---------- */
+  .ship{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  @media (max-width:640px){.ship{grid-template-columns:1fr}}
+  .ship h3{margin-bottom:12px}
+  .ship ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--muted);line-height:1.85}
+
+  footer{padding:44px 0 60px;text-align:center}
+  footer .mark{font-family:"IBM Plex Sans",sans-serif;font-weight:600;letter-spacing:.2em;font-size:12px;color:var(--muted);text-transform:uppercase}
+  footer p{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.7}
+
+  @media (prefers-reduced-motion:no-preference){
+    .hero-art svg .breathe{animation:breathe 6s ease-in-out infinite}
+    @keyframes breathe{0%,100%{opacity:.9}50%{opacity:.45}}
+  }
+</style>
+
+<!-- ===================== HERO ===================== -->
+<section class="band hero">
+  <div class="wrap">
+    <div class="brandline">Standard Products &nbsp;·&nbsp; by DAISO Japan</div>
+    <h1>장바구니인 줄 알았는데,<br>보냉백이었습니다</h1>
+    <p class="lede">겉은 미니멀한 에코백. 안은 전면 알루미늄 내피.<br>일본 스탠다드 프로덕츠 쇼핑백 &lt;숏로고&gt; 블랙 · 블루</p>
+    <div class="chips">
+      <span class="chip"><i class="sw" style="background:#1C1F22"></i> BLACK</span>
+      <span class="chip"><i class="sw" style="background:#5D7B9C"></i> BLUE</span>
+      <span class="chip mono" style="padding-left:15px">46 × 34 × 15 cm</span>
+    </div>
+
+    <div class="hero-art">
+      <svg viewBox="0 0 760 300" role="img" aria-label="블랙과 블루 두 컬러의 보냉 쇼핑백, 그리고 내부 알루미늄 내피 단면">
+        <!-- black bag -->
+        <g transform="translate(60,44)">
+          <path d="M22 44 q0 -30 26 -30 q26 0 26 30" fill="none" stroke="var(--bagblack)" stroke-width="7"/>
+          <path d="M92 44 q0 -30 26 -30 q26 0 26 30" fill="none" stroke="var(--bagblack)" stroke-width="7"/>
+          <path d="M4 44 h158 q8 0 7 9 l-13 148 q-1 9 -10 9 h-126 q-9 0 -10 -9 l-13 -148 q-1 -9 7 -9 z" fill="var(--bagblack)"/>
+          <line x1="10" y1="52" x2="156" y2="52" stroke="var(--alu)" stroke-width="2.5" stroke-dasharray="4 4"/>
+          <text x="83" y="128" text-anchor="middle" fill="#FFFFFF" font-family="'IBM Plex Sans',sans-serif" font-style="italic" font-weight="600" font-size="27" letter-spacing="-.5">Standard</text>
+        </g>
+        <!-- blue bag -->
+        <g transform="translate(258,64)">
+          <path d="M22 40 q0 -27 24 -27 q24 0 24 27" fill="none" stroke="var(--bagblue)" stroke-width="6.5"/>
+          <path d="M86 40 q0 -27 24 -27 q24 0 24 27" fill="none" stroke="var(--bagblue)" stroke-width="6.5"/>
+          <path d="M4 40 h148 q8 0 7 9 l-12 137 q-1 8 -9 8 h-120 q-8 0 -9 -8 l-12 -137 q-1 -9 7 -9 z" fill="var(--bagblue)"/>
+          <line x1="10" y1="48" x2="146" y2="48" stroke="#EEF3F6" stroke-width="2.5" stroke-dasharray="4 4"/>
+          <text x="78" y="120" text-anchor="middle" fill="#FFFFFF" font-family="'IBM Plex Sans',sans-serif" font-style="italic" font-weight="600" font-size="25" letter-spacing="-.5">Standard</text>
+        </g>
+        <!-- cold callout -->
+        <g transform="translate(452,58)">
+          <line x1="0" y1="60" x2="46" y2="60" stroke="var(--cold)" stroke-width="1.5"/>
+          <circle cx="0" cy="60" r="3.5" fill="var(--cold)"/>
+          <text x="56" y="42" fill="var(--cold)" font-family="'IBM Plex Mono',monospace" font-size="12" letter-spacing="1.6">INNER LINING</text>
+          <text x="56" y="68" fill="var(--ink)" font-family="'IBM Plex Sans KR',sans-serif" font-size="19" font-weight="600">알루미늄 증착 필름</text>
+          <text x="56" y="94" fill="var(--muted)" font-family="'IBM Plex Sans KR',sans-serif" font-size="13.5">안쪽 전면에 덧대어 냉기를 붙잡습니다</text>
+          <g class="breathe">
+            <path d="M60 130 v40 M42 150 h36 M47 137 l26 26 M73 137 l-26 26" stroke="var(--cold)" stroke-width="2.4" stroke-linecap="round"/>
+          </g>
+          <text x="98" y="158" fill="var(--muted)" font-family="'IBM Plex Sans KR',sans-serif" font-size="13.5">지퍼로 닫으면 냉기가 덜 빠집니다</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="keys">
+      <div class="key">
+        <div class="num">01 / COLD</div>
+        <h3>전면 알루미늄 내피</h3>
+        <p>안감 전체가 알루미늄 증착 필름 + 폴리프로필렌. 은박 도시락과 같은 원리입니다.</p>
+      </div>
+      <div class="key">
+        <div class="num">02 / ZIP</div>
+        <h3>상단 지퍼 개폐</h3>
+        <p>냉기는 가두고, 산 물건은 가리고, 기울여도 쏟아지지 않습니다.</p>
+      </div>
+      <div class="key">
+        <div class="num">03 / SIZE</div>
+        <h3>가로 46cm</h3>
+        <p>2L 생수병을 세워서 담는 깊이. 마트 한 번 장보기 분량이 들어갑니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROBLEM ===================== -->
+<section class="band dark tight">
+  <div class="wrap stack">
+    <p class="eyebrow" style="color:var(--cold)">The 20-minute problem</p>
+    <h2 style="max-width:22ch">장 보고 집에 오는 20분,<br>아이스크림은 이미 늦었습니다.</h2>
+    <p class="lede muted" style="max-width:52ch;color:var(--band-ink-muted)">
+      마트 비닐봉투도, 예쁜 에코백도 온도는 지켜주지 못합니다. 냉동만두는 눅눅해지고, 회는 상할까 마음이 급해지고,
+      아이스크림은 결국 한 번 녹았다 다시 업니다. 그래서 일본에서는 장바구니를 고를 때 보냉이 되는지부터 봅니다.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== FEATURE 01 ===================== -->
+<section class="band">
+  <div class="wrap stack-lg">
+    <div class="feat">
+      <div class="stack">
+        <div><span class="num">01</span></div>
+        <h2>안감이 전부 알루미늄입니다</h2>
+        <p class="lede" style="max-width:56ch">
+          겉감은 가벼운 폴리에스터, 안감은 알루미늄 증착 필름과 폴리프로필렌 2겹.
+          은박 도시락 포장이 온도를 붙잡는 원리 그대로, 가방 안쪽 전면에 들어가 있습니다.
+          아이스팩 하나만 같이 넣으면 장 보고 오는 길 정도는 충분히 버팁니다.
+        </p>
+      </div>
+
+      <div class="figure">
+        <svg viewBox="0 0 700 260" role="img" aria-label="가방 원단 3겹 구조 단면도: 겉감 폴리에스터, 알루미늄 증착 필름, 폴리프로필렌">
+          <!-- outer -->
+          <rect x="40" y="46" width="330" height="26" rx="2" fill="var(--bagblack)"/>
+          <!-- alu -->
+          <rect x="40" y="80" width="330" height="26" rx="2" fill="var(--alu)"/>
+          <g stroke="#FFFFFF" stroke-width="1" opacity=".55">
+            <line x1="52" y1="106" x2="72" y2="80"/><line x1="82" y1="106" x2="102" y2="80"/>
+            <line x1="112" y1="106" x2="132" y2="80"/><line x1="142" y1="106" x2="162" y2="80"/>
+            <line x1="172" y1="106" x2="192" y2="80"/><line x1="202" y1="106" x2="222" y2="80"/>
+            <line x1="232" y1="106" x2="252" y2="80"/><line x1="262" y1="106" x2="282" y2="80"/>
+            <line x1="292" y1="106" x2="312" y2="80"/><line x1="322" y1="106" x2="342" y2="80"/>
+          </g>
+          <!-- pp -->
+          <rect x="40" y="114" width="330" height="26" rx="2" fill="var(--alu-2)"/>
+
+          <!-- labels -->
+          <g font-family="'IBM Plex Sans KR',sans-serif" font-size="14">
+            <line x1="378" y1="59" x2="404" y2="59" stroke="var(--rule)" stroke-width="1.5"/>
+            <text x="414" y="56" fill="var(--ink)" font-weight="600">겉감 · 폴리에스터</text>
+            <text x="414" y="76" fill="var(--muted)" font-size="12.5">가볍고 잘 접히는 바깥면</text>
+
+            <line x1="378" y1="93" x2="404" y2="93" stroke="var(--cold)" stroke-width="1.5"/>
+            <text x="414" y="90" fill="var(--cold)" font-weight="600">알루미늄 증착 필름</text>
+            <text x="414" y="110" fill="var(--muted)" font-size="12.5">냉기를 반사해 붙잡는 핵심 층</text>
+
+            <line x1="378" y1="127" x2="404" y2="127" stroke="var(--rule)" stroke-width="1.5"/>
+            <text x="414" y="124" fill="var(--ink)" font-weight="600">폴리프로필렌</text>
+            <text x="414" y="144" fill="var(--muted)" font-size="12.5">물건이 직접 닿는 안쪽면</text>
+          </g>
+
+          <!-- cold arrows bouncing off alu -->
+          <g stroke="var(--cold)" stroke-width="2" fill="none" stroke-linecap="round">
+            <path d="M90 190 l0 -34"/><path d="M86 164 l4 -8 l4 8"/>
+            <path d="M170 190 l0 -34"/><path d="M166 164 l4 -8 l4 8"/>
+            <path d="M250 190 l0 -34"/><path d="M246 164 l4 -8 l4 8"/>
+            <path d="M330 190 l0 -34"/><path d="M326 164 l4 -8 l4 8"/>
+          </g>
+          <text x="40" y="222" fill="var(--muted)" font-family="'IBM Plex Sans KR',sans-serif" font-size="13">안쪽의 찬 기운이 밖으로 덜 빠져나갑니다</text>
+        </svg>
+        <p class="figcap">FIG. 01 &nbsp;—&nbsp; 원단 구조 / 겉감 폴리에스터 · 안감 알루미늄 증착 필름 + 폴리프로필렌</p>
+      </div>
+
+      <p class="note">
+        보냉 <b>기능이 있는 장바구니</b>입니다. 아이스박스나 캠핑용 쿨러백처럼 몇 시간의 저온을 보장하는 제품은 아니며,
+        장 보고 귀가하는 구간·이동 구간의 온도를 지켜주는 용도로 만들어졌습니다.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FEATURE 02 ===================== -->
+<section class="band">
+  <div class="wrap stack-lg">
+    <div class="feat">
+      <div class="stack">
+        <div><span class="num">02</span></div>
+        <h2>열려 있으면, 냉기는 그냥 빠져나갑니다</h2>
+        <p class="lede" style="max-width:56ch">
+          아무리 좋은 내피도 입구가 열려 있으면 소용이 없습니다. 상단 전체를 지퍼로 닫는 구조라 냉기가 머무릅니다.
+          덤으로 무엇을 샀는지 보이지 않고, 자전거 바구니나 버스에서 기울어져도 내용물이 쏟아지지 않습니다.
+        </p>
+      </div>
+
+      <div class="figure">
+        <svg viewBox="0 0 700 220" role="img" aria-label="지퍼를 열었을 때와 닫았을 때 냉기 유지 비교">
+          <!-- open -->
+          <g transform="translate(60,20)">
+            <text x="70" y="0" text-anchor="middle" fill="var(--muted)" font-family="'IBM Plex Mono',monospace" font-size="11.5" letter-spacing="1.4">OPEN</text>
+            <path d="M14 34 h112 q7 0 6 8 l-10 106 q-1 8 -8 8 h-88 q-7 0 -8 -8 l-10 -106 q-1 -8 6 -8 z" fill="none" stroke="var(--rule)" stroke-width="2"/>
+            <g stroke="var(--alu)" stroke-width="2" fill="none" stroke-linecap="round" opacity=".9">
+              <path d="M40 26 l-8 -18"/><path d="M70 24 l0 -20"/><path d="M100 26 l8 -18"/>
+            </g>
+            <text x="70" y="180" text-anchor="middle" fill="var(--muted)" font-family="'IBM Plex Sans KR',sans-serif" font-size="13">냉기가 위로 빠짐</text>
+          </g>
+          <!-- closed -->
+          <g transform="translate(300,20)">
+            <text x="70" y="0" text-anchor="middle" fill="var(--cold)" font-family="'IBM Plex Mono',monospace" font-size="11.5" letter-spacing="1.4">ZIPPED</text>
+            <path d="M14 34 h112 q7 0 6 8 l-10 106 q-1 8 -8 8 h-88 q-7 0 -8 -8 l-10 -106 q-1 -8 6 -8 z" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="2"/>
+            <line x1="18" y1="42" x2="122" y2="42" stroke="var(--cold)" stroke-width="3" stroke-dasharray="5 4"/>
+            <circle cx="122" cy="42" r="4.5" fill="var(--cold)"/>
+            <g stroke="var(--cold)" stroke-width="2" fill="none" stroke-linecap="round">
+              <path d="M44 70 v34"/><path d="M40 100 l4 8 l4 -8"/>
+              <path d="M70 78 v34"/><path d="M66 108 l4 8 l4 -8"/>
+              <path d="M96 70 v34"/><path d="M92 100 l4 8 l4 -8"/>
+            </g>
+            <text x="70" y="180" text-anchor="middle" fill="var(--cold)" font-family="'IBM Plex Sans KR',sans-serif" font-size="13">냉기가 안에 머무름</text>
+          </g>
+          <!-- notes -->
+          <g font-family="'IBM Plex Sans KR',sans-serif" font-size="14">
+            <text x="510" y="60" fill="var(--ink)" font-weight="600">내용물 가림</text>
+            <text x="510" y="82" fill="var(--muted)" font-size="12.5">무엇을 샀는지 보이지 않습니다</text>
+            <text x="510" y="118" fill="var(--ink)" font-weight="600">쏟아짐 방지</text>
+            <text x="510" y="140" fill="var(--muted)" font-size="12.5">기울여도 내용물이 나오지 않습니다</text>
+          </g>
+        </svg>
+        <p class="figcap">FIG. 02 &nbsp;—&nbsp; 상단 지퍼 개폐</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FEATURE 03 ===================== -->
+<section class="band">
+  <div class="wrap stack-lg">
+    <div class="feat">
+      <div class="stack">
+        <div><span class="num">03</span></div>
+        <h2>가로 46cm. 장보기 한 번이 들어갑니다</h2>
+        <p class="lede" style="max-width:56ch">
+          2L 생수병을 눕히지 않고 세워서 담을 수 있는 깊이입니다. 우유 1L, 10구 계란판, 라면 묶음,
+          대파까지 억지로 접지 않고 담깁니다. 손잡이는 손목에 걸기 좋은 짧은 길이라 계산대에서 바로 담고 바로 듭니다.
+        </p>
+      </div>
+
+      <div class="figure">
+        <svg viewBox="0 0 700 300" role="img" aria-label="가방 치수 도면: 가로 46cm, 세로 34cm, 폭 15cm, 2L 생수병과의 크기 비교">
+          <!-- bag outline -->
+          <g transform="translate(80,52)">
+            <path d="M40 30 q0 -24 22 -24 q22 0 22 24" fill="none" stroke="var(--ink)" stroke-width="4"/>
+            <path d="M136 30 q0 -24 22 -24 q22 0 22 24" fill="none" stroke="var(--ink)" stroke-width="4"/>
+            <rect x="10" y="30" width="200" height="150" rx="4" fill="var(--surface)" stroke="var(--ink)" stroke-width="2.5"/>
+            <line x1="14" y1="40" x2="206" y2="40" stroke="var(--cold)" stroke-width="2.5" stroke-dasharray="5 4"/>
+
+            <!-- 2L bottle inside -->
+            <g transform="translate(74,66)">
+              <rect x="0" y="14" width="34" height="94" rx="6" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="1.8"/>
+              <rect x="12" y="0" width="10" height="18" rx="2" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="1.8"/>
+              <text x="17" y="70" text-anchor="middle" fill="var(--cold)" font-family="'IBM Plex Mono',monospace" font-size="11">2L</text>
+            </g>
+
+            <!-- width dim -->
+            <g stroke="var(--muted)" stroke-width="1">
+              <line x1="10" y1="200" x2="210" y2="200"/>
+              <line x1="10" y1="194" x2="10" y2="206"/>
+              <line x1="210" y1="194" x2="210" y2="206"/>
+            </g>
+            <text x="110" y="222" text-anchor="middle" fill="var(--ink)" font-family="'IBM Plex Mono',monospace" font-size="13">46 cm</text>
+
+            <!-- height dim -->
+            <g stroke="var(--muted)" stroke-width="1">
+              <line x1="232" y1="30" x2="232" y2="180"/>
+              <line x1="226" y1="30" x2="238" y2="30"/>
+              <line x1="226" y1="180" x2="238" y2="180"/>
+            </g>
+            <text x="248" y="110" fill="var(--ink)" font-family="'IBM Plex Mono',monospace" font-size="13">34 cm</text>
+          </g>
+
+          <!-- capacity list -->
+          <g font-family="'IBM Plex Sans KR',sans-serif" font-size="14">
+            <text x="430" y="76" fill="var(--muted)" font-family="'IBM Plex Mono',monospace" font-size="11.5" letter-spacing="1.4">WHAT FITS</text>
+            <text x="430" y="106" fill="var(--ink)">2L 생수병 · 세워서</text>
+            <text x="430" y="134" fill="var(--ink)">10구 계란판 · 눕히지 않고</text>
+            <text x="430" y="162" fill="var(--ink)">라면 5개 묶음 · 통째로</text>
+            <text x="430" y="190" fill="var(--ink)">대파 · 접지 않고</text>
+            <line x1="430" y1="212" x2="640" y2="212" stroke="var(--rule)" stroke-width="1"/>
+            <text x="430" y="238" fill="var(--muted)" font-size="12.5">폭 15cm · 바닥이 서서 담기 편합니다</text>
+          </g>
+        </svg>
+        <p class="figcap">FIG. 03 &nbsp;—&nbsp; 약 46 × 34 × 15 cm (실측 기준, 재단에 따라 1~2cm 오차)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FEATURE 04 + PHOTO ===================== -->
+<section class="band">
+  <div class="wrap stack-lg">
+    <div class="feat">
+      <div class="stack">
+        <div><span class="num">04</span></div>
+        <h2>평소엔 접어서 가방 속에</h2>
+        <p class="lede" style="max-width:56ch">
+          폴리에스터 원단이라 접으면 얇게 눌립니다. 매일 들고 다니다가 장 볼 일이 생기면 꺼내 쓰는 방식.
+          가방에 하나 넣어두면 비닐봉투 값을 계속 아끼게 됩니다.
+        </p>
+      </div>
+
+      <div class="photorow">
+        <!-- 여기에 <img src="사진파일.jpg" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover"> 로 교체하세요 -->
+        <div class="photo">
+          <span class="lbl">PHOTO 01</span>
+          <span class="desc">가방을 접어 손바닥 위에 올린 컷<br>— 부피감이 한눈에 보이게</span>
+        </div>
+        <!-- 여기에 <img ...> 로 교체하세요 -->
+        <div class="photo">
+          <span class="lbl">PHOTO 02</span>
+          <span class="desc">지퍼를 열어 안쪽 알루미늄 내피가<br>반사되는 클로즈업 컷</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SCENES ===================== -->
+<section class="band">
+  <div class="wrap stack">
+    <p class="eyebrow">이럴 때 씁니다</p>
+    <h2>장바구니 하나로 끝나지 않습니다</h2>
+    <div class="scenes" style="margin-top:14px">
+      <div class="scene">
+        <span class="tag">MART</span>
+        <h3>마트 · 새벽배송 정리</h3>
+        <p>냉동칸에서 계산대, 계산대에서 집까지. 아이스팩 하나 같이 넣으면 그 구간이 편해집니다.</p>
+      </div>
+      <div class="scene">
+        <span class="tag">OUTDOOR</span>
+        <h3>피크닉 · 캠핑</h3>
+        <p>캔음료와 과일을 담아두는 세컨백. 다 비우면 접어서 배낭에 넣고 돌아옵니다.</p>
+      </div>
+      <div class="scene">
+        <span class="tag">OFFICE</span>
+        <h3>도시락 · 사무실 간식</h3>
+        <p>지퍼가 있어 내용물이 보이지 않습니다. 샐러드나 음료를 담아 출근길에.</p>
+      </div>
+      <div class="scene">
+        <span class="tag">TRAVEL</span>
+        <h3>여행 보조가방</h3>
+        <p>돌아오는 날 늘어난 짐과 간식용. 갈 때는 캐리어 안에 접어서 들어갑니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COLORS ===================== -->
+<section class="band">
+  <div class="wrap stack">
+    <p class="eyebrow">Two colorways</p>
+    <h2>블랙, 그리고 블루</h2>
+    <div class="colors" style="margin-top:16px">
+      <div class="colorcard">
+        <svg viewBox="0 0 200 220" role="img" aria-label="블랙 컬러 쇼핑백">
+          <path d="M46 44 q0 -28 24 -28 q24 0 24 28" fill="none" stroke="var(--bagblack)" stroke-width="7"/>
+          <path d="M110 44 q0 -28 24 -28 q24 0 24 28" fill="none" stroke="var(--bagblack)" stroke-width="7"/>
+          <path d="M18 44 h164 q8 0 7 9 l-13 148 q-1 9 -10 9 h-132 q-9 0 -10 -9 l-13 -148 q-1 -9 7 -9 z" fill="var(--bagblack)"/>
+          <line x1="24" y1="52" x2="176" y2="52" stroke="var(--alu)" stroke-width="2.5" stroke-dasharray="4 4"/>
+          <text x="100" y="132" text-anchor="middle" fill="#FFFFFF" font-family="'IBM Plex Sans',sans-serif" font-style="italic" font-weight="600" font-size="28">Standard</text>
+        </svg>
+        <div class="name"><b>블랙 / BK</b><span>4550480729688</span></div>
+        <p>어디에 들어도 튀지 않는 기본. 오염이 잘 드러나지 않아 마트용으로 가장 무난합니다.</p>
+      </div>
+      <div class="colorcard">
+        <svg viewBox="0 0 200 220" role="img" aria-label="블루 컬러 쇼핑백">
+          <path d="M46 44 q0 -28 24 -28 q24 0 24 28" fill="none" stroke="var(--bagblue)" stroke-width="7"/>
+          <path d="M110 44 q0 -28 24 -28 q24 0 24 28" fill="none" stroke="var(--bagblue)" stroke-width="7"/>
+          <path d="M18 44 h164 q8 0 7 9 l-13 148 q-1 9 -10 9 h-132 q-9 0 -10 -9 l-13 -148 q-1 -9 7 -9 z" fill="var(--bagblue)"/>
+          <line x1="24" y1="52" x2="176" y2="52" stroke="#EEF3F6" stroke-width="2.5" stroke-dasharray="4 4"/>
+          <text x="100" y="132" text-anchor="middle" fill="#FFFFFF" font-family="'IBM Plex Sans',sans-serif" font-style="italic" font-weight="600" font-size="28">Standard</text>
+        </svg>
+        <div class="name"><b>블루 / BL</b><span>4550480777566</span></div>
+        <p>채도를 낮춘 슬레이트 블루. 데님이나 밝은 옷차림과 자연스럽게 붙는 색입니다.</p>
+      </div>
+    </div>
+    <!-- 여기에 실제 두 컬러를 나란히 촬영한 사진으로 교체하면 전환율이 올라갑니다 -->
+    <div class="photo" style="aspect-ratio:16/9;margin-top:6px">
+      <span class="lbl">PHOTO 03</span>
+      <span class="desc">블랙 · 블루를 나란히 두고 찍은 실물 컷<br>— 자연광, 흰 배경 권장</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SPEC ===================== -->
+<section class="band">
+  <div class="wrap stack">
+    <p class="eyebrow">Specification</p>
+    <h2>제품 정보</h2>
+    <div class="specwrap" style="margin-top:8px">
+      <table class="spec">
+        <tr><th>브랜드</th><td>Standard Products (스탠다드 프로덕츠) · DAISO Japan</td></tr>
+        <tr><th>제품명</th><td>쇼핑백 (숏로고) / ショッピングバッグ（ショートロゴ）</td></tr>
+        <tr><th>컬러</th><td>블랙 BK · 블루 BL</td></tr>
+        <tr><th>크기</th><td>약 46 × 34 × 15 cm</td></tr>
+        <tr><th>겉감</th><td>폴리에스터</td></tr>
+        <tr><th>안감</th><td>알루미늄 증착 필름, 폴리프로필렌</td></tr>
+        <tr><th>개폐</th><td>상단 지퍼</td></tr>
+        <tr><th>구성</th><td>1개입</td></tr>
+        <tr><th>원산지</th><td>중국 (일본 Standard Products 기획)</td></tr>
+        <tr><th>품번 (JAN)</th><td>BK 4550480729688 · BL 4550480777566</td></tr>
+      </table>
+    </div>
+    <p class="small muted">※ 치수는 실측값으로 재단 위치에 따라 1~2cm 오차가 있을 수 있습니다. 모니터 환경에 따라 색상은 실물과 다르게 보일 수 있습니다.</p>
+  </div>
+</section>
+
+<!-- ===================== CAUTION ===================== -->
+<section class="band">
+  <div class="wrap stack">
+    <p class="eyebrow" style="color:var(--warn)">구매 전 꼭 확인</p>
+    <h2>이런 점은 미리 알려드립니다</h2>
+    <ul class="cautions" style="margin-top:10px">
+      <li><span class="x">01</span><span><b>세탁은 하지 마세요.</b> 안감의 알루미늄 층이 손상됩니다. 오염은 젖은 천으로 가볍게 닦고, 사용 후에는 뒤집어 그늘에서 말려주세요.</span></li>
+      <li><span class="x">02</span><span><b>방수 제품이 아닙니다.</b> 물에 젖거나 마찰이 심하면 색이 빠지거나 다른 곳에 묻을 수 있습니다.</span></li>
+      <li><span class="x">03</span><span><b>뜨거운 것과 드라이아이스는 넣지 마세요.</b> 제조사 권장 사항이며, 내피가 변형될 수 있습니다.</span></li>
+      <li><span class="x">04</span><span><b>날카로운 물건, 과도한 무게는 피해주세요.</b> 원단과 내피가 찢어질 수 있습니다.</span></li>
+      <li><span class="x">05</span><span><b>화기 근처에 두지 마세요.</b></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== QA ===================== -->
+<section class="band">
+  <div class="wrap stack">
+    <p class="eyebrow">FAQ</p>
+    <h2>자주 묻는 질문</h2>
+    <div class="qa" style="margin-top:6px">
+      <div class="item">
+        <div class="q"><span class="mk">Q</span><span>보온도 되나요?</span></div>
+        <div class="a"><span class="mk">A</span><span>안감이 알루미늄이라 온도 유지에는 도움이 되지만, 제조사에서 뜨거운 것을 넣지 말라고 안내하고 있습니다. 따뜻한 음식보다는 <b>차가운 식품용</b>으로 사용해 주세요.</span></div>
+      </div>
+      <div class="item">
+        <div class="q"><span class="mk">Q</span><span>얼마나 오래 차갑게 유지되나요?</span></div>
+        <div class="a"><span class="mk">A</span><span>아이스팩 유무와 바깥 기온에 따라 크게 달라집니다. 몇 시간을 보장하는 전용 쿨러백이 아니라, 장보기부터 귀가까지 같은 이동 구간을 위한 제품이라고 봐주시는 편이 정확합니다.</span></div>
+      </div>
+      <div class="item">
+        <div class="q"><span class="mk">Q</span><span>접어서 보관할 수 있나요?</span></div>
+        <div class="a"><span class="mk">A</span><span>네. 별도 수납 파우치는 없지만 얇게 접혀 일반 가방 안에 충분히 들어갑니다.</span></div>
+      </div>
+      <div class="item">
+        <div class="q"><span class="mk">Q</span><span>한국에서도 살 수 있는 제품인가요?</span></div>
+        <div class="a"><span class="mk">A</span><span>Standard Products는 일본 다이소의 상위 브랜드로, 현재 국내 매장이 없어 일본 현지에서만 구매할 수 있는 제품입니다.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SHIPPING ===================== -->
+<section class="band tight">
+  <div class="wrap">
+    <p class="eyebrow">배송 · 교환 / 반품</p>
+    <div class="ship" style="margin-top:20px">
+      <div>
+        <h3>배송 안내</h3>
+        <ul>
+          <li>결제 확인 후 영업일 기준 1~3일 이내 발송됩니다.</li>
+          <li>주말 및 공휴일은 발송이 어렵습니다.</li>
+          <li>택배사 사정에 따라 배송이 지연될 수 있습니다.</li>
+          <li>도서·산간 지역은 추가 배송비가 발생합니다.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>교환 / 반품</h3>
+        <ul>
+          <li>수령 후 7일 이내 신청 가능합니다.</li>
+          <li>단순 변심은 왕복 배송비가 부과됩니다.</li>
+          <li>상품 불량·오배송은 판매자가 배송비를 부담합니다.</li>
+          <li>사용 흔적, 오염, 택 제거 시에는 교환·반품이 어렵습니다.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="mark">Standard Products · Shopping Bag</div>
+    <p>본 상세페이지의 제품 사양은 일본 다이소 공식 상품 정보(JAN 4550480729688 / 4550480777566)를 기준으로 작성되었습니다.<br>
+    Standard Products 및 DAISO는 각 상표권자의 등록상표입니다.</p>
+  </div>
+</footer>
