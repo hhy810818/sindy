@@ -9,10 +9,11 @@ NAMES = {
  "a4":"04_cooling_structure",
  "a5":"05_zipper",
  "a6":"06_size",
- "a7":"07_use_cases",
- "a8":"08_colors",
- "a9":"09_spec",
- "a10":"10_caution",
+ "a7":"07_carry",
+ "a8":"08_use_cases",
+ "a9":"09_colors",
+ "a10":"10_spec",
+ "a11":"11_caution",
 }
 proxy = os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy")
 with sync_playwright() as p:

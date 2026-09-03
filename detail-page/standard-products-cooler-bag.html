@@ -124,6 +124,33 @@
   .hero-art{margin-top:44px;position:relative}
   .hero-art svg{display:block;width:100%;height:auto}
 
+  /* ---------- at a glance ---------- */
+  .glance{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);
+    border:1px solid var(--rule);margin-top:40px;
+  }
+  .glance .g{background:var(--paper);padding:18px 18px 16px;display:flex;flex-direction:column;gap:5px}
+  .glance .gl{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--cold);
+  }
+  .glance .gv{
+    font-size:21px;font-weight:600;letter-spacing:-.03em;line-height:1.25;
+    font-variant-numeric:tabular-nums;color:var(--ink);
+  }
+  .glance .gv i{font-style:normal;color:var(--muted);font-weight:400;margin:0 1px}
+  .glance .gv em{font-style:normal;font-size:14px;font-weight:500;color:var(--muted);margin-left:1px}
+  .glance .gn{font-size:12px;color:var(--muted);line-height:1.5}
+  @media (max-width:560px){.glance{grid-template-columns:repeat(2,1fr)}}
+
+  /* ---------- carry modes ---------- */
+  .carry{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+  .carry .c{background:var(--surface);padding:22px 20px 20px;display:flex;flex-direction:column;gap:10px}
+  .carry .c svg{width:100%;max-width:104px;height:auto;margin:0 auto}
+  .carry .c b{font-size:15px;font-weight:600}
+  .carry .c p{font-size:13px;color:var(--muted);line-height:1.65}
+  @media (max-width:560px){.carry{grid-template-columns:1fr}}
+
   /* ---------- key points ---------- */
   .keys{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule);margin-top:0}
   .key{padding:26px 22px;border-right:1px solid var(--rule)}
@@ -244,6 +271,7 @@
       <span class="chip"><i class="sw" style="background:#1C1F22"></i> BLACK</span>
       <span class="chip"><i class="sw" style="background:#5D7B9C"></i> BLUE</span>
       <span class="chip mono" style="padding-left:15px">46 × 34 × 15 cm</span>
+      <span class="chip mono" style="padding-left:15px">2L × 6병</span>
     </div>
 
     <div class="hero-art">
@@ -277,6 +305,17 @@
           <text x="98" y="158" fill="var(--muted)" font-family="'IBM Plex Sans KR',sans-serif" font-size="13.5">지퍼로 닫으면 냉기가 덜 빠집니다</text>
         </g>
       </svg>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="glance">
+      <div class="g"><span class="gl">크기</span><b class="gv">46 <i>×</i> 34 <i>×</i> 15<em>cm</em></b><span class="gn">가로 · 세로 · 바닥 폭</span></div>
+      <div class="g"><span class="gl">수납</span><b class="gv">2L <i>×</i> 6<em>병</em></b><span class="gn">2L 생수병 기준</span></div>
+      <div class="g"><span class="gl">무게</span><b class="gv">약 130<em>g</em></b><span class="gn">가방 자체 무게</span></div>
+      <div class="g"><span class="gl">손잡이</span><b class="gv">어깨 <em>걸이</em></b><span class="gn">손 · 팔 · 어깨 3가지</span></div>
+      <div class="g"><span class="gl">바닥</span><b class="gv">자립<em>형</em></b><span class="gn">폭 15cm · 세워서 담기</span></div>
+      <div class="g"><span class="gl">개폐</span><b class="gv">지퍼<em>식</em></b><span class="gn">상단 전체 개폐</span></div>
     </div>
   </div>
 
@@ -437,56 +476,107 @@
         <div><span class="num">03</span></div>
         <h2>가로 46cm. 장보기 한 번이 들어갑니다</h2>
         <p class="lede" style="max-width:56ch">
-          2L 생수병을 눕히지 않고 세워서 담을 수 있는 깊이입니다. 우유 1L, 10구 계란판, 라면 묶음,
-          대파까지 억지로 접지 않고 담깁니다. 손잡이는 손목에 걸기 좋은 짧은 길이라 계산대에서 바로 담고 바로 듭니다.
+          <b>2L 생수병이 6개</b> 들어갑니다. 바닥 폭이 15cm라 가방이 혼자 서기 때문에,
+          계산대에서 한 손으로 벌리고 다른 손으로 담는 번거로움이 없습니다.
+          우유 1L, 10구 계란판, 라면 묶음, 대파까지 억지로 접지 않고 들어갑니다.
         </p>
       </div>
 
       <div class="figure">
-        <svg viewBox="0 0 700 300" role="img" aria-label="가방 치수 도면: 가로 46cm, 세로 34cm, 폭 15cm, 2L 생수병과의 크기 비교">
-          <!-- bag outline -->
-          <g transform="translate(80,52)">
-            <path d="M40 30 q0 -24 22 -24 q22 0 22 24" fill="none" stroke="var(--ink)" stroke-width="4"/>
-            <path d="M136 30 q0 -24 22 -24 q22 0 22 24" fill="none" stroke="var(--ink)" stroke-width="4"/>
-            <rect x="10" y="30" width="200" height="150" rx="4" fill="var(--surface)" stroke="var(--ink)" stroke-width="2.5"/>
-            <line x1="14" y1="40" x2="206" y2="40" stroke="var(--cold)" stroke-width="2.5" stroke-dasharray="5 4"/>
-
-            <!-- 2L bottle inside -->
-            <g transform="translate(74,66)">
-              <rect x="0" y="14" width="34" height="94" rx="6" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="1.8"/>
-              <rect x="12" y="0" width="10" height="18" rx="2" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="1.8"/>
-              <text x="17" y="70" text-anchor="middle" fill="var(--cold)" font-family="'IBM Plex Mono',monospace" font-size="11">2L</text>
+        <svg viewBox="0 0 700 320" role="img" aria-label="가방 치수 도면: 가로 46cm, 세로 34cm, 바닥 폭 15cm, 손잡이 약 25cm, 2L 생수병 6개 수납">
+          <g transform="translate(56,54)">
+            <!-- handles -->
+            <path d="M46 34 q0 -30 25 -30 q25 0 25 30" fill="none" stroke="var(--ink)" stroke-width="4.5" stroke-linecap="round"/>
+            <path d="M124 34 q0 -30 25 -30 q25 0 25 30" fill="none" stroke="var(--ink)" stroke-width="4.5" stroke-linecap="round"/>
+            <!-- handle dim -->
+            <g stroke="var(--cold)" stroke-width="1">
+              <line x1="30" y1="4" x2="30" y2="34"/>
+              <line x1="25" y1="4" x2="35" y2="4"/><line x1="25" y1="34" x2="35" y2="34"/>
             </g>
-
+            <text x="22" y="24" text-anchor="end" fill="var(--cold)" font-family="'IBM Plex Mono',monospace" font-size="11.5">약 25cm</text>
+            <!-- body -->
+            <rect x="10" y="34" width="200" height="150" rx="3" fill="var(--surface)" stroke="var(--ink)" stroke-width="2.5"/>
+            <line x1="14" y1="44" x2="206" y2="44" stroke="var(--cold)" stroke-width="2.5" stroke-dasharray="5 4"/>
+            <!-- 2L bottles: front row 3 -->
+            <g>
+              <g transform="translate(30,66)"><rect x="0" y="14" width="34" height="98" rx="6" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="1.6"/><rect x="12" y="0" width="10" height="18" rx="2" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="1.6"/><text x="17" y="70" text-anchor="middle" fill="var(--cold)" font-family="'IBM Plex Mono',monospace" font-size="10.5">2L</text></g>
+              <g transform="translate(93,66)"><rect x="0" y="14" width="34" height="98" rx="6" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="1.6"/><rect x="12" y="0" width="10" height="18" rx="2" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="1.6"/><text x="17" y="70" text-anchor="middle" fill="var(--cold)" font-family="'IBM Plex Mono',monospace" font-size="10.5">2L</text></g>
+              <g transform="translate(156,66)"><rect x="0" y="14" width="34" height="98" rx="6" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="1.6"/><rect x="12" y="0" width="10" height="18" rx="2" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="1.6"/><text x="17" y="70" text-anchor="middle" fill="var(--cold)" font-family="'IBM Plex Mono',monospace" font-size="10.5">2L</text></g>
+            </g>
+            <text x="110" y="176" text-anchor="middle" fill="var(--muted)" font-family="'IBM Plex Sans KR',sans-serif" font-size="11.5">앞줄 3병 + 뒷줄 3병</text>
             <!-- width dim -->
             <g stroke="var(--muted)" stroke-width="1">
-              <line x1="10" y1="200" x2="210" y2="200"/>
-              <line x1="10" y1="194" x2="10" y2="206"/>
-              <line x1="210" y1="194" x2="210" y2="206"/>
+              <line x1="10" y1="204" x2="210" y2="204"/>
+              <line x1="10" y1="198" x2="10" y2="210"/><line x1="210" y1="198" x2="210" y2="210"/>
             </g>
-            <text x="110" y="222" text-anchor="middle" fill="var(--ink)" font-family="'IBM Plex Mono',monospace" font-size="13">46 cm</text>
-
+            <text x="110" y="226" text-anchor="middle" fill="var(--ink)" font-family="'IBM Plex Mono',monospace" font-size="13">46 cm</text>
             <!-- height dim -->
             <g stroke="var(--muted)" stroke-width="1">
-              <line x1="232" y1="30" x2="232" y2="180"/>
-              <line x1="226" y1="30" x2="238" y2="30"/>
-              <line x1="226" y1="180" x2="238" y2="180"/>
+              <line x1="232" y1="34" x2="232" y2="184"/>
+              <line x1="226" y1="34" x2="238" y2="34"/><line x1="226" y1="184" x2="238" y2="184"/>
             </g>
-            <text x="248" y="110" fill="var(--ink)" font-family="'IBM Plex Mono',monospace" font-size="13">34 cm</text>
+            <text x="248" y="114" fill="var(--ink)" font-family="'IBM Plex Mono',monospace" font-size="13">34 cm</text>
           </g>
-
           <!-- capacity list -->
           <g font-family="'IBM Plex Sans KR',sans-serif" font-size="14">
-            <text x="430" y="76" fill="var(--muted)" font-family="'IBM Plex Mono',monospace" font-size="11.5" letter-spacing="1.4">WHAT FITS</text>
-            <text x="430" y="106" fill="var(--ink)">2L 생수병 · 세워서</text>
-            <text x="430" y="134" fill="var(--ink)">10구 계란판 · 눕히지 않고</text>
-            <text x="430" y="162" fill="var(--ink)">라면 5개 묶음 · 통째로</text>
-            <text x="430" y="190" fill="var(--ink)">대파 · 접지 않고</text>
-            <line x1="430" y1="212" x2="640" y2="212" stroke="var(--rule)" stroke-width="1"/>
-            <text x="430" y="238" fill="var(--muted)" font-size="12.5">폭 15cm · 바닥이 서서 담기 편합니다</text>
+            <text x="404" y="72" fill="var(--muted)" font-family="'IBM Plex Mono',monospace" font-size="11.5" letter-spacing="1.4">WHAT FITS</text>
+            <text x="404" y="104" fill="var(--ink)" font-weight="600">2L 생수병 6개</text>
+            <text x="404" y="132" fill="var(--ink)">10구 계란판 · 눕히지 않고</text>
+            <text x="404" y="160" fill="var(--ink)">라면 5개 묶음 · 통째로</text>
+            <text x="404" y="188" fill="var(--ink)">대파 · 접지 않고</text>
+            <line x1="404" y1="210" x2="660" y2="210" stroke="var(--rule)" stroke-width="1"/>
+            <text x="404" y="238" fill="var(--ink)" font-weight="600" font-size="13.5">바닥 폭 15cm · 자립합니다</text>
+            <text x="404" y="262" fill="var(--muted)" font-size="12.5">한 손으로 벌리고 있을 필요 없이</text>
+            <text x="404" y="282" fill="var(--muted)" font-size="12.5">세워두고 양손으로 담을 수 있습니다</text>
           </g>
         </svg>
-        <p class="figcap">FIG. 03 &nbsp;—&nbsp; 약 46 × 34 × 15 cm (실측 기준, 재단에 따라 1~2cm 오차)</p>
+        <p class="figcap">FIG. 03 &nbsp;—&nbsp; 46 × 34 × 15 cm · 손잡이 약 25cm · 2L 생수병 6개</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 드는 방법 ===================== -->
+<section class="band">
+  <div class="wrap stack-lg">
+    <div class="feat">
+      <div class="stack">
+        <div><span class="num">04</span></div>
+        <h2>손에도, 팔에도, 어깨에도</h2>
+        <p class="lede" style="max-width:56ch">
+          손잡이 길이가 약 25cm라 <b>어깨에 걸칩니다.</b> 짐이 무거워지면 팔이나 어깨로 옮겨 들 수 있어
+          장을 많이 본 날 손목에 부담이 덜합니다. 손잡이 폭이 넓어 손에 파고들지 않습니다.
+        </p>
+      </div>
+      <div class="carry">
+        <div class="c">
+          <svg viewBox="0 0 120 130" role="img" aria-label="손으로 드는 모습">
+            <path d="M42 44 q0 -20 13 -20 q13 0 13 20 M62 44 q0 -20 13 -20 q13 0 13 20" fill="none" stroke="var(--ink)" stroke-width="3.6" stroke-linecap="round"/>
+            <path d="M30 44 h60 l-6 62 q-.6 6 -7 6 H43 q-6.4 0 -7 -6 Z" fill="var(--alu-2)" stroke="var(--ink)" stroke-width="2.2"/>
+            <path d="M52 30 q-8 -6 -14 -2 q-5 3 -2 8" fill="none" stroke="var(--cold)" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+          <b>손에 들기</b>
+          <p>계산대에서 바로 담고 바로 드는 가장 짧은 동선.</p>
+        </div>
+        <div class="c">
+          <svg viewBox="0 0 120 130" role="img" aria-label="팔에 거는 모습">
+            <path d="M42 52 q0 -22 13 -22 q13 0 13 22 M62 52 q0 -22 13 -22 q13 0 13 22" fill="none" stroke="var(--ink)" stroke-width="3.6" stroke-linecap="round"/>
+            <path d="M30 52 h60 l-6 58 q-.6 6 -7 6 H43 q-6.4 0 -7 -6 Z" fill="var(--alu-2)" stroke="var(--ink)" stroke-width="2.2"/>
+            <path d="M36 22 q14 10 30 8 q14 -2 20 -12" fill="none" stroke="var(--cold)" stroke-width="3.4" stroke-linecap="round"/>
+          </svg>
+          <b>팔에 걸기</b>
+          <p>두 손이 필요할 때. 손잡이가 굵어 팔에 자국이 덜 남습니다.</p>
+        </div>
+        <div class="c">
+          <svg viewBox="0 0 120 130" role="img" aria-label="어깨에 메는 모습">
+            <path d="M44 62 q-2 -34 12 -36 q14 -2 14 34 M64 62 q-2 -30 10 -32" fill="none" stroke="var(--ink)" stroke-width="3.6" stroke-linecap="round"/>
+            <path d="M34 62 h56 l-6 50 q-.6 6 -7 6 H47 q-6.4 0 -7 -6 Z" fill="var(--alu-2)" stroke="var(--ink)" stroke-width="2.2"/>
+            <circle cx="52" cy="20" r="9" fill="none" stroke="var(--cold)" stroke-width="3.2"/>
+            <path d="M40 34 q12 -6 24 -2" fill="none" stroke="var(--cold)" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+          <b>어깨에 메기</b>
+          <p>가장 무거울 때. 2L 6병을 담아도 어깨로 넘길 수 있습니다.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -497,11 +587,12 @@
   <div class="wrap stack-lg">
     <div class="feat">
       <div class="stack">
-        <div><span class="num">04</span></div>
-        <h2>평소엔 접어서 가방 속에</h2>
+        <div><span class="num">05</span></div>
+        <h2>130g. 평소엔 접어서 가방 속에</h2>
         <p class="lede" style="max-width:56ch">
-          폴리에스터 원단이라 접으면 얇게 눌립니다. 매일 들고 다니다가 장 볼 일이 생기면 꺼내 쓰는 방식.
-          가방에 하나 넣어두면 비닐봉투 값을 계속 아끼게 됩니다.
+          가방 자체 무게가 <b>약 130g</b>. 폴리에스터 원단이라 평평하게 접히고,
+          접으면 일반 가방이나 백팩 안에 그대로 들어갑니다. 별도 수납 파우치는 없습니다.
+          매일 넣어 다니다가 장 볼 일이 생기면 꺼내 쓰는 방식입니다.
         </p>
       </div>
 
@@ -596,12 +687,17 @@
     <div class="specwrap" style="margin-top:8px">
       <table class="spec">
         <tr><th>브랜드</th><td>Standard Products (스탠다드 프로덕츠) · DAISO Japan</td></tr>
-        <tr><th>제품명</th><td>쇼핑백 (숏로고) / ショッピングバッグ（ショートロゴ）</td></tr>
+        <tr><th>제품명</th><td>쇼핑백 (숏로고) / ショッピングバッグ（ショートロゴ）<br><span class="small muted">‘숏로고’는 프린트된 로고 표기 방식을 뜻하며, 손잡이 길이와는 무관합니다.</span></td></tr>
         <tr><th>컬러</th><td>블랙 BK · 블루 BL</td></tr>
-        <tr><th>크기</th><td>약 46 × 34 × 15 cm</td></tr>
+        <tr><th>크기</th><td>46 × 34 × 15 cm (가로 × 세로 × 바닥 폭)</td></tr>
+        <tr><th>무게</th><td>약 130 g</td></tr>
+        <tr><th>손잡이</th><td>약 25 cm · 손 / 팔 / 어깨 3가지로 들 수 있음</td></tr>
+        <tr><th>수납력</th><td>2L 생수병 6개</td></tr>
+        <tr><th>바닥</th><td>폭 15 cm · 자립형 (세워두고 담을 수 있음)</td></tr>
+        <tr><th>개폐</th><td>상단 전체 지퍼</td></tr>
+        <tr><th>접이</th><td>평평하게 접힘 · 별도 수납 파우치 없음</td></tr>
         <tr><th>겉감</th><td>폴리에스터</td></tr>
-        <tr><th>안감</th><td>알루미늄 증착 필름, 폴리프로필렌</td></tr>
-        <tr><th>개폐</th><td>상단 지퍼</td></tr>
+        <tr><th>안감</th><td>알루미늄 증착 필름, 폴리프로필렌 (전면)</td></tr>
         <tr><th>구성</th><td>1개입</td></tr>
         <tr><th>원산지</th><td>중국 (일본 Standard Products 기획)</td></tr>
         <tr><th>품번 (JAN)</th><td>BK 4550480729688 · BL 4550480777566</td></tr>
@@ -641,8 +737,20 @@
         <div class="a"><span class="mk">A</span><span>아이스팩 유무와 바깥 기온에 따라 크게 달라집니다. 몇 시간을 보장하는 전용 쿨러백이 아니라, 장보기부터 귀가까지 같은 이동 구간을 위한 제품이라고 봐주시는 편이 정확합니다.</span></div>
       </div>
       <div class="item">
+        <div class="q"><span class="mk">Q</span><span>어깨에 멜 수 있나요?</span></div>
+        <div class="a"><span class="mk">A</span><span>네. 손잡이 길이가 약 25cm라 어깨에 걸칩니다. 다만 어깨끈처럼 길지는 않아서, 두꺼운 겨울 외투 위에서는 다소 짧게 느껴질 수 있습니다.</span></div>
+      </div>
+      <div class="item">
+        <div class="q"><span class="mk">Q</span><span>얼마나 담기나요?</span></div>
+        <div class="a"><span class="mk">A</span><span>2L 생수병 기준 6개가 들어갑니다. 바닥 폭이 15cm라 가방이 혼자 서기 때문에 세워두고 양손으로 담을 수 있습니다.</span></div>
+      </div>
+      <div class="item">
+        <div class="q"><span class="mk">Q</span><span>무거운 걸 담아도 괜찮나요?</span></div>
+        <div class="a"><span class="mk">A</span><span>손잡이 폭이 넓어 일반적인 장보기 무게는 안정적으로 버팁니다. 다만 제조사가 과적을 권장하지 않으므로, 쌀포대처럼 한쪽으로 무게가 몰리는 짐은 피해주세요.</span></div>
+      </div>
+      <div class="item">
         <div class="q"><span class="mk">Q</span><span>접어서 보관할 수 있나요?</span></div>
-        <div class="a"><span class="mk">A</span><span>네. 별도 수납 파우치는 없지만 얇게 접혀 일반 가방 안에 충분히 들어갑니다.</span></div>
+        <div class="a"><span class="mk">A</span><span>네. 가방 자체가 약 130g으로 가볍고 평평하게 접힙니다. 별도 수납 파우치는 없지만 일반 가방이나 백팩 안에 그대로 들어갑니다.</span></div>
       </div>
       <div class="item">
         <div class="q"><span class="mk">Q</span><span>한국에서도 살 수 있는 제품인가요?</span></div>

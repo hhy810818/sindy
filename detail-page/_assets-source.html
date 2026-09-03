@@ -31,6 +31,18 @@ p{margin:0}
   margin-top:22px;padding-top:16px;border-top:1px solid var(--rule-soft)}
 .note{background:var(--cold-wash);border-left:3px solid var(--cold);padding:18px 22px;font-size:15px;color:var(--ink-soft)}
 svg{display:block;width:100%;height:auto}
+.glance{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border-top:1px solid var(--rule)}
+.glance .g{background:var(--paper);padding:22px 22px 20px;display:flex;flex-direction:column;gap:6px}
+.glance .gl{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cold)}
+.glance .gv{font-size:24px;font-weight:600;letter-spacing:-.03em;line-height:1.24;font-variant-numeric:tabular-nums}
+.glance .gv i{font-style:normal;color:var(--muted);font-weight:400;margin:0 1px}
+.glance .gv em{font-style:normal;font-size:15px;font-weight:500;color:var(--muted);margin-left:1px}
+.glance .gn{font-size:13px;color:var(--muted);line-height:1.5}
+.carry{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.carry .c{background:var(--surface);padding:26px 24px 24px;display:flex;flex-direction:column;gap:11px}
+.carry .c svg{max-width:112px;margin:0 auto}
+.carry .c b{font-size:17px;font-weight:600}
+.carry .c p{font-size:14px;color:var(--muted);line-height:1.65}
 
 /* --- 대표이미지: 텍스트 없이 --- */
 #a1{width:1000px;height:1000px;background:#fff;display:flex;align-items:center;justify-content:center}
@@ -101,8 +113,16 @@ svg{display:block;width:100%;height:auto}
     <div style="padding:28px 24px">
       <div class="mono" style="font-size:12px;letter-spacing:.14em;color:var(--cold)">03 / SIZE</div>
       <h3 style="margin:9px 0 7px">가로 46cm</h3>
-      <p class="muted" style="font-size:14.5px;line-height:1.65">2L 생수병을 세워서 담는 깊이</p>
+      <p class="muted" style="font-size:14.5px;line-height:1.65">2L 생수병 6개가 들어갑니다</p>
     </div>
+  </div>
+  <div class="glance">
+    <div class="g"><span class="gl">크기</span><b class="gv">46 <i>×</i> 34 <i>×</i> 15<em>cm</em></b><span class="gn">가로 · 세로 · 바닥 폭</span></div>
+    <div class="g"><span class="gl">수납</span><b class="gv">2L <i>×</i> 6<em>병</em></b><span class="gn">2L 생수병 기준</span></div>
+    <div class="g"><span class="gl">무게</span><b class="gv">약 130<em>g</em></b><span class="gn">가방 자체 무게</span></div>
+    <div class="g"><span class="gl">손잡이</span><b class="gv">어깨 <em>걸이</em></b><span class="gn">손 · 팔 · 어깨 3가지</span></div>
+    <div class="g"><span class="gl">바닥</span><b class="gv">자립<em>형</em></b><span class="gn">폭 15cm · 세워서 담기</span></div>
+    <div class="g"><span class="gl">개폐</span><b class="gv">지퍼<em>식</em></b><span class="gn">상단 전체 개폐</span></div>
   </div>
 </section>
 
@@ -210,48 +230,91 @@ svg{display:block;width:100%;height:auto}
   <div class="pad stack">
     <div><span class="numtag">03</span></div>
     <h2>가로 46cm. 장보기 한 번이 들어갑니다</h2>
-    <p class="lede" style="max-width:52ch">2L 생수병을 눕히지 않고 세워서 담을 수 있는 깊이입니다.
-      손잡이는 손목에 걸기 좋은 짧은 길이라 계산대에서 바로 담고 바로 듭니다.</p>
+    <p class="lede" style="max-width:52ch"><b>2L 생수병이 6개</b> 들어갑니다. 바닥 폭이 15cm라 가방이 혼자 서기 때문에,
+      한 손으로 벌리고 있을 필요 없이 세워두고 양손으로 담을 수 있습니다.</p>
     <div class="card">
-      <svg viewBox="0 0 740 300">
-        <g transform="translate(40,36)">
-          <path d="M46 34 q0 -26 24 -26 q24 0 24 26" fill="none" stroke="var(--ink)" stroke-width="4.4" stroke-linecap="round"/>
-          <path d="M150 34 q0 -26 24 -26 q24 0 24 26" fill="none" stroke="var(--ink)" stroke-width="4.4" stroke-linecap="round"/>
-          <path d="M12 34 h220 l-10 152 q-1 10 -11 10 H33 q-10 0 -11 -10 z" fill="var(--surface)" stroke="var(--ink)" stroke-width="2.6"/>
-          <line x1="17" y1="45" x2="227" y2="45" stroke="var(--cold)" stroke-width="3" stroke-dasharray="6 5"/>
-          <g transform="translate(86,74)">
-            <rect x="0" y="16" width="40" height="104" rx="7" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="2"/>
-            <rect x="14" y="0" width="12" height="20" rx="2.5" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="2"/>
-            <text x="20" y="76" text-anchor="middle" fill="var(--cold)" font-family="'IBM Plex Mono',monospace" font-size="13">2L</text>
+      <svg viewBox="0 0 740 320">
+        <g transform="translate(40,44)">
+          <path d="M46 36 q0 -32 25 -32 q25 0 25 32" fill="none" stroke="var(--ink)" stroke-width="4.6" stroke-linecap="round"/>
+          <path d="M136 36 q0 -32 25 -32 q25 0 25 32" fill="none" stroke="var(--ink)" stroke-width="4.6" stroke-linecap="round"/>
+          <g stroke="var(--cold)" stroke-width="1.2">
+            <line x1="26" y1="4" x2="26" y2="36"/><line x1="20" y1="4" x2="32" y2="4"/><line x1="20" y1="36" x2="32" y2="36"/>
           </g>
+          <text x="14" y="26" text-anchor="end" fill="var(--cold)" font-family="'IBM Plex Mono',monospace" font-size="12.5">약 25cm</text>
+          <rect x="12" y="36" width="220" height="152" rx="3" fill="var(--surface)" stroke="var(--ink)" stroke-width="2.6"/>
+          <line x1="17" y1="47" x2="227" y2="47" stroke="var(--cold)" stroke-width="3" stroke-dasharray="6 5"/>
+          <g transform="translate(30,68)"><rect x="0" y="16" width="38" height="98" rx="7" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="1.8"/><rect x="13" y="0" width="12" height="20" rx="2.5" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="1.8"/><text x="19" y="72" text-anchor="middle" fill="var(--cold)" font-family="'IBM Plex Mono',monospace" font-size="11.5">2L</text></g>
+          <g transform="translate(103,68)"><rect x="0" y="16" width="38" height="98" rx="7" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="1.8"/><rect x="13" y="0" width="12" height="20" rx="2.5" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="1.8"/><text x="19" y="72" text-anchor="middle" fill="var(--cold)" font-family="'IBM Plex Mono',monospace" font-size="11.5">2L</text></g>
+          <g transform="translate(176,68)"><rect x="0" y="16" width="38" height="98" rx="7" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="1.8"/><rect x="13" y="0" width="12" height="20" rx="2.5" fill="var(--cold-wash)" stroke="var(--cold)" stroke-width="1.8"/><text x="19" y="72" text-anchor="middle" fill="var(--cold)" font-family="'IBM Plex Mono',monospace" font-size="11.5">2L</text></g>
+          <text x="122" y="180" text-anchor="middle" fill="var(--muted)" font-family="'IBM Plex Sans KR',sans-serif" font-size="12.5">앞줄 3병 + 뒷줄 3병</text>
           <g stroke="var(--muted)" stroke-width="1.2">
-            <line x1="12" y1="216" x2="232" y2="216"/>
-            <line x1="12" y1="209" x2="12" y2="223"/><line x1="232" y1="209" x2="232" y2="223"/>
+            <line x1="12" y1="208" x2="232" y2="208"/><line x1="12" y1="201" x2="12" y2="215"/><line x1="232" y1="201" x2="232" y2="215"/>
           </g>
-          <text x="122" y="240" text-anchor="middle" fill="var(--ink)" font-family="'IBM Plex Mono',monospace" font-size="15">46 cm</text>
+          <text x="122" y="232" text-anchor="middle" fill="var(--ink)" font-family="'IBM Plex Mono',monospace" font-size="15">46 cm</text>
           <g stroke="var(--muted)" stroke-width="1.2">
-            <line x1="256" y1="34" x2="256" y2="196"/>
-            <line x1="249" y1="34" x2="263" y2="34"/><line x1="249" y1="196" x2="263" y2="196"/>
+            <line x1="256" y1="36" x2="256" y2="188"/><line x1="249" y1="36" x2="263" y2="36"/><line x1="249" y1="188" x2="263" y2="188"/>
           </g>
-          <text x="274" y="120" fill="var(--ink)" font-family="'IBM Plex Mono',monospace" font-size="15">34 cm</text>
+          <text x="274" y="116" fill="var(--ink)" font-family="'IBM Plex Mono',monospace" font-size="15">34 cm</text>
         </g>
         <g font-family="'IBM Plex Sans KR',sans-serif" font-size="16">
-          <text x="450" y="74" fill="var(--muted)" font-family="'IBM Plex Mono',monospace" font-size="13" letter-spacing="1.6">WHAT FITS</text>
-          <text x="450" y="110" fill="var(--ink)">2L 생수병 · 세워서</text>
-          <text x="450" y="142" fill="var(--ink)">10구 계란판 · 눕히지 않고</text>
-          <text x="450" y="174" fill="var(--ink)">라면 5개 묶음 · 통째로</text>
-          <text x="450" y="206" fill="var(--ink)">대파 · 접지 않고</text>
-          <line x1="450" y1="228" x2="700" y2="228" stroke="var(--rule)" stroke-width="1.2"/>
-          <text x="450" y="256" fill="var(--muted)" font-size="14">폭 15cm · 바닥이 서서 담기 편합니다</text>
+          <text x="420" y="78" fill="var(--muted)" font-family="'IBM Plex Mono',monospace" font-size="13" letter-spacing="1.6">WHAT FITS</text>
+          <text x="420" y="114" fill="var(--ink)" font-weight="600">2L 생수병 6개</text>
+          <text x="420" y="146" fill="var(--ink)">10구 계란판 · 눕히지 않고</text>
+          <text x="420" y="178" fill="var(--ink)">라면 5개 묶음 · 통째로</text>
+          <text x="420" y="210" fill="var(--ink)">대파 · 접지 않고</text>
+          <line x1="420" y1="232" x2="700" y2="232" stroke="var(--rule)" stroke-width="1.2"/>
+          <text x="420" y="260" fill="var(--ink)" font-weight="600" font-size="15">바닥 폭 15cm · 자립합니다</text>
+          <text x="420" y="286" fill="var(--muted)" font-size="14">세워두고 양손으로 담을 수 있습니다</text>
         </g>
       </svg>
-      <p class="figcap">FIG. 03 &nbsp;—&nbsp; 46 × 34 × 15 cm</p>
+      <p class="figcap">FIG. 03 &nbsp;—&nbsp; 46 × 34 × 15 cm · 손잡이 약 25cm · 2L 생수병 6개</p>
     </div>
   </div>
 </section>
 
-<!-- ============ A7 · 활용 씬 ============ -->
-<section class="asset" id="a7" style="width:860px;background:var(--surface)">
+<!-- ============ A7 · 드는 방법 ============ -->
+<section class="asset" id="a7" style="width:860px">
+  <div class="pad stack">
+    <div><span class="numtag">04</span></div>
+    <h2>손에도, 팔에도, 어깨에도</h2>
+    <p class="lede" style="max-width:52ch">손잡이 길이가 약 25cm라 <b>어깨에 걸칩니다.</b>
+      짐이 무거워지면 팔이나 어깨로 옮겨 들 수 있어 장을 많이 본 날 손목에 부담이 덜합니다.</p>
+    <div class="carry">
+      <div class="c">
+        <svg viewBox="0 0 120 130">
+          <path d="M42 44 q0 -20 13 -20 q13 0 13 20 M62 44 q0 -20 13 -20 q13 0 13 20" fill="none" stroke="var(--ink)" stroke-width="3.6" stroke-linecap="round"/>
+          <path d="M30 44 h60 l-6 62 q-.6 6 -7 6 H43 q-6.4 0 -7 -6 Z" fill="var(--alu-2)" stroke="var(--ink)" stroke-width="2.2"/>
+          <path d="M52 30 q-8 -6 -14 -2 q-5 3 -2 8" fill="none" stroke="var(--cold)" stroke-width="3.2" stroke-linecap="round"/>
+        </svg>
+        <b>손에 들기</b><p>계산대에서 바로 담고 바로 드는 가장 짧은 동선.</p>
+      </div>
+      <div class="c">
+        <svg viewBox="0 0 120 130">
+          <path d="M42 52 q0 -22 13 -22 q13 0 13 22 M62 52 q0 -22 13 -22 q13 0 13 22" fill="none" stroke="var(--ink)" stroke-width="3.6" stroke-linecap="round"/>
+          <path d="M30 52 h60 l-6 58 q-.6 6 -7 6 H43 q-6.4 0 -7 -6 Z" fill="var(--alu-2)" stroke="var(--ink)" stroke-width="2.2"/>
+          <path d="M36 22 q14 10 30 8 q14 -2 20 -12" fill="none" stroke="var(--cold)" stroke-width="3.4" stroke-linecap="round"/>
+        </svg>
+        <b>팔에 걸기</b><p>두 손이 필요할 때. 손잡이가 굵어 팔에 자국이 덜 남습니다.</p>
+      </div>
+      <div class="c">
+        <svg viewBox="0 0 120 130">
+          <path d="M44 62 q-2 -34 12 -36 q14 -2 14 34 M64 62 q-2 -30 10 -32" fill="none" stroke="var(--ink)" stroke-width="3.6" stroke-linecap="round"/>
+          <path d="M34 62 h56 l-6 50 q-.6 6 -7 6 H47 q-6.4 0 -7 -6 Z" fill="var(--alu-2)" stroke="var(--ink)" stroke-width="2.2"/>
+          <circle cx="52" cy="20" r="9" fill="none" stroke="var(--cold)" stroke-width="3.2"/>
+          <path d="M40 34 q12 -6 24 -2" fill="none" stroke="var(--cold)" stroke-width="3.2" stroke-linecap="round"/>
+        </svg>
+        <b>어깨에 메기</b><p>가장 무거울 때. 2L 6병을 담아도 어깨로 넘길 수 있습니다.</p>
+      </div>
+    </div>
+    <div class="note" style="display:flex;align-items:baseline;gap:14px">
+      <b style="font-family:'IBM Plex Mono',monospace;font-size:22px;color:var(--cold);white-space:nowrap">130g</b>
+      <span>가방 자체는 약 130g. 평평하게 접혀 백팩이나 가방 안에 그대로 들어갑니다. 별도 수납 파우치는 없습니다.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ A8 · 활용 씬 ============ -->
+<section class="asset" id="a8" style="width:860px;background:var(--surface)">
   <div class="pad">
     <div class="eyebrow">이럴 때 씁니다</div>
     <h2>장바구니 하나로 끝나지 않습니다</h2>
@@ -289,7 +352,7 @@ svg{display:block;width:100%;height:auto}
 </section>
 
 <!-- ============ A8 · 컬러 ============ -->
-<section class="asset" id="a8" style="width:860px">
+<section class="asset" id="a9" style="width:860px">
   <div class="pad">
     <div class="eyebrow">Two colorways</div>
     <h2>블랙, 그리고 블루</h2>
@@ -313,7 +376,7 @@ svg{display:block;width:100%;height:auto}
 </section>
 
 <!-- ============ A9 · 스펙 ============ -->
-<section class="asset" id="a9" style="width:860px;background:var(--surface)">
+<section class="asset" id="a10" style="width:860px;background:var(--surface)">
   <div class="pad">
     <div class="eyebrow">Specification</div>
     <h2>제품 정보</h2>
@@ -321,10 +384,15 @@ svg{display:block;width:100%;height:auto}
       <tr><th>브랜드</th><td>Standard Products (스탠다드 프로덕츠) · DAISO Japan</td></tr>
       <tr><th>제품명</th><td>쇼핑백 (숏로고) / ショッピングバッグ（ショートロゴ）</td></tr>
       <tr><th>컬러</th><td>블랙 BK · 블루 BL</td></tr>
-      <tr><th>크기</th><td>46 × 34 × 15 cm</td></tr>
+      <tr><th>크기</th><td>46 × 34 × 15 cm (가로 × 세로 × 바닥 폭)</td></tr>
+      <tr><th>무게</th><td>약 130 g</td></tr>
+      <tr><th>손잡이</th><td>약 25 cm · 손 / 팔 / 어깨 3가지로 들 수 있음</td></tr>
+      <tr><th>수납력</th><td>2L 생수병 6개</td></tr>
+      <tr><th>바닥</th><td>폭 15 cm · 자립형</td></tr>
+      <tr><th>개폐</th><td>상단 전체 지퍼</td></tr>
+      <tr><th>접이</th><td>평평하게 접힘 · 별도 수납 파우치 없음</td></tr>
       <tr><th>겉감</th><td>폴리에스터</td></tr>
-      <tr><th>안감</th><td>알루미늄 증착 필름, 폴리프로필렌</td></tr>
-      <tr><th>개폐</th><td>상단 지퍼</td></tr>
+      <tr><th>안감</th><td>알루미늄 증착 필름, 폴리프로필렌 (전면)</td></tr>
       <tr><th>구성</th><td>1개입</td></tr>
       <tr><th>원산지</th><td>중국 (일본 Standard Products 기획)</td></tr>
       <tr><th>품번 (JAN)</th><td>BK 4550480729688 · BL 4550480777566</td></tr>
@@ -332,16 +400,16 @@ svg{display:block;width:100%;height:auto}
     <p class="muted" style="font-size:14px;margin-top:18px">※ 모니터 환경에 따라 색상은 실물과 다르게 보일 수 있습니다.</p>
   </div>
   <style>
-    #a9 th,#a9 td{text-align:left;padding:15px 4px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
-    #a9 th{width:150px;font-weight:500;color:var(--muted);font-size:14px;
+    #a10 th,#a10 td{text-align:left;padding:15px 4px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+    #a10 th{width:150px;font-weight:500;color:var(--muted);font-size:14px;
       font-family:"IBM Plex Mono",monospace;letter-spacing:.04em;white-space:nowrap}
-    #a9 td{font-variant-numeric:tabular-nums}
-    #a9 tr:last-child th,#a9 tr:last-child td{border-bottom:0}
+    #a10 td{font-variant-numeric:tabular-nums}
+    #a10 tr:last-child th,#a10 tr:last-child td{border-bottom:0}
   </style>
 </section>
 
 <!-- ============ A10 · 주의사항 ============ -->
-<section class="asset" id="a10" style="width:860px">
+<section class="asset" id="a11" style="width:860px">
   <div class="pad">
     <div class="eyebrow" style="color:var(--warn)">구매 전 꼭 확인</div>
     <h2>이런 점은 미리 알려드립니다</h2>
@@ -354,9 +422,9 @@ svg{display:block;width:100%;height:auto}
     </ul>
   </div>
   <style>
-    #a10 li{display:grid;grid-template-columns:30px 1fr;gap:14px;padding:15px 0;
+    #a11 li{display:grid;grid-template-columns:30px 1fr;gap:14px;padding:15px 0;
       border-bottom:1px solid var(--rule-soft);font-size:16px;line-height:1.72}
-    #a10 li:last-child{border-bottom:0}
-    #a10 li>span:first-child{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--warn);padding-top:5px}
+    #a11 li:last-child{border-bottom:0}
+    #a11 li>span:first-child{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--warn);padding-top:5px}
   </style>
 </section>
